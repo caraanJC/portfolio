@@ -70,6 +70,10 @@ nav a {
   padding: 0.5rem 1rem;
   text-decoration: none;
 }
+
+nav li a {
+  font-size: 1.3rem;
+}
 /* nav end */
 
 /* header start */
@@ -89,16 +93,17 @@ header {
 }
 
 header h1 {
-  font-size: 5rem;
+  font-size: 7rem;
 }
 
 header p {
+  font-size: 2rem;
   margin-bottom: 2rem;
   color: hsl(0, 0%, 75%);
 }
 
 header .button-group {
-  width: 30%;
+  width: 35%;
   display: flex;
   justify-content: space-between;
 }
@@ -106,7 +111,7 @@ header .button-group {
 header .btn {
   background-color: transparent;
   border: 1px solid white;
-  padding: 10px 20px;
+  padding: 1rem 2rem;
   border-radius: 20px;
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
@@ -115,6 +120,7 @@ header .btn {
   cursor: pointer;
   text-transform: uppercase;
   letter-spacing: 1px;
+  font-size: 1.5rem;
 }
 
 header .learn-more {
@@ -156,11 +162,10 @@ header .btn a:focus {
 }
 
 .query > div {
-  padding: 1rem;
+  padding: 2rem;
   background-color: rgba(0, 0, 0, 0.4);
   margin-bottom: 1rem;
   width: 45%;
-  min-height: 18.5rem;
   border-radius: 10px;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
@@ -174,14 +179,16 @@ header .btn a:focus {
 .query > div h2 {
   margin-bottom: 1rem;
   text-align: center;
+  font-size: 2.5rem;
 }
 .query > div h3 {
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.5rem;
+  font-size: 2rem;
 }
 
 .query > div p {
-  margin-bottom: 0.75rem;
-  font-size: 0.85rem;
+  margin-bottom: 1.2rem;
+  font-size: 1.2rem;
 }
 
 .about-vacseen p {
@@ -194,23 +201,28 @@ header .btn a:focus {
   padding: 0.5rem 2rem;
   text-align: center;
   color: white;
-  height: 50vh;
+  margin-bottom: 5rem;
 }
 
-.reviews h2 {
-  margin-bottom: 1rem;
-}
-
-.reviews .users {
+.reviews .content {
   background-color: rgba(0, 0, 0, 0.4);
   border-radius: 10px;
-  display: flex;
+  padding: 2rem 0;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   -ms-border-radius: 10px;
   -o-border-radius: 10px;
+}
+
+.reviews h2 {
+  margin-bottom: 1rem;
+  font-size: 2.5rem;
+}
+
+.reviews .users {
+  display: flex;
+
   justify-content: space-around;
-  padding: 2rem 0;
 }
 
 .reviews img {
@@ -223,13 +235,13 @@ header .btn a:focus {
 }
 
 .reviews .name {
-  font-size: 1.2rem;
+  font-size: 2rem;
   font-weight: bold;
   margin-bottom: 0.25rem;
 }
 
 .reviews .comment {
-  font-size: 0.9rem;
+  font-size: 1.5rem;
 }
 /* Reviews end */
 
@@ -239,11 +251,22 @@ header .btn a:focus {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 50vh;
+
   margin-bottom: 2rem;
 }
 
+.partners .content {
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  padding: 1.5rem;
+}
+
 .partners h2 {
+  font-size: 2.5rem;
   margin-bottom: 1rem;
   color: white;
   text-align: center;
@@ -257,21 +280,16 @@ header .btn a:focus {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.4);
-  border-radius: 10px;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -o-border-radius: 10px;
-  padding: 1.5rem;
 }
 
 .gallery figure {
-  width: 10rem;
+  display: flex;
+  justify-content: center;
+  width: 30%;
 }
 
 .gallery img {
-  width: 100%;
+  width: 50%;
   padding: 10px;
 }
 
