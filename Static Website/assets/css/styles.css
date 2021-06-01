@@ -326,6 +326,73 @@ footer a {
 /* footer end */
 /* --------------------index end------------------- */
 
+/* --------------------generate start------------------- */
+main.generate {
+  max-width: 1200px;
+  min-width: 500px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  padding: 2rem;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+}
+
+.generate .qr {
+  position: relative;
+  width: 100%;
+  padding-top: 100%;
+  background-color: white;
+}
+
+.generate .qr > .show-code {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3rem;
+  text-align: center;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  font-family: inherit;
+  background-color: transparent;
+  border: 1px solid dimgray;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+  padding: 1rem 2rem;
+  cursor: pointer;
+}
+
+.generate .qr > .show-code:hover {
+  border: 1px solid steelblue;
+  background-color: steelblue;
+  color: rgba(255, 255, 255, 0.9);
+  transition: all 1s ease;
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -ms-transition: all 1s ease;
+  -o-transition: all 1s ease;
+}
+
+/* --------------------generate end------------------- */
+
 /* --------------------contact start------------------- */
 .contact__background {
   width: 100%;
@@ -338,7 +405,7 @@ footer a {
 }
 
 .contact {
-  width: 350px;
+  width: 500px;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -413,7 +480,8 @@ footer a {
 /* --------------------login start------------------- */
 .login {
   background-color: rgba(0, 0, 0, 0.4);
-  width: 300px;
+  width: 500px;
+  height: 400px;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -425,6 +493,7 @@ footer a {
   color: white;
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
   text-align: center;
   padding: 2rem;
   border-radius: 10px;

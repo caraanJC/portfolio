@@ -21,8 +21,14 @@
       <form class="login">
         <h1>Please Login</h1>
 
-        <input type="text" placeholder="Username" id="username" />
-        <input type="password" placeholder="Password" id="password" />
+        <input
+          type="text"
+          placeholder="Username"
+          id="username"
+          required
+          autocomplete="off"
+        />
+        <input type="password" placeholder="Password" id="password" required />
         <button>Login</button>
         <p>Don't have an account? <a href="#">Register</a></p>
       </form>
