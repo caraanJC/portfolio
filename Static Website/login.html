@@ -102,9 +102,49 @@
             required
           />
           <button class="form-control btn btn-primary">Login</button>
-          <p>Don't have an account? <a href="#">Register</a></p>
+          <p>
+            Don't have an account? <a href="#" id="registerLink">Register</a>
+          </p>
         </form>
       </div>
     </div>
+    <div class="backdrop d-none" id="backdrop"></div>
+    <div
+      class="
+        register-container
+        d-none
+        justify-center
+        flex-wrap
+        align-content-center
+        px-3
+      "
+      id="registerContainer"
+    >
+      <h1 class="display-6 col-12 mb-3 text-center">Welcome Aboard!</h1>
+      <form class="col-12">
+        <input
+          class="col-12 form-control mb-2"
+          type="text"
+          required
+          placeholder="Username"
+        />
+        <input
+          class="col-12 form-control mb-2"
+          type="password"
+          required
+          placeholder="Password"
+        />
+        <input
+          class="col-12 form-control mb-3"
+          type="password"
+          required
+          placeholder="Repeat Password"
+        />
+        <button class="btn btn-primary form-control" id="registerBtn">
+          Register
+        </button>
+      </form>
+    </div>
+    <script src="./sign-up.js"></script>
   </body>
 </html>
