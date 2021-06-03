@@ -19,29 +19,61 @@
       crossorigin="anonymous"
     ></script>
 
-    <!-- Font Awesome CDN -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-      referrerpolicy="no-referrer"
-    />
-
     <!-- My Custom Stylesheet -->
     <link rel="stylesheet" href="./assets/css/styles.css" />
     <title>VacSEEN</title>
   </head>
   <body>
     <div class="container-fluid">
-      <!-- <nav class="fixed-top">
-        <div class="logo"><a href="./index.html">VacSEEN</a></div>
-        <ul class="list">
-          <li><a href="#header" class="active">Home</a></li>
-          <li><a href="./generate.html">Generate QR Code</a></li>
-          <li><a href="./contact.html">Contact Us</a></li>
-          <li><a href="./login.html">Login</a></li>
-        </ul>
-        <div class="burger"><i class="fas fa-bars"></i></div>
-      </nav> -->
+      <div class="row">
+        <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark col">
+          <a class="navbar-brand" href="#">VacSEEN</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarTogglerDemo02"
+            aria-controls="navbarTogglerDemo02"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a
+                  class="nav-link active"
+                  aria-current="page"
+                  href="./index.html"
+                  >Home</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./generate.html">Generate QR Code</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./contact.html">Contact</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./login.html">Login</a>
+              </li>
+            </ul>
+            <form class="d-flex">
+              <input
+                class="form-control me-2"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+              />
+              <button class="btn btn-outline-success" type="submit">
+                Search
+              </button>
+            </form>
+          </div>
+        </nav>
+      </div>
+
       <div class="row">
         <header
           id="header"
@@ -54,11 +86,11 @@
             justify-content-center
           "
         >
-          <h1 class="w-100 display-1">VacSEEN</h1>
-          <p class="w-100 text-muted">Get Your Vaccine Pass Now</p>
+          <h1 class="w-100 display-1 text-light mb-0">VacSEEN</h1>
+          <p class="w-100 text-light">Get Your Vaccine Pass Now</p>
           <div class="button-group w-100">
             <button class="btn btn-primary" id="learn-more">Learn More</button>
-            <button class="btn btn-outline-primary" id="get-started">
+            <button class="btn btn-outline-light" id="get-started">
               Get Started
             </button>
           </div>
@@ -106,47 +138,91 @@
           <div class="content d-flex flex-wrap text-center">
             <h2 class="w-100 display-2">Reviews</h2>
             <div class="users d-flex flex-wrap w-100">
-              <div class="user w-100 d-flex align-items-center flex-wrap mb-3">
+              <div
+                class="
+                  user
+                  w-100
+                  d-flex
+                  align-items-center
+                  flex-wrap
+                  justify-content-center
+                  mb-3
+                "
+              >
                 <img
-                  class="w-50 rounded-circle card-img-top"
-                  src="https://randomuser.me/api/portraits/men/55.jpg"
-                  alt="Random User"
+                  class="w-25 rounded-circle card-img-top"
+                  id="jeff"
+                  src="./assets/images/mobile_size/jeff.jpg"
+                  alt="Jeff Bezos"
                 />
                 <div class="w-50">
-                  <p class="name">Martin Gonzales</p>
+                  <p class="name fs-3 mb-0">Jeff Bezos</p>
                   <p class="comment"><q>Good job</q></p>
                 </div>
               </div>
-              <div class="user w-100 d-flex align-items-center flex-wrap mb-3">
+              <div
+                class="
+                  user
+                  w-100
+                  d-flex
+                  align-items-center
+                  flex-wrap
+                  mb-3
+                  justify-content-center
+                "
+              >
                 <img
-                  class="w-50 rounded-circle"
-                  src="https://randomuser.me/api/portraits/men/67.jpg"
-                  alt="Random User"
+                  class="w-25 rounded-circle"
+                  src="./assets/images/mobile_size/elon.jpg"
+                  alt="Elon Musk"
+                  id="elon"
                 />
                 <div class="w-50">
-                  <p class="name">Gabriel Morris</p>
-                  <p class="comment"><q>10/10</q></p>
+                  <p class="name fs-3 mb-0">Elon Musk</p>
+                  <p class="comment"><q>Looks Promising</q></p>
                 </div>
               </div>
-              <div class="user w-100 d-flex align-items-center flex-wrap mb-3">
+              <div
+                class="
+                  user
+                  w-100
+                  d-flex
+                  align-items-center
+                  flex-wrap
+                  justify-content-center
+                  mb-3
+                "
+              >
                 <img
-                  class="w-50 rounded-circle"
-                  src="https://randomuser.me/api/portraits/men/64.jpg"
-                  alt="Random User"
+                  class="w-25 rounded-circle"
+                  src="./assets/images/mobile_size/simon.jpg"
+                  alt="Simon Cowell"
+                  id="simon"
                 />
                 <div class="w-50">
-                  <p class="name">Corey Roberts</p>
-                  <p class="comment"><q>Fast and easy.</q></p>
+                  <p class="name fs-3 mb-0">Simon Cowell</p>
+                  <p class="comment"><q>It's a Yes for me.</q></p>
                 </div>
               </div>
-              <div class="user w-100 d-flex align-items-center flex-wrap mb-3">
+              <div
+                class="
+                  user
+                  w-100
+                  d-flex
+                  align-items-center
+                  flex-wrap
+                  justify-content-center
+                  mb-3
+                "
+              >
                 <img
-                  class="w-50 rounded-circle"
-                  src="https://randomuser.me/api/portraits/men/83.jpg"
-                  alt="Random User"
+                  class="w-25 rounded-circle"
+                  src="./assets/images/mobile_size/gates.jpg"
+                  alt="Bill Gates"
+                  id="gates"
                 />
                 <div class="w-50">
-                  <p class="name">Gavin Caldwell</p>
+                  <p class="name fs-3 mb-0">Bill Gates</p>
                   <p class="comment"><q>Saves me tons of time.</q></p>
                 </div>
               </div>

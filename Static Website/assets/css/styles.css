@@ -1,3 +1,7 @@
+body {
+  background-color: rgba(70, 130, 180, 0.5);
+}
+
 #header,
 #query {
   height: 100vh;
@@ -5,9 +9,70 @@
 
 img {
   width: 100%;
+  object-fit: cover;
 }
 
-#reviews .name {
-  font-size: 1.3rem;
-  margin-bottom: 0;
+header {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)),
+    url('../images/mobile_size/header_img.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@media only screen and (min-width: 426px) and (max-width: 768px) {
+  header {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)),
+      url('../images/tablet/header_img.jpg');
+  }
+  #jeff {
+    content: url('../images/tablet/jeff.jpg');
+  }
+  #elon {
+    content: url('../images/tablet/elon.jpg');
+  }
+  #simon {
+    content: url('../images/tablet/simon.jpg');
+  }
+  #gates {
+    content: url('../images/tablet/gates.jpg');
+  }
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+  header {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)),
+      url('../images/laptop/header_img.jpg');
+  }
+  #jeff {
+    content: url('../images/laptop/jeff.jpg');
+  }
+  #elon {
+    content: url('../images/laptop/elon.jpg');
+  }
+  #simon {
+    content: url('../images/laptop/simon.jpg');
+  }
+  #gates {
+    content: url('../images/laptop/gates.jpg');
+  }
+}
+
+@media only screen and (min-width: 1025px) {
+  header {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)),
+      url('../images/high_res/header_img.jpg');
+  }
+  #jeff {
+    content: url('../images/high_res/jeff.jpg');
+  }
+  #elon {
+    content: url('../images/high_res/elon.jpg');
+  }
+  #simon {
+    content: url('../images/high_res/simon.jpg');
+  }
+  #gates {
+    content: url('../images/high_res/gates.jpg');
+  }
 }
