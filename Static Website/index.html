@@ -24,7 +24,7 @@
     <title>VacSEEN</title>
   </head>
   <body>
-    <div class="container-fluid">
+    <div class="container-fluid overflow-hidden w-100">
       <div class="row">
         <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark col">
           <a class="navbar-brand" href="#">VacSEEN</a>
@@ -96,11 +96,11 @@
           </div>
         </header>
       </div>
-      <div class="row">
-        <div class="query col mb-5" id="query">
+      <div class="row p-1">
+        <div class="query col text-light rounded" id="query">
           <div class="about-vacseen" id="about-vacseen">
-            <h2 class="display-2 text-center">What is VacSEEN?</h2>
-            <p>
+            <h2 class="display-2 text-center mt-2">What is VacSEEN?</h2>
+            <p class="mb-2">
               With US pioneering certain freedom to vaccinated individuals,
               vaccine card checking is implemented. But, this takes time to
               verify especially if there's a lot of custoers and not a lot
@@ -133,8 +133,8 @@
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="reviews col" id="reviews">
+      <div class="row p-1">
+        <div class="reviews col text-light rounded" id="reviews">
           <div class="content d-flex flex-wrap text-center">
             <h2 class="w-100 display-2">Reviews</h2>
             <div class="users d-flex flex-wrap w-100">
@@ -145,12 +145,12 @@
                   d-flex
                   align-items-center
                   flex-wrap
-                  justify-content-center
                   mb-3
+                  justify-content-center
                 "
               >
                 <img
-                  class="w-25 rounded-circle card-img-top"
+                  class="w-25 rounded-circle"
                   id="jeff"
                   src="./assets/images/mobile_size/jeff.jpg"
                   alt="Jeff Bezos"
@@ -189,8 +189,8 @@
                   d-flex
                   align-items-center
                   flex-wrap
-                  justify-content-center
                   mb-3
+                  justify-content-center
                 "
               >
                 <img
@@ -211,8 +211,8 @@
                   d-flex
                   align-items-center
                   flex-wrap
-                  justify-content-center
                   mb-3
+                  justify-content-center
                 "
               >
                 <img
@@ -223,7 +223,7 @@
                 />
                 <div class="w-50">
                   <p class="name fs-3 mb-0">Bill Gates</p>
-                  <p class="comment"><q>Saves me tons of time.</q></p>
+                  <p class="comment"><q>Efficient</q></p>
                 </div>
               </div>
             </div>
@@ -231,90 +231,36 @@
         </div>
       </div>
       <div class="row">
-        <div class="partners col">
-          <h2 class="display-2 text-center">Partner Companies</h2>
-          <div class="content">
-            <div class="gallery">
-              <figure>
-                <img
-                  src="https://upload.wikimedia.org/wikipedia/en/thumb/c/c2/Bank_of_the_Philippine_Islands_logo.svg/1920px-Bank_of_the_Philippine_Islands_logo.svg.png"
-                  alt="BPI"
-                />
-              </figure>
-              <figure>
-                <img
-                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/BDO_Unibank_%28logo%29.svg/1024px-BDO_Unibank_%28logo%29.svg.png"
-                  alt="BDO"
-                />
-              </figure>
-              <figure>
-                <img
-                  src="https://www.landbank.com/images/logo1.png"
-                  alt="Land Bank of the Philippines"
-                />
-              </figure>
-              <figure>
-                <img
-                  src="https://bucketeer-9d45a0bc-28bd-439b-9619-e2bfda478d44.s3.amazonaws.com/public/assets/img/jb_logo_with_wordmark.png"
-                  alt="jollibee"
-                />
-              </figure>
-              <figure>
-                <img
-                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/McDonald%27s_Golden_Arches.svg/1024px-McDonald%27s_Golden_Arches.svg.png"
-                  alt="mcdonalds"
-                />
-              </figure>
-              <figure>
-                <img
-                  src="https://upload.wikimedia.org/wikipedia/en/thumb/b/bf/KFC_logo.svg/1024px-KFC_logo.svg.png"
-                  alt="kfc"
-                />
-              </figure>
-              <figure>
-                <img
-                  src="https://www.accenture.com/t20180820T081710Z__w__/ph-en/_acnmedia/Accenture/Dev/Redesign/Acc_Logo_Black_Purple_RGB.PNG"
-                  alt="accenture"
-                />
-              </figure>
-              <figure>
-                <img
-                  src="https://www.iqor.com/assets/img/2x/iqor-logo.png"
-                  alt="iqor"
-                />
-              </figure>
-              <figure>
-                <img
-                  src="https://www.alorica.com/wp-content/themes/alorica/images/logo.png"
-                  alt="alorica"
-                />
-              </figure>
-              <figure>
-                <img
-                  src="https://www.ayalaland.com.ph/app/uploads/2020/02/ALI-high-res-logo-PNG-retina-01.png"
-                  alt="ayala land"
-                />
-              </figure>
-              <figure>
-                <img
-                  src="https://www.rwmanila.com/sites/default/files/rw-logo-red_0.png"
-                  alt="resorts world manila"
-                />
-              </figure>
-              <figure>
-                <img
-                  src="https://assets.grab.com/wp-content/uploads/sites/4/2020/04/01111035/Grab_Final_Master_Logo_2019_RGB_green.png"
-                  alt="grab"
-                />
-              </figure>
-            </div>
-          </div>
-        </div>
+        <footer
+          class="
+            d-flex
+            flex-wrap
+            col
+            text-center
+            bg-dark
+            text-light
+            justify-content-center
+            py-3
+          "
+        >
+          <p class="w-100 mb-0">&copy; 2021 Simple Creations</p>
+          <p class="w-100 mb-0">
+            Header Image from
+            <a href="https://unsplash.com" target="_blank" class="text-light"
+              >Unsplash</a
+            >
+          </p>
+          <p>
+            Reviews Photos from
+            <a
+              href="https://www.wikipedia.org"
+              class="text-light"
+              target="_blank"
+              >Wikipedia</a
+            >
+          </p>
+        </footer>
       </div>
     </div>
-
-    <!-- <footer>
-      <p>&copy; 2021 John Carlo B. Caraan</p>
-    </footer> -->
   </body>
 </html>

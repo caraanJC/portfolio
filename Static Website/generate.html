@@ -74,12 +74,21 @@
         </nav>
       </div>
       <div class="row">
-        <main class="generate col">
-          <div class="qr">
-            <button class="show-code">Generate Code</button>
+        <main class="generate col d-flex flex-wrap align-content-center">
+          <div class="w-100 mb-2 bg-light">
+            <img
+              id="qr-code"
+              class="w-100 invisible"
+              src="./assets/images/mobile_size/qr-code.png"
+              alt="qr-code"
+            />
           </div>
+          <button id="generate" class="btn btn-outline-primary w-100">
+            Generate Code
+          </button>
         </main>
       </div>
     </div>
+    <script src="./script.js"></script>
   </body>
 </html>
