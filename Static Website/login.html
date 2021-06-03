@@ -74,26 +74,36 @@
         </nav>
       </div>
       <div class="row">
-        <main>
-          <form class="login">
-            <h1>Please Login</h1>
-            <input
-              type="text"
-              placeholder="Username"
-              id="username"
-              required
-              autocomplete="off"
-            />
-            <input
-              type="password"
-              placeholder="Password"
-              id="password"
-              required
-            />
-            <button>Login</button>
-            <p>Don't have an account? <a href="#">Register</a></p>
-          </form>
-        </main>
+        <form
+          id="login"
+          class="
+            login
+            d-flex
+            flex-wrap
+            justify-center
+            align-content-center
+            mx-auto
+          "
+        >
+          <h1 class="w-100 text-center text-light">Please Login</h1>
+          <input
+            class="form-control mb-1"
+            type="text"
+            placeholder="Username"
+            id="username"
+            required
+            autocomplete="off"
+          />
+          <input
+            class="form-control mb-3"
+            type="password"
+            placeholder="Password"
+            id="password"
+            required
+          />
+          <button class="form-control btn btn-primary">Login</button>
+          <p>Don't have an account? <a href="#">Register</a></p>
+        </form>
       </div>
     </div>
   </body>

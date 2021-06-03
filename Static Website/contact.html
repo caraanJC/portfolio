@@ -74,18 +74,45 @@
         </nav>
       </div>
       <div class="row">
-        <div class="contact__background">
-          <main class="contact">
-            <h1>Contact Us</h1>
-            <form>
-              <input type="text" placeholder="Name*" required />
-              <input type="email" placeholder="Email*" required />
-              <input type="text" placeholder="Subject" required />
-              <textarea placeholder="Message"></textarea>
-              <button>Submit</button>
-            </form>
-          </main>
-        </div>
+        <main
+          class="
+            contact
+            col
+            d-flex
+            flex-wrap
+            justify-center
+            align-content-center
+            mx-auto
+          "
+        >
+          <h1 class="w-100 text-center text-light display-1">Contact Us</h1>
+          <form class="w-100 d-flex flex-wrap">
+            <input
+              class="form-control mb-2"
+              type="text"
+              placeholder="Name*"
+              required
+            />
+            <input
+              class="form-control mb-2"
+              type="email"
+              placeholder="Email*"
+              required
+            />
+            <input
+              class="form-control mb-2"
+              type="text"
+              placeholder="Subject"
+              required
+            />
+            <textarea
+              class="form-control mb-2"
+              placeholder="Message"
+              rows="7"
+            ></textarea>
+            <button class="w-100 btn btn-primary form-control">Submit</button>
+          </form>
+        </main>
       </div>
     </div>
   </body>

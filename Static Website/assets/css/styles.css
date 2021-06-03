@@ -23,6 +23,16 @@ header {
   height: 100vh;
 }
 
+.contact {
+  height: 100vh;
+  max-width: 320px;
+}
+
+.login {
+  height: 100vh;
+  max-width: 320px;
+}
+
 @media only screen and (min-width: 426px) and (max-width: 768px) {
   header {
     background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)),
@@ -39,6 +49,9 @@ header {
   }
   #gates {
     content: url('../images/tablet/gates.jpg');
+  }
+  #qr-code {
+    content: url('../images/tablet/qr-code.png');
   }
 }
 
@@ -59,6 +72,9 @@ header {
   #gates {
     content: url('../images/laptop/gates.jpg');
   }
+  #qr-code {
+    content: url('../images/tablet/qr-code.png');
+  }
 }
 
 @media only screen and (min-width: 1025px) {
@@ -77,5 +93,8 @@ header {
   }
   #gates {
     content: url('../images/high_res/gates.jpg');
+  }
+  #qr-code {
+    content: url('../images/tablet/qr-code.png');
   }
 }
