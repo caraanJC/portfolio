@@ -54,9 +54,11 @@ header {
   justify-content: center;
 }
 
+.contact-background {
+  height: 100vh;
+}
+
 .contact-container {
-  min-width: 300px;
-  width: 400px;
   background-color: rgba(0, 0, 0, 0.4);
 }
 
