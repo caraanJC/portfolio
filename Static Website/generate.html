@@ -23,10 +23,12 @@
     <link rel="stylesheet" href="./assets/css/styles.css" />
     <title>VacSEEN</title>
   </head>
-  <body>
+  <body class="pt-5">
     <div class="container-fluid">
       <div class="row">
-        <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark col">
+        <nav
+          class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark col-12"
+        >
           <a class="navbar-brand" href="#">VacSEEN</a>
           <button
             class="navbar-toggler"
@@ -74,18 +76,75 @@
         </nav>
       </div>
       <div class="row">
+        <div
+          class="
+            reminder
+            col-12 col-md-12 col-xxl-6
+            d-flex
+            flex-wrap
+            order-1 order-xxl-0
+            mt-5
+            mb-2
+          "
+        >
+          <h1 class="display-1 text-center text-light col-12 col-md-12">
+            You can still get COVID
+          </h1>
+          <figure class="col-12 col-md-6 p-md-1">
+            <img
+              id="wash"
+              class="w-100"
+              src="./assets/images/mobile_size/wash hands.jpg"
+              alt="Wash Your Hands"
+            />
+            <figcaption class="text-center">Wash Your Hands</figcaption>
+          </figure>
+
+          <figure class="col-12 col-md-6 p-md-1">
+            <img
+              id="mask"
+              class="w-100"
+              src="./assets/images/mobile_size/face-mask.jpg"
+              alt="Wear Face Mask"
+            />
+            <figcaption class="text-center">Wear Face Mask</figcaption>
+          </figure>
+
+          <figure class="col-12 col-md-6 p-md-1">
+            <img
+              id="social-distancing"
+              class="w-100"
+              src="./assets/images/mobile_size/social-distancing.jpg"
+              alt="Social Distancing"
+            />
+            <figcaption class="text-center">
+              Maintain Social Distancing
+            </figcaption>
+          </figure>
+
+          <figure class="col-12 col-md-6 p-md-1">
+            <img
+              id="sleep"
+              class="w-100"
+              src="./assets/images/mobile_size/sleep.jpg"
+              alt="Get Enough Sleep"
+            />
+            <figcaption class="text-center">Get Enough Sleep</figcaption>
+          </figure>
+        </div>
         <main
           class="
             generate
-            col col-md-8 col-lg-6 col-xl-6 col-xxl-4
+            col-12 col-md-8 col-lg-6 col-xl-6 col-xxl-6
             d-flex
             flex-wrap
             align-content-center
             justify-center
             mx-auto
+            mt-5
           "
         >
-          <div class="w-100 mb-2 bg-light">
+          <div class="col-12 col-xxl-8 mb-2 bg-light mx-auto">
             <img
               id="qr-code"
               class="w-100 invisible"
@@ -93,12 +152,32 @@
               alt="qr-code"
             />
           </div>
-          <button id="generate" class="btn btn-outline-primary w-100">
+          <button
+            id="generate"
+            class="btn btn-outline-primary col-12 col-xxl-6 mx-auto"
+          >
             Generate Code
           </button>
         </main>
       </div>
+      <div class="row">
+        <footer
+          class="col-12 bg-dark text-center text-light py-1 contact-footer"
+        >
+          <p class="mb-0">&copy; 2021 Simple Creations</p>
+          <p class="mb-0">
+            Photos from
+            <a
+              href="https://www.wikipedia.org"
+              target="_blank"
+              class="text-light"
+              >Wikipedia</a
+            >
+          </p>
+        </footer>
+      </div>
     </div>
+
     <script src="./generate_script.js"></script>
   </body>
 </html>

@@ -19,10 +19,6 @@ header {
   background-size: cover;
 }
 
-.generate {
-  height: 100vh;
-}
-
 .contact {
   background-color: rgba(0, 0, 0, 0.4);
   max-width: 320px;
@@ -83,6 +79,36 @@ header {
   -o-transform: translate(-50%, -50%);
 }
 
+@media only screen and (min-width: 321px) and (max-width: 375px) {
+  #wash {
+    content: url('../images/mobile_size/375/wash\ hands.jpg');
+  }
+  #mask {
+    content: url('../images/mobile_size/375/face-mask.jpg');
+  }
+  #social-distancing {
+    content: url('../images/mobile_size/375/social-distancing.jpg');
+  }
+  #sleep {
+    content: url('../images/mobile_size/375/sleep.jpg');
+  }
+}
+
+@media only screen and (min-width: 376px) and (max-width: 425px) {
+  #wash {
+    content: url('../images/mobile_size/425/wash\ hands.jpg');
+  }
+  #mask {
+    content: url('../images/mobile_size/425/face-mask.jpg');
+  }
+  #social-distancing {
+    content: url('../images/mobile_size/425/social-distancing.jpg');
+  }
+  #sleep {
+    content: url('../images/mobile_size/425/sleep.jpg');
+  }
+}
+
 @media only screen and (min-width: 426px) and (max-width: 768px) {
   header {
     background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)),
@@ -102,6 +128,18 @@ header {
   }
   #qr-code {
     content: url('../images/tablet/qr-code.png');
+  }
+  #wash {
+    content: url('../images/tablet/wash\ hands.jpg');
+  }
+  #mask {
+    content: url('../images/tablet/face-mask.jpg');
+  }
+  #social-distancing {
+    content: url('../images/tablet/social-distancing.jpg');
+  }
+  #sleep {
+    content: url('../images/tablet/sleep.jpg');
   }
 }
 
@@ -146,5 +184,20 @@ header {
   }
   #qr-code {
     content: url('../images/tablet/qr-code.png');
+  }
+  #wash {
+    content: url('../images/laptop/wash\ hands.jpg');
+  }
+  #mask {
+    content: url('../images/laptop/face-mask.jpg');
+  }
+  #social-distancing {
+    content: url('../images/laptop/social-distancing.jpg');
+  }
+  #sleep {
+    content: url('../images/laptop/sleep.jpg');
+  }
+  .contact-footer {
+    margin-top: 3rem;
   }
 }
