@@ -24,7 +24,7 @@ header {
 }
 
 .contact {
-  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
   max-width: 320px;
 }
 
@@ -43,8 +43,25 @@ header {
   z-index: 2000;
 }
 
+.contact-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact-container {
+  min-width: 300px;
+  width: 400px;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
 .register-container {
-  min-width: 250px;
+  min-width: 300px;
   max-width: 340px;
   height: 400px;
   background-color: white;

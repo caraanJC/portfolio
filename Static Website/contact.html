@@ -74,45 +74,48 @@
         </nav>
       </div>
       <div class="row">
-        <main
+        <div
           class="
-            contact
-            col
+            contact-background
+            bg-success
             d-flex
-            flex-wrap
+            align-center
             justify-center
-            align-content-center
-            mx-auto
+            p-1
           "
         >
-          <h1 class="w-100 text-center text-light display-1">Contact Us</h1>
-          <form class="w-100 d-flex flex-wrap">
-            <input
-              class="form-control mb-2"
-              type="text"
-              placeholder="Name*"
-              required
-            />
-            <input
-              class="form-control mb-2"
-              type="email"
-              placeholder="Email*"
-              required
-            />
-            <input
-              class="form-control mb-2"
-              type="text"
-              placeholder="Subject"
-              required
-            />
-            <textarea
-              class="form-control mb-2"
-              placeholder="Message"
-              rows="7"
-            ></textarea>
-            <button class="w-100 btn btn-primary form-control">Submit</button>
-          </form>
-        </main>
+          <div class="contact-container rounded p-1 p-md-2 p-xxl-3">
+            <h1 class="text-center text-light my-3">Contact Us</h1>
+            <form>
+              <input
+                type="text"
+                placeholder="Name*"
+                required
+                class="form-control mb-2"
+              />
+              <input
+                type="text"
+                placeholder="Email*"
+                required
+                class="form-control mb-2"
+              />
+              <input
+                type="text"
+                placeholder="Subject"
+                required
+                class="form-control mb-2"
+              />
+              <textarea
+                type="text"
+                placeholder="Message"
+                required
+                class="form-control mb-3"
+                rows="10"
+              ></textarea>
+              <button class="btn btn-primary form-control mb-3">Submit</button>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
   </body>
