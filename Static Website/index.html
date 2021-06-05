@@ -102,50 +102,121 @@
           </div>
         </header>
       </div>
-      <div class="row p-1 p-xxl-3 p-lg-2">
-        <div class="query col text-light rounded d-flex flex-wrap" id="query">
-          <div
-            class="about-vacseen col-12 col-xxl-6 p-xxl-5"
-            id="about-vacseen"
+      <div class="row">
+        <div
+          id="carouselExampleControls"
+          class="carousel slide my-1 my-lg-3 my-xxl-5"
+          data-bs-ride="carousel"
+        >
+          <div class="carousel-indicators">
+            <button
+              type="button"
+              data-bs-target="#carouselExampleIndicators"
+              data-bs-slide-to="0"
+              class="active"
+              aria-current="true"
+              aria-label="Slide 1"
+            ></button>
+            <button
+              type="button"
+              data-bs-target="#carouselExampleIndicators"
+              data-bs-slide-to="1"
+              aria-label="Slide 2"
+            ></button>
+            <!-- <button
+              type="button"
+              data-bs-target="#carouselExampleIndicators"
+              data-bs-slide-to="2"
+              aria-label="Slide 3"
+            ></button> -->
+          </div>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div
+                class="about-vacseen d-block w-100 mx-auto rounded py-1 px-4"
+                id="about-vacseen"
+              >
+                <h2
+                  class="
+                    display-2
+                    text-light text-center
+                    mt-2 mt-xxl-2
+                    border-bottom
+                  "
+                >
+                  What is VacSEEN?
+                </h2>
+                <p class="mb-2 text-light">
+                  With US pioneering certain freedom to vaccinated individuals,
+                  vaccine card checking is implemented. But, this takes time to
+                  verify especially if there are a lot of customers and not a
+                  lot manpower. VacSEEN makes vaccine card checking shorter by
+                  giving you a reliable, secure, and easy to use QR code that
+                  you can use from your phone or in print.
+                </p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div
+                id="benefits"
+                class="
+                  benefits
+                  col-12 col-xxl-6
+                  py-1
+                  px-4
+                  d-block
+                  w-100
+                  mx-auto
+                  rounded
+                  text-light
+                "
+              >
+                <h2 class="display-2 text-center border-bottom">
+                  Benefits of Using VacSEEN
+                </h2>
+                <div class="employees">
+                  <h3>Employees</h3>
+                  <p>
+                    Get hired faster because lets you enter the physical
+                    workspace without having to interact with the vaccine card
+                    checking attendee.
+                  </p>
+                </div>
+                <div class="employers">
+                  <h3>Employers</h3>
+                  <p>
+                    Avoid congestion in the checking area and avoid counterfeit
+                    vaccine card.
+                  </p>
+                </div>
+                <div class="personal">
+                  <h3>Personal</h3>
+                  <p>Walk inside malls, restaurants, and hotels faster.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button
+            class="carousel-control-prev"
+            type="button"
+            data-bs-target="#carouselExampleControls"
+            data-bs-slide="prev"
           >
-            <h2 class="display-2 text-center mt-2 mt-xxl-2 border-bottom">
-              What is VacSEEN?
-            </h2>
-            <p class="mb-2">
-              With US pioneering certain freedom to vaccinated individuals,
-              vaccine card checking is implemented. But, this takes time to
-              verify especially if there are a lot of customers and not a lot
-              manpower. VacSEEN makes vaccine card checking shorter by giving
-              you a reliable, secure, and easy to use QR code that you can use
-              from your phone or in print.
-            </p>
-          </div>
-          <div class="benefits col-12 col-xxl-6 p-xxl-5 mt-xxl-2">
-            <h2 class="display-2 text-center border-bottom">
-              Benefits of Using VacSEEN
-            </h2>
-            <div class="employees">
-              <h3>Employees</h3>
-              <p>
-                Get hired faster because lets you enter the physical workspace
-                without having to interact with the vaccine card checking
-                attendee.
-              </p>
-            </div>
-            <div class="employers">
-              <h3>Employers</h3>
-              <p>
-                Avoid congestion in the checking area and avoid counterfeit
-                vaccine card.
-              </p>
-            </div>
-            <div class="personal">
-              <h3>Personal</h3>
-              <p>Walk inside malls, restaurants, and hotels faster.</p>
-            </div>
-          </div>
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button
+            class="carousel-control-next"
+            type="button"
+            data-bs-target="#carouselExampleControls"
+            data-bs-slide="next"
+          >
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
         </div>
       </div>
+
       <div class="row p-1 px-xxl-3 px-lg-2 mb-xxl-3">
         <div class="reviews col text-light rounded" id="reviews">
           <div class="content d-flex flex-wrap text-center">

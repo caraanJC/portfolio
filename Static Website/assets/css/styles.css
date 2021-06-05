@@ -7,8 +7,15 @@ body {
 }
 
 #query,
-#reviews {
+#reviews,
+#about-vacseen,
+#benefits {
   background-color: rgba(0, 0, 0, 0.4);
+}
+
+#about-vacseen,
+#benefits {
+  min-height: 500px;
 }
 
 header {
@@ -79,6 +86,7 @@ header {
   -o-transform: translate(-50%, -50%);
 }
 
+/* mobile medium */
 @media only screen and (min-width: 321px) and (max-width: 375px) {
   #wash {
     content: url('../images/mobile_size/375/wash\ hands.jpg');
@@ -94,6 +102,7 @@ header {
   }
 }
 
+/* mobile large */
 @media only screen and (min-width: 376px) and (max-width: 425px) {
   #wash {
     content: url('../images/mobile_size/425/wash\ hands.jpg');
@@ -107,8 +116,14 @@ header {
   #sleep {
     content: url('../images/mobile_size/425/sleep.jpg');
   }
+  #about-vacseen,
+  #benefits {
+    padding: 1rem 2rem !important;
+    min-height: 450px;
+  }
 }
 
+/* tablet */
 @media only screen and (min-width: 426px) and (max-width: 768px) {
   header {
     background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)),
@@ -141,8 +156,14 @@ header {
   #sleep {
     content: url('../images/tablet/sleep.jpg');
   }
+  #about-vacseen,
+  #benefits {
+    padding: 1rem 4rem !important;
+    min-height: 400px;
+  }
 }
 
+/* laptop */
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
   header {
     background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)),
@@ -163,8 +184,14 @@ header {
   #qr-code {
     content: url('../images/tablet/qr-code.png');
   }
+  #about-vacseen,
+  #benefits {
+    padding: 1rem 5rem !important;
+    min-height: 400px;
+  }
 }
 
+/* large screens */
 @media only screen and (min-width: 1025px) {
   header {
     background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)),
@@ -199,5 +226,10 @@ header {
   }
   .contact-footer {
     margin-top: 3rem;
+  }
+  #about-vacseen,
+  #benefits {
+    padding: 1rem 9rem !important;
+    min-height: 400px;
   }
 }
