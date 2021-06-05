@@ -6,15 +6,16 @@ body {
   height: 100vh;
 }
 
-#query,
 #reviews,
 #about-vacseen,
-#benefits {
+#benefits,
+#disclaimer {
   background-color: rgba(0, 0, 0, 0.4);
 }
 
 #about-vacseen,
-#benefits {
+#benefits,
+#disclaimer {
   min-height: 500px;
 }
 
@@ -117,7 +118,8 @@ header {
     content: url('../images/mobile_size/425/sleep.jpg');
   }
   #about-vacseen,
-  #benefits {
+  #benefits,
+  #disclaimer {
     padding: 1rem 2rem !important;
     min-height: 450px;
   }
@@ -157,7 +159,8 @@ header {
     content: url('../images/tablet/sleep.jpg');
   }
   #about-vacseen,
-  #benefits {
+  #benefits,
+  #disclaimer {
     padding: 1rem 4rem !important;
     min-height: 400px;
   }
@@ -185,7 +188,8 @@ header {
     content: url('../images/tablet/qr-code.png');
   }
   #about-vacseen,
-  #benefits {
+  #benefits,
+  #disclaimer {
     padding: 1rem 5rem !important;
     min-height: 400px;
   }
@@ -228,7 +232,8 @@ header {
     margin-top: 3rem;
   }
   #about-vacseen,
-  #benefits {
+  #benefits,
+  #disclaimer {
     padding: 1rem 9rem !important;
     min-height: 400px;
   }
