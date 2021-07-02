@@ -15,68 +15,11 @@ class MemoryGame {
 
     this.fightingSpirit = new Audio('./assets/bgm/fighting-spirit.mp3');
     this.setFightingSpiritProperty();
-
-    this.storageTools = {
-      easy: this.getEasyCommands(),
-      medium: this.getMediumCommands(),
-      hard: this.getHardCommands(),
-    };
   }
 
   setFightingSpiritProperty() {
     this.fightingSpirit.volume = 0.1;
     this.fightingSpirit.loop = true;
-  }
-
-  getEasyCommands() {
-    return {
-      first: {
-        get: this.getEasy_1st,
-        set: this.setEasy_1st,
-      },
-      second: {
-        get: this.getEasy_2nd,
-        set: this.setEasy_2nd,
-      },
-      third: {
-        get: this.getEasy_3rd,
-        set: this.setEasy_3rd,
-      },
-    };
-  }
-
-  getMediumCommands() {
-    return {
-      first: {
-        get: this.getMedium_1st,
-        set: this.setMedium_1st,
-      },
-      second: {
-        get: this.getMedium_2nd,
-        set: this.setMedium_2nd,
-      },
-      third: {
-        get: this.getMedium_3rd,
-        set: this.setMedium_3rd,
-      },
-    };
-  }
-
-  getHardCommands() {
-    return {
-      first: {
-        get: this.getHard_1st,
-        set: this.setHard_1st,
-      },
-      second: {
-        get: this.getHard_2nd,
-        set: this.setHard_2nd,
-      },
-      third: {
-        get: this.getHard_3rd,
-        set: this.setHard_3rd,
-      },
-    };
   }
 
   setDifficulty(difficulty) {
@@ -177,135 +120,6 @@ class MemoryGame {
     this.gameContainer.classList.remove('slideIn');
   }
 
-  // easy local storage controls
-  setEasy_1st(playerName, time) {
-    localStorage.setItem(
-      'easy_1st',
-      JSON.stringify({
-        playerName: `${playerName}`,
-        time: `${time}`,
-      })
-    );
-  }
-
-  getEasy_1st() {
-    return JSON.parse(localStorage.getItem('easy_1st'));
-  }
-
-  setEasy_2nd(playerName, time) {
-    localStorage.setItem(
-      'easy_2nd',
-      JSON.stringify({
-        playerName: `${playerName}`,
-        time: `${time}`,
-      })
-    );
-  }
-
-  getEasy_2nd(playerName) {
-    return JSON.parse(localStorage.getItem('easy_2nd'));
-  }
-
-  setEasy_3rd(playerName, time) {
-    localStorage.setItem(
-      'easy_3rd',
-      JSON.stringify({
-        playerName: `${playerName}`,
-        time: `${time}`,
-      })
-    );
-  }
-
-  getEasy_3rd() {
-    return JSON.parse(localStorage.getItem('easy_3rd'));
-  }
-
-  // medium local storage controls
-  setMedium_1st(playerName, time) {
-    localStorage.setItem(
-      'medium_1st',
-      JSON.stringify({
-        playerName: `${playerName}`,
-        time: `${time}`,
-      })
-    );
-  }
-
-  getMedium_1st() {
-    return JSON.parse(localStorage.getItem('medium_1st'));
-  }
-
-  setMedium_2nd(playerName, time) {
-    localStorage.setItem(
-      'medium_2nd',
-      JSON.stringify({
-        playerName: `${playerName}`,
-        time: `${time}`,
-      })
-    );
-  }
-
-  getMedium_2nd() {
-    return JSON.parse(localStorage.getItem('medium_2nd'));
-  }
-
-  setMedium_3rd(playerName, time) {
-    localStorage.setItem(
-      'medium_3rd',
-      JSON.stringify({
-        playerName: `${playerName}`,
-        time: `${time}`,
-      })
-    );
-  }
-
-  getMedium_3rd() {
-    return JSON.parse(localStorage.getItem('medium_3rd'));
-  }
-
-  // hard local storage controls
-  setHard_1st(playerName, time) {
-    localStorage.setItem(
-      'hard_1st',
-      JSON.stringify({
-        playerName: `${playerName}`,
-        time: `${time}`,
-      })
-    );
-  }
-
-  getHard_1st() {
-    return JSON.parse(localStorage.getItem('hard_1st'));
-  }
-
-  setHard_2nd(playerName, time) {
-    localStorage.setItem(
-      'hard_2nd',
-      JSON.stringify({
-        playerName: `${playerName}`,
-        time: `${time}`,
-      })
-    );
-  }
-
-  getHard_2nd() {
-    return JSON.parse(localStorage.getItem('hard_2nd'));
-  }
-
-  setHard_3rd(playerName, time) {
-    localStorage.setItem(
-      'hard_3rd',
-      JSON.stringify({
-        playerName: `${playerName}`,
-        time: `${time}`,
-      })
-    );
-  }
-
-  getHard_3rd() {
-    return JSON.parse(localStorage.getItem('hard_3rd'));
-  }
-
   changeRank(rank) {
     this.rank = rank;
   }
@@ -322,104 +136,150 @@ class MemoryGame {
     this.celebrateMessage = `<p class="celebrate-message">You earned ${this.getRank()} place!!!</p>`;
   }
 
-  replaceThirdWithSecond() {
-    const secondPlace = this.storageTools[this.difficulty].second.get();
-    if (!secondPlace) return;
-    const { playerName, time } = secondPlace;
-    return this.storageTools[this.difficulty].third.set(playerName, time);
+  get_1st(difficulty) {
+    return JSON.parse(localStorage.getItem(`${difficulty}_1st`));
   }
 
-  replaceSecondWithFirst() {
-    const firstPlace = this.storageTools[this.difficulty].first.get();
-    if (!firstPlace) return;
-    const { playerName, time } = firstPlace;
-    return this.storageTools[this.difficulty].second.set(playerName, time);
+  get_2nd(difficulty) {
+    return JSON.parse(localStorage.getItem(`${difficulty}_2nd`));
   }
 
-  replaceFirstWithChallenger() {
-    this.changeRank('1st');
-    this.changeCelebrateMessage();
-    return this.storageTools[this.difficulty].first.set(
-      this.getPlayerName(),
-      this.getTime()
+  get_3rd(difficulty) {
+    return JSON.parse(localStorage.getItem(`${difficulty}_3rd`));
+  }
+
+  set_1st(playerName, time, difficulty) {
+    localStorage.setItem(
+      `${difficulty}_1st`,
+      JSON.stringify({
+        playerName: `${playerName}`,
+        time: `${time}`,
+      })
     );
   }
 
-  replaceSecondWithChallenger() {
-    this.changeRank('2nd');
-    this.changeCelebrateMessage();
-    return this.storageTools[this.difficulty].second.set(
-      this.getPlayerName(),
-      this.getTime()
+  set_2nd(playerName, time, difficulty) {
+    localStorage.setItem(
+      `${difficulty}_2nd`,
+      JSON.stringify({
+        playerName: `${playerName}`,
+        time: `${time}`,
+      })
     );
   }
 
-  replaceThirdWithChallenger() {
-    this.changeRank('3rd');
-    this.changeCelebrateMessage();
-    return this.storageTools[this.difficulty].third.set(
-      this.getPlayerName(),
-      this.getTime()
+  set_3rd(playerName, time, difficulty) {
+    localStorage.setItem(
+      `${difficulty}_3rd`,
+      JSON.stringify({
+        playerName: `${playerName}`,
+        time: `${time}`,
+      })
     );
   }
 
-  handleFirstPlace(firstPlace) {
-    if (!firstPlace) {
-      this.replaceFirstWithChallenger();
+  getRankCommands() {
+    return {
+      first: {
+        get: this.get_1st,
+        set: this.set_1st,
+      },
+      second: {
+        get: this.get_2nd,
+        set: this.set_2nd,
+      },
+      third: {
+        get: this.get_3rd,
+        set: this.set_3rd,
+      },
+    };
+  }
+
+  replaceRank(rankToReplace, currentRank) {
+    const current = this.getRankCommands()[currentRank].get(this.difficulty);
+    if (!currentRank) {
+      return;
+    }
+    return this.getRankCommands()[rankToReplace].set(
+      current.playerName,
+      current.time,
+      this.difficulty
+    );
+  }
+
+  // changes rank to word example: 1st to first
+  toWord(rank) {
+    switch (rank) {
+      case '1st':
+        return 'first';
+      case '2nd':
+        return 'second';
+      case '3rd':
+        return 'third';
+    }
+  }
+
+  // replaces the current rank holder with the challenger
+  replaceWithChallenger(rank) {
+    let rankWord = this.toWord(rank);
+    this.changeRank(rank);
+    this.changeCelebrateMessage();
+    return this.getRankCommands()[rankWord].set(
+      this.getPlayerName(),
+      this.getTime(),
+      this.difficulty
+    );
+  }
+
+  handlePlacementSwitch(rank) {
+    switch (rank) {
+      case '1st':
+        this.replaceRank('third', 'second');
+        this.replaceRank('second', 'first');
+        this.replaceWithChallenger(rank);
+        break;
+      case '2nd':
+        this.replaceRank('third', 'second');
+        this.replaceWithChallenger(rank);
+        break;
+      case '3rd':
+        this.replaceWithChallenger(rank);
+        break;
+    }
+  }
+
+  handlePlacement(currentLeader, rank) {
+    if (!currentLeader) {
+      this.replaceWithChallenger(rank);
       return true;
     }
-
-    if (this.currentTime < firstPlace.time) {
-      this.replaceThirdWithSecond();
-      this.replaceSecondWithFirst();
-      this.replaceFirstWithChallenger();
+    if (this.currentTime < currentLeader.time) {
+      this.handlePlacementSwitch(rank);
       return true;
     }
     return false;
   }
 
-  handleSecondPlace(secondPlace) {
-    if (!secondPlace) {
-      this.replaceSecondWithChallenger();
-      return true;
-    }
-
-    if (this.currentTime < secondPlace.time) {
-      this.replaceThirdWithSecond();
-      this.replaceSecondWithChallenger();
-      return true;
-    }
-    return false;
-  }
-
-  handleThirdPlace(thirdPlace) {
-    if (!thirdPlace || this.currentTime < thirdPlace.time) {
-      this.replaceThirdWithChallenger();
-      return true;
-    }
-  }
-
-  handleRankLogic(firstPlace, secondPlace, thirdPlace) {
-    if (this.handleFirstPlace(firstPlace)) {
+  handleRank(currentFirstPlace, currentSecondPlace, currentThirdPlace) {
+    if (this.handlePlacement(currentFirstPlace, '1st')) {
       return;
     }
-
-    if (this.handleSecondPlace(secondPlace)) {
+    if (this.handlePlacement(currentSecondPlace, '2nd')) {
       return;
     }
-
-    if (this.handleThirdPlace(thirdPlace)) {
+    if (this.handlePlacement(currentThirdPlace, '3rd')) {
       return;
     }
   }
 
   setRank() {
-    const firstPlace = this.storageTools[this.difficulty].first.get();
-    const secondPlace = this.storageTools[this.difficulty].second.get();
-    const thirdPlace = this.storageTools[this.difficulty].third.get();
-    // check if 1st place
-    // put in challenger in first place if empty
-    this.handleRankLogic(firstPlace, secondPlace, thirdPlace);
+    const currentFirstPlace = this.getRankCommands().first.get(this.difficulty);
+    const currentSecondPlace = this.getRankCommands().second.get(
+      this.difficulty
+    );
+    const currentThirdPlace = this.getRankCommands().third.get(this.difficulty);
+
+    this.handleRank(currentFirstPlace, currentSecondPlace, currentThirdPlace);
   }
 
   getMessageHTML() {
@@ -707,9 +567,9 @@ class Welcome {
 
   getData(dataTools, difficulty) {
     const data = {
-      first: dataTools[difficulty].first.get(),
-      second: dataTools[difficulty].second.get(),
-      third: dataTools[difficulty].third.get(),
+      first: dataTools.first.get(difficulty),
+      second: dataTools.second.get(difficulty),
+      third: dataTools.third.get(difficulty),
     };
     return data;
   }
@@ -744,11 +604,7 @@ class Welcome {
   }
 
   updateLeaderBoard() {
-    const dataTools = {
-      easy: this.newGame.storageTools.easy,
-      medium: this.newGame.storageTools.medium,
-      hard: this.newGame.storageTools.hard,
-    };
+    const dataTools = this.newGame.getRankCommands();
 
     const easyData = this.getData(dataTools, 'easy');
     const mediumData = this.getData(dataTools, 'medium');
@@ -766,6 +622,7 @@ class Welcome {
     }
     if (playerName.length > 15) {
       alert('Name should not exceed 15 characters.');
+      this.changeNameClickHandler();
       return false;
     }
     return true;
@@ -775,7 +632,7 @@ class Welcome {
     const playerName = prompt('Enter Player Name');
     const isValid = this.isNameValid(playerName);
     if (!isValid) {
-      return this.changeNameClickHandler();
+      return;
     }
 
     this.newGame.setPlayerName(playerName);
