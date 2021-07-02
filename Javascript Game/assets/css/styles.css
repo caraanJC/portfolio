@@ -1,0 +1,627 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+@font-face {
+  font-family: 'Naruto';
+  src: url('../fonts/njnaruto.ttf');
+}
+
+body {
+  font-family: 'Naruto', sans-serif;
+  overflow: hidden;
+  transition: margin 1s ease-in;
+  -webkit-transition: margin 1s ease-in;
+  -moz-transition: margin 1s ease-in;
+  -ms-transition: margin 1s ease-in;
+  -o-transition: margin 1s ease-in;
+}
+
+.disable-select {
+  user-select: none; /* supported by Chrome and Opera */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+}
+
+.welcomeWindow {
+  height: 100vh;
+  width: 100%;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  place-items: center;
+  overflow: hidden;
+  background-image: url('../images/naruto-bg.jpg');
+  background-position: top center;
+  background-size: cover;
+}
+
+.welcomeWindow .player {
+  position: fixed;
+  bottom: 1rem;
+  left: 1rem;
+  color: black;
+  font-size: 25px;
+  z-index: 300;
+}
+
+.welcomeWindow .player .playerID {
+  margin-left: 20px;
+  color: white;
+}
+
+.welcomeWindow .logo {
+  margin-top: 50px;
+  width: 35%;
+}
+
+.welcomeWindow h1 {
+  font-size: 80px;
+  color: orange;
+  -webkit-text-stroke: 0.1px black;
+  letter-spacing: 5px;
+}
+
+.welcomeWindow button {
+  font-size: 55px;
+  font-family: inherit;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  position: relative;
+  margin-bottom: 25px;
+  color: white;
+  letter-spacing: 5px;
+}
+
+.welcomeWindow .kunai {
+  height: 50px;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 50px;
+  transform: translate(-100vw, -100vh);
+  -webkit-transform: translate(-100vw, -100vh);
+  -moz-transform: translate(-100vw, -100vh);
+  -ms-transform: translate(-100vw, -100vh);
+  -o-transform: translate(-100vw, -100vh);
+  transition: all 0.3s ease-in;
+  -webkit-transition: all 0.3s ease-in;
+  -moz-transition: all 0.3s ease-in;
+  -ms-transition: all 0.3s ease-in;
+  -o-transition: all 0.3s ease-in;
+}
+
+.welcomeWindow button:hover {
+  font-weight: bold;
+  letter-spacing: 10px;
+}
+
+.welcomeWindow button:hover .kunai {
+  transform: translate(0);
+  -webkit-transform: translate(0);
+  -moz-transform: translate(0);
+  -ms-transform: translate(0);
+  -o-transform: translate(0);
+}
+
+.welcomeWindow form {
+  text-align: center;
+}
+
+.welcomeWindow form input {
+  visibility: hidden;
+}
+
+.welcomeWindow .difficultyGroup label {
+  position: relative;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.welcomeWindow .difficultyGroup label .kunai {
+  height: 50px;
+  position: absolute;
+  z-index: 1;
+  top: -20px;
+  left: -30px;
+  transform: translate(-100vw, -100vh);
+  -webkit-transform: translate(-100vw, -100vh);
+  -moz-transform: translate(-100vw, -100vh);
+  -ms-transform: translate(-100vw, -100vh);
+  -o-transform: translate(-100vw, -100vh);
+  transition: all 0.3s ease-in;
+  -webkit-transition: all 0.3s ease-in;
+  -moz-transition: all 0.3s ease-in;
+  -ms-transition: all 0.3s ease-in;
+  -o-transition: all 0.3s ease-in;
+}
+
+.welcomeWindow .difficultyGroup input + label {
+  color: black;
+}
+
+.welcomeWindow .difficultyGroup input + label img {
+  color: black;
+  transform: translate(-100vw, -100vh);
+  -webkit-transform: translate(-100vw, -100vh);
+  -moz-transform: translate(-100vw, -100vh);
+  -ms-transform: translate(-100vw, -100vh);
+  -o-transform: translate(-100vw, -100vh);
+}
+
+.welcomeWindow .changeName {
+  font-size: 30px;
+}
+
+.welcomeWindow .leaderboards {
+  font-size: 30px;
+  color: gold;
+}
+
+.welcomeWindow .overlay {
+  background: #201a21;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  padding: 20px;
+  z-index: 400;
+  display: flex;
+  flex-wrap: wrap;
+  transition: transform 1s ease-in-out;
+  -webkit-transition: transform 1s ease-in-out;
+  -moz-transition: transform 1s ease-in-out;
+  -ms-transition: transform 1s ease-in-out;
+  -o-transition: transform 1s ease-in-out;
+}
+
+.welcomeWindow .overlay .colHead {
+  color: orange;
+  font-size: 50px;
+  padding-top: 5%;
+  width: 100%;
+  height: 20%;
+  display: flex;
+  padding-left: 20%;
+  justify-content: center;
+  letter-spacing: 8px;
+  font-weight: bold;
+}
+
+.welcomeWindow .overlay .rowLabel {
+  height: 80%;
+  width: 20%;
+  font-size: 50px;
+  color: orange;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  cursor: pointer;
+}
+
+.welcomeWindow .overlay .rowLabel > *:hover,
+.welcomeWindow .overlay .rowLabel > *:active,
+.welcomeWindow .overlay .rowLabel > *.active {
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 20px 30px;
+  width: 90%;
+  text-align: center;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+.welcomeWindow .overlay .closeBtn {
+  position: absolute;
+  top: 2%;
+  right: 2%;
+  color: #fceb34;
+  font-size: 50px;
+  cursor: pointer;
+}
+
+.welcomeWindow .overlay .leaderData {
+  font-size: 45px;
+  z-index: 200;
+  height: 80%;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.welcomeWindow .overlay .leaderData > * {
+  width: 100%;
+  height: 100%;
+  background-color: whitesmoke;
+  display: none;
+  align-items: flex-end;
+  position: relative;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+  overflow: hidden;
+}
+
+.welcomeWindow .overlay .leaderData img {
+  margin-bottom: 15%;
+  width: 35%;
+  transform: translateY(40px);
+  -webkit-transform: translateY(40px);
+  -moz-transform: translateY(40px);
+  -ms-transform: translateY(40px);
+  -o-transform: translateY(40px);
+}
+
+.welcomeWindow .overlay .leaderData * div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  background-color: #f3af22;
+  transition: all 1s ease-in;
+  -webkit-transition: all 1s ease-in;
+  -moz-transition: all 1s ease-in;
+  -ms-transition: all 1s ease-in;
+  -o-transition: all 1s ease-in;
+}
+
+.welcomeWindow .overlay .leaderData * div.first {
+  height: 70%;
+  width: 100%;
+  order: 1;
+}
+
+.welcomeWindow .overlay .leaderData * div.second {
+  height: 50%;
+  width: 100%;
+  order: 2;
+}
+
+.welcomeWindow .overlay .leaderData * div.third {
+  height: 35%;
+  width: 100%;
+}
+
+.welcomeWindow .overlay .leaderData * p {
+  position: absolute;
+  color: black;
+  opacity: 0;
+  transform: translateY(40px);
+  -webkit-transform: translateY(40px);
+  -moz-transform: translateY(40px);
+  -ms-transform: translateY(40px);
+  -o-transform: translateY(40px);
+}
+
+.welcomeWindow .overlay .leaderData * > p.first {
+  bottom: 70%;
+  left: calc(100% / 3);
+  width: calc(100% / 3);
+  text-align: center;
+}
+
+.welcomeWindow .overlay .leaderData * > p.second {
+  bottom: 50%;
+  left: calc(100% / 3 * 2);
+  width: calc(100% / 3);
+  text-align: center;
+}
+
+.welcomeWindow .overlay .leaderData * > p.third {
+  bottom: 35%;
+  left: 0;
+  width: calc(100% / 3);
+  text-align: center;
+}
+
+.welcomeWindow .overlay .rowLabel .labelEasy {
+  color: #76cb2f;
+}
+
+.welcomeWindow .overlay .rowLabel .labelMedium {
+  color: #f3af22;
+}
+
+.welcomeWindow .overlay .rowLabel .labelHard {
+  color: #d91046;
+}
+
+.gameWindow {
+  height: 100vh;
+  width: 100%;
+  display: grid;
+  place-items: center;
+  background: url('../images/myoboku.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+  position: relative;
+}
+
+.time {
+  position: absolute;
+  top: 3%;
+  right: 3%;
+  font-size: 30px;
+  color: black;
+}
+
+.time span {
+  margin-left: 50px;
+}
+
+.gameContainer {
+  display: grid;
+  place-items: center;
+  grid-template-columns: repeat(5, 1fr);
+  width: 1200px;
+  height: 700px;
+  padding: 10px;
+  transform: translate(200%);
+  transition: transform 2s ease-in;
+  -webkit-transition: transform 2s ease-in;
+  -moz-transition: transform 2s ease-in;
+  -ms-transition: transform 2s ease-in;
+  -o-transition: transform 2s ease-in;
+  -webkit-transform: translateX(200%);
+  -moz-transform: translate(200%);
+  -ms-transform: translate(200%);
+  -o-transform: translate(200%);
+}
+
+.card-image {
+  width: 170px;
+  height: 270px;
+  cursor: pointer;
+  border: 1px solid dimgray;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  transition: all 1s ease-in-out;
+  -webkit-transition: all 1s ease-in-out;
+  -moz-transition: all 1s ease-in-out;
+  -ms-transition: all 1s ease-in-out;
+  -o-transition: all 1s ease-in-out;
+  object-fit: cover;
+}
+
+.winningMessage {
+  background-image: url('../images/ninja_scroll.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center right;
+  color: black;
+  text-align: center;
+  height: 130%;
+  width: 100%;
+  padding-left: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 2s ease-in;
+  -webkit-transition: opacity 2s ease-in;
+  -moz-transition: opacity 2s ease-in;
+  -ms-transition: opacity 2s ease-in;
+  -o-transition: opacity 2s ease-in;
+}
+
+.winningMessage > * {
+  opacity: 0;
+  transform: translateY(40px);
+  -webkit-transform: translateY(40px);
+  -moz-transform: translateY(40px);
+  -ms-transform: translateY(40px);
+  -o-transform: translateY(40px);
+}
+
+.winningMessage h1 {
+  font-size: 70px;
+  margin-bottom: 20px;
+  margin-top: 50px;
+}
+
+.winningMessage p {
+  font-weight: bold;
+  font-size: 35px;
+}
+
+.winningMessage .difficulty {
+  margin-top: 20px;
+  font-size: 40px;
+}
+
+.winningMessage .easy {
+  color: #76cb2f;
+}
+
+.winningMessage .medium {
+  color: #f3af22;
+}
+
+.winningMessage .hard {
+  color: #d91046;
+}
+
+.winningMessage .play-again {
+  margin-top: 100px;
+  font-size: 50px;
+  font-family: inherit;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+/* classes used for javascript control --start-- */
+.welcomeWindow .overlay .leaderData > *.show {
+  display: flex;
+}
+
+.welcomeWindow .overlay .leaderData > *.show div {
+  animation: grow;
+  -webkit-animation: grow;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-in;
+  transform: scale(1);
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
+  transform-origin: 50% 100% 0;
+}
+
+.welcomeWindow .overlay .leaderData > *.show p,
+.welcomeWindow .overlay .leaderData > *.show img {
+  animation-name: fadeIn;
+  animation-duration: 1s;
+  animation-timing-function: ease-in;
+  opacity: 1;
+  transform: translateY(0);
+  -webkit-transform: translateY(0);
+  -moz-transform: translateY(0);
+  -ms-transform: translateY(0);
+  -o-transform: translateY(0);
+}
+
+.welcomeWindow .overlay.hide {
+  /*display: none;
+  */
+  transform: translateY(-100vh);
+  -webkit-transform: translateY(-100vh);
+  -moz-transform: translateY(-100vh);
+  -ms-transform: translateY(-100vh);
+  -o-transform: translateY(-100vh);
+}
+
+.welcomeWindow .difficultyGroup input.active + label {
+  color: orange;
+}
+
+.welcomeWindow .difficultyGroup input.active + label img {
+  transform: translate(0);
+  -webkit-transform: translate(0);
+  -moz-transform: translate(0);
+  -ms-transform: translate(0);
+  -o-transform: translate(0);
+}
+
+.gameContainer.medium {
+  width: 100%;
+  grid-template-columns: repeat(10, 1fr);
+}
+
+.gameContainer.hard {
+  width: 100%;
+  height: 90vh;
+  grid-template-columns: repeat(10, 1fr);
+}
+
+.gameContainer.victory {
+  width: 1200px;
+  height: 700px;
+  grid-template-columns: 1fr;
+}
+
+.gameContainer.slideIn {
+  transform: translateX(0);
+  -webkit-transform: translateX(0);
+  -moz-transform: translateX(0);
+  -ms-transform: translateX(0);
+  -o-transform: translateX(0);
+}
+
+.card-image.hide {
+  opacity: 0;
+  cursor: default;
+}
+.card-image.preventClick {
+  pointer-events: none;
+}
+
+.winningMessage.showText > * {
+  animation-name: fadeIn;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-in;
+  opacity: 1;
+  transform: translateY(0);
+  -webkit-transform: translateY(0);
+  -moz-transform: translateY(0);
+  -ms-transform: translateY(0);
+  -o-transform: translateY(0);
+}
+/* classes used for javascript control --end-- */
+
+/* keyframes */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+    -webkit-transform: translateY(40px);
+    -moz-transform: translateY(40px);
+    -ms-transform: translateY(40px);
+    -o-transform: translateY(40px);
+  }
+
+  50% {
+    opacity: 0.5;
+    transform: translateY(20px);
+    -webkit-transform: translateY(20px);
+    -moz-transform: translateY(20px);
+    -ms-transform: translateY(20px);
+    -o-transform: translateY(20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
+  }
+}
+
+@keyframes grow {
+  0% {
+    transform-origin: 50% 100% 0;
+    transform: scaleY(0);
+    -webkit-transform: scaleY(0);
+    -moz-transform: scaleY(0);
+    -ms-transform: scaleY(0);
+    -o-transform: scaleY(0);
+  }
+
+  50% {
+    transform-origin: 50% 100% 0;
+    transform: scaleY(0.5);
+    -webkit-transform: scaleY(0.5);
+    -moz-transform: scaleY(0.5);
+    -ms-transform: scaleY(0.5);
+    -o-transform: scaleY(0.5);
+  }
+
+  100% {
+    transform-origin: 50% 100% 0;
+    transform: scaleY(1);
+    -webkit-transform: scaleY(1);
+    -moz-transform: scaleY(1);
+    -ms-transform: scaleY(1);
+    -o-transform: scaleY(1);
+  }
+}

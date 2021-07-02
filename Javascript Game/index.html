@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/css/styles.css" />
+    <title>Memory Game</title>
+  </head>
+  <body>
+    <div class="welcomeWindow" id="welcomeWindow">
+      <div class="player">
+        <p>Player: <span id="playerID" class="playerID">Player01</span></p>
+      </div>
+      <img
+        class="logo disable-select"
+        src="./assets/images/naruto-logo.png"
+        alt="Naruto logo"
+      />
+      <h1 class="disable-select">Memory Game</h1>
+
+      <form class="disable-select">
+        <button id="play-now">
+          <img class="kunai" src="./assets/images/kunai.png" alt="kunai" /> Play
+          Now
+        </button>
+        <div class="difficultyGroup" id="difficultyGroup">
+          <input type="radio" id="easy" value="easy" name="difficulty" />
+          <label for="easy"
+            ><img
+              class="kunai"
+              src="./assets/images/kunai.png"
+              alt="kunai"
+            />Easy</label
+          >
+          <input type="radio" id="medium" value="medium" name="difficulty" />
+          <label for="medium"
+            ><img
+              class="kunai"
+              src="./assets/images/kunai.png"
+              alt="kunai"
+            />Medium</label
+          >
+          <input type="radio" id="hard" value="hard" name="difficulty" />
+          <label for="hard"
+            ><img
+              class="kunai"
+              src="./assets/images/kunai.png"
+              alt="kunai"
+            />Hard</label
+          >
+        </div>
+      </form>
+      <button class="changeName" id="changeName">Change Name</button>
+      <button class="leaderboards" id="leaderboards">Leaderboards</button>
+      <div class="overlay hide" id="overlay">
+        <div class="closeBtn" id="closeBtn">X</div>
+
+        <div class="colHead">
+          <p>Leaderboards</p>
+        </div>
+
+        <div class="rowLabel">
+          <p class="labelEasy">Easy</p>
+          <p class="labelMedium">Medium</p>
+          <p class="labelHard">Hard</p>
+        </div>
+
+        <div class="leaderData" id="leaderData">
+          <div class="easyDifficulty" id="rank-easy"></div>
+          <div class="mediumDifficulty" id="rank-medium"></div>
+          <div class="hardDifficulty" id="rank-hard"></div>
+        </div>
+      </div>
+    </div>
+    <main class="gameWindow disable-select">
+      <p class="time" id="time">Time:<span>0</span></p>
+      <div class="gameContainer" id="gameContainer"></div>
+    </main>
+
+    <script src="./assets/js/script.js"></script>
+  </body>
+</html>
