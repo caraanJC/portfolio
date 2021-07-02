@@ -121,6 +121,12 @@ body {
   position: relative;
   font-size: 30px;
   cursor: pointer;
+  padding: 10px 20px;
+}
+
+.welcomeWindow .difficultyGroup label:hover {
+  color: orange;
+  font-weight: bold;
 }
 
 .welcomeWindow .difficultyGroup label .kunai {
@@ -434,7 +440,7 @@ body {
 .winningMessage h1 {
   font-size: 70px;
   margin-bottom: 20px;
-  margin-top: 50px;
+  margin-top: 75px;
 }
 
 .winningMessage p {
@@ -468,6 +474,11 @@ body {
   background-color: transparent;
 }
 
+.winningMessage .celebrate-message {
+  color: red;
+  margin-top: 25px;
+}
+
 /* classes used for javascript control --start-- */
 .welcomeWindow .overlay .leaderData > *.show {
   display: flex;
@@ -476,8 +487,8 @@ body {
 .welcomeWindow .overlay .leaderData > *.show div {
   animation: grow;
   -webkit-animation: grow;
-  animation-duration: 0.5s;
-  animation-timing-function: ease-in;
+  animation-duration: 0.3s;
+  animation-timing-function: linear;
   transform: scale(1);
   -webkit-transform: scale(1);
   -moz-transform: scale(1);
@@ -486,11 +497,19 @@ body {
   transform-origin: 50% 100% 0;
 }
 
+.welcomeWindow .overlay .leaderData > *.show div.first {
+  animation-duration: 0.9s;
+}
+
+.welcomeWindow .overlay .leaderData > *.show div.second {
+  animation-duration: 0.6s;
+}
+
 .welcomeWindow .overlay .leaderData > *.show p,
 .welcomeWindow .overlay .leaderData > *.show img {
   animation-name: fadeIn;
   animation-duration: 1s;
-  animation-timing-function: ease-in;
+  animation-timing-function: linear;
   opacity: 1;
   transform: translateY(0);
   -webkit-transform: translateY(0);
@@ -554,10 +573,34 @@ body {
   pointer-events: none;
 }
 
+.throwing-kunai {
+  position: absolute;
+  content: url('../images/throwing_kunai.png');
+  width: 50px;
+  transform: translate(125%, 100vh);
+  -webkit-transform: translate(125%, 100vh);
+  -moz-transform: translate(125%, 100vh);
+  -ms-transform: translate(125%, 100vh);
+  -o-transform: translate(125%, 100vh);
+  transition: transform 0.2s linear;
+  -webkit-transition: transform 0.2s linear;
+  -moz-transition: transform 0.2s linear;
+  -ms-transition: transform 0.2s linear;
+  -o-transition: transform 0.2s linear;
+}
+
+.throwing-kunai.throw {
+  transform: translate(125%, 100%);
+  -webkit-transform: translate(125%, 100%);
+  -moz-transform: translate(125%, 100%);
+  -ms-transform: translate(125%, 100%);
+  -o-transform: translate(125%, 100%);
+}
+
 .winningMessage.showText > * {
   animation-name: fadeIn;
   animation-duration: 0.5s;
-  animation-timing-function: ease-in;
+  animation-timing-function: linear;
   opacity: 1;
   transform: translateY(0);
   -webkit-transform: translateY(0);
@@ -607,6 +650,15 @@ body {
     -o-transform: scaleY(0);
   }
 
+  25% {
+    transform-origin: 50% 100% 0;
+    transform: scaleY(0.25);
+    -webkit-transform: scaleY(0.25);
+    -moz-transform: scaleY(0.25);
+    -ms-transform: scaleY(0.25);
+    -o-transform: scaleY(0.25);
+  }
+
   50% {
     transform-origin: 50% 100% 0;
     transform: scaleY(0.5);
@@ -614,6 +666,15 @@ body {
     -moz-transform: scaleY(0.5);
     -ms-transform: scaleY(0.5);
     -o-transform: scaleY(0.5);
+  }
+
+  75% {
+    transform-origin: 50% 100% 0;
+    transform: scaleY(0.75);
+    -webkit-transform: scaleY(0.75);
+    -moz-transform: scaleY(0.75);
+    -ms-transform: scaleY(0.75);
+    -o-transform: scaleY(0.75);
   }
 
   100% {
