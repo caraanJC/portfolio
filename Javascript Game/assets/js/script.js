@@ -17,11 +17,13 @@ class MemoryGame {
     this.setFightingSpiritProperty();
   }
 
+  // this changes the volume=0.1 and loop=true of game BGM
   setFightingSpiritProperty() {
     this.fightingSpirit.volume = 0.1;
     this.fightingSpirit.loop = true;
   }
 
+  // changes the difficulty
   setDifficulty(difficulty) {
     this.difficulty = difficulty;
     localStorage.setItem(
@@ -30,6 +32,7 @@ class MemoryGame {
     );
   }
 
+  // will return the current difficulty
   getDifficulty() {
     if (localStorage.getItem('difficulty')) {
       this.difficulty = JSON.parse(
@@ -63,11 +66,13 @@ class MemoryGame {
     }
   }
 
+  // will increase currentTime by t value
   increaseTime(t) {
     this.currentTime += t;
     this.timeElement.textContent = this.currentTime;
   }
 
+  // calls increaTime()
   setTime() {
     setTimeout(() => {
       this.timeId = setInterval(() => {
@@ -100,14 +105,17 @@ class MemoryGame {
     return card.classList.contains('clicked');
   }
 
+  // shows the front side of the card
   showFrontSide(card) {
     card.src = `./assets/images/${card.alt}.jpg`;
   }
 
+  // shows the back side of the card
   showBackSide(card) {
     card.src = `./assets/images/back-side.jpg`;
   }
 
+  // increases score by 1
   increaseScore() {
     this.score++;
   }
@@ -628,6 +636,7 @@ class Welcome {
     return true;
   }
 
+  // used when the Change Name button is clicked
   changeNameClickHandler() {
     const playerName = prompt('Enter Player Name');
     const isValid = this.isNameValid(playerName);
