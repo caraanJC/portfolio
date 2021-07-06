@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      referrerpolicy="no-referrer"
+    />
+    <title>VacSEEN</title>
+
+    <!-- My Custom Stylesheet -->
+    <link rel="stylesheet" href="./assets/css/styles.css" />
+  </head>
+  <body>
+    <nav>
+      <div class="logo">VacSEEN</div>
+      <div class="burger" id="burger"><i class="fas fa-bars"></i></div>
+
+      <ul id="navList" class="navList">
+        <button id="login" class="login">Login</button>
+        <button id="signUp" class="signUp">Sign Up</button>
+        <li><a href="#generate">Home</a></li>
+        <li><a href="#about-vacseen">About VacSEEN</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+      </ul>
+    </nav>
+
+    <form class="login-form" id="loginForm">
+      <button class="loginCloseBtn" id="loginCloseBtn">X</button>
+      <h2>Login</h2>
+      <input type="text" placeholder="Username" required id="usernameLogin" />
+      <input
+        type="password"
+        placeholder="Password"
+        required
+        id="passwordLogin"
+      />
+
+      <button>Login</button>
+      <p>
+        Don't have an account?
+        <a href="#" id="loginFormRegisterLink">Register</a>
+      </p>
+    </form>
+
+    <form class="signUp-form" id="signUpForm">
+      <button class="signUpCloseBtn" id="signUpCloseBtn">X</button>
+      <h2>Sign Up</h2>
+      <input type="text" placeholder="Username*" required id="usernameSignUp" />
+      <input
+        type="password"
+        placeholder="Password*"
+        required
+        id="passwordSignUp"
+      />
+      <input
+        type="password"
+        placeholder="Confirm Password*"
+        required
+        id="confirmPasswordSignUp"
+      />
+      <button>Sign Up</button>
+    </form>
+
+    <main id="generate" class="generate">
+      <div id="qr-code" class="qr-code">
+        <p>
+          <a href="#" class="qr-login" id="qr-login">Login</a> or
+          <a href="#" class="qr-signUp" id="qr-signUp">Sign Up</a> to Generate
+          Code
+        </p>
+      </div>
+      <button id="generateBtn" class="generateBtn" disabled>
+        Generate Code
+      </button>
+    </main>
+    <div class="gallery">
+      <h1>You can still get <span>infected</span></h1>
+      <div class="carousel">
+        <div class="figures" id="figures">
+          <figure>
+            <img
+              id="wash"
+              src="./assets/images/mobile_size/wash hands.jpg"
+              alt="Wash Your Hands"
+            />
+            <figcaption>Wash Your Hands</figcaption>
+          </figure>
+
+          <figure>
+            <img
+              id="mask"
+              src="./assets/images/mobile_size/face-mask.jpg"
+              alt="Wear Face Mask"
+            />
+            <figcaption>Wear Face Mask</figcaption>
+          </figure>
+
+          <figure>
+            <img
+              id="social-distancing"
+              class="figure-img img-fluid rounded w-100"
+              src="./assets/images/mobile_size/social-distancing.jpg"
+              alt="Social Distancing"
+            />
+            <figcaption>Maintain Social Distancing</figcaption>
+          </figure>
+
+          <figure>
+            <img
+              id="sleep"
+              src="./assets/images/mobile_size/sleep.jpg"
+              alt="Get Enough Sleep"
+            />
+            <figcaption>Get Enough Sleep</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-vacseen" id="about-vacseen">
+      <div class="what-is-it">
+        <h2>What is VacSEEN?</h2>
+        <p>
+          With US pioneering certain freedom to vaccinated individuals, vaccine
+          card checking is implemented. But, this takes time to verify
+          especially if there are a lot of customers and not a lot manpower.
+          VacSEEN makes vaccine card checking shorter by giving you a reliable,
+          secure, and easy to use QR code that you can use from your phone or in
+          print.
+        </p>
+      </div>
+      <div class="benefits">
+        <h2>Benefits of Using VacSEEN</h2>
+        <div class="employees">
+          <h3>Employees</h3>
+          <p>
+            Get hired faster because lets you enter the physical workspace
+            without having to interact with the vaccine card checking attendee.
+          </p>
+        </div>
+
+        <div class="employers">
+          <h3>Employers</h3>
+          <p>
+            Avoid congestion in the checking area and avoid counterfeit vaccine
+            card.
+          </p>
+        </div>
+        <div class="personal">
+          <h3>Personal</h3>
+          <p>Walk inside malls, restaurants, and hotels faster.</p>
+        </div>
+      </div>
+
+      <div class="disclaimer">
+        <h2>What VacSEEN is NOT</h2>
+        <p>
+          VacSEEN will <strong>NOT</strong> give unvaccinated individuals a
+          vaccine pass
+        </p>
+      </div>
+      <div class="avail">
+        <h2 class>Who can use VacSEEN?</h2>
+        <p>
+          Vaccinated Individuals, Employers and, Private & Government
+          Institutions who want to implement this system.
+        </p>
+      </div>
+    </div>
+
+    <div class="reviews" id="reviews">
+      <div class="content">
+        <h2>Reviews</h2>
+        <div class="users">
+          <div class="user">
+            <img
+              id="jeff"
+              src="./assets/images/mobile_size/jeff.jpg"
+              alt="Jeff Bezos"
+            />
+
+            <p class="name">Jeff Bezos</p>
+            <p class="comment"><q>Good job</q></p>
+          </div>
+          <div class="user">
+            <img
+              src="./assets/images/mobile_size/elon.jpg"
+              alt="Elon Musk"
+              id="elon"
+            />
+
+            <p class="name">Elon Musk</p>
+            <p class="comment"><q>Looks Promising</q></p>
+          </div>
+          <div class="user">
+            <img
+              src="./assets/images/mobile_size/simon.jpg"
+              alt="Simon Cowell"
+              id="simon"
+            />
+            <div>
+              <p class="name">Simon Cowell</p>
+              <p class="comment"><q>It's a Yes for me.</q></p>
+            </div>
+          </div>
+          <div class="user">
+            <img
+              src="./assets/images/mobile_size/gates.jpg"
+              alt="Bill Gates"
+              id="gates"
+            />
+            <div>
+              <p class="name">Bill Gates</p>
+              <p class="comment"><q>Efficient</q></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="logo">VacSEEN</div>
+      <div class="contact" id="contact">
+        <h3>Contact Us</h3>
+        <form>
+          <input type="text" placeholder="Name*" required />
+          <input
+            type="email"
+            placeholder="Email*"
+            required
+            class="form-control mb-1"
+          />
+          <input type="text" placeholder="Subject" required />
+          <textarea rows="10" placeholder="Message" required></textarea>
+          <button>Submit</button>
+        </form>
+      </div>
+      <div class="group">
+        <div class="social">
+          <a href="#"
+            ><img
+              src="./assets/images/social_media/facebook.png"
+              alt="facebook logo"
+          /></a>
+          <a href="#"
+            ><img
+              src="./assets/images/social_media/twitter.png"
+              alt="facebook logo"
+          /></a>
+          <a href="#"
+            ><img
+              src="./assets/images/social_media/instagram.png"
+              alt="facebook logo"
+          /></a>
+          <a href="#"
+            ><img
+              src="./assets/images/social_media/linkedin.png"
+              alt="facebook logo"
+          /></a>
+        </div>
+        <div class="copyright">
+          <p class="w-100 mb-0">&copy; 2021 <span>Simple Creations</span></p>
+          <p class="w-100 mb-0">
+            Header Image from
+            <a href="https://unsplash.com" target="_blank">Unsplash</a>
+          </p>
+          <p class="mb-0">
+            Photos from
+            <a href="https://www.wikipedia.org" target="_blank">Wikipedia</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="./script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,790 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+@font-face {
+  font-family: 'Mazzard Soft Regular';
+  src: url('../font/MazzardSoftM-Regular.otf');
+}
+
+body {
+  font-family: 'Mazzard Soft Regular', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #1b1c30;
+  color: #b6b6c3;
+  overflow-x: hidden;
+}
+
+nav {
+  background-color: #1b1c30;
+  color: #efeef4;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #26263e;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  height: 60px;
+  padding: 0 10px;
+}
+
+nav .logo {
+  font-size: 35px;
+  font-weight: bold;
+  letter-spacing: 3px;
+}
+
+nav .burger i {
+  font-size: 35px;
+  cursor: pointer;
+}
+
+nav .navList {
+  position: fixed;
+  right: 0;
+  top: 60px;
+  height: 500px;
+  width: 100%;
+  text-align: center;
+  background-color: #141529;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transform: scale(0);
+  -webkit-transform: scale(0);
+  -moz-transform: scale(0);
+  -ms-transform: scale(0);
+  -o-transform: scale(0);
+  transition: transform 0.3s linear;
+  -webkit-transition: transform 0.3s linear;
+  -moz-transition: transform 0.3s linear;
+  -ms-transition: transform 0.3s linear;
+  -o-transition: transform 0.3s linear;
+  transform-origin: 100% 0 0;
+  padding-top: 50px;
+}
+
+nav .navList button {
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  width: 35%;
+  padding: 10px 0;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  border: none;
+  font-family: inherit;
+  font-size: 20px;
+  cursor: pointer;
+  outline-width: 0;
+}
+
+nav .navList button:active {
+  transform: translateX(-50%) scale(0.98);
+  -webkit-transform: translateX(-50%) scale(0.98);
+  -moz-transform: translateX(-50%) scale(0.98);
+  -ms-transform: translateX(-50%) scale(0.98);
+  -o-transform: translateX(-50%) scale(0.98);
+}
+
+nav .navList .login {
+  left: 25%;
+  color: #5e3bd9;
+  background-color: #26273b;
+}
+
+nav .navList .signUp {
+  left: 75%;
+  color: #dead6a;
+  background-color: #26273b;
+}
+
+nav .navList.show {
+  transform: scale(1);
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
+}
+
+nav .navList li {
+  list-style-type: none;
+  margin-bottom: 20px;
+  width: 100%;
+  padding: 15px 0;
+}
+
+nav .navList li:hover {
+  background-color: #26273b;
+}
+
+nav .navList li a {
+  color: inherit;
+  text-decoration: none;
+  font-size: 25px;
+  text-transform: uppercase;
+}
+
+form.login-form,
+form.signUp-form {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  width: 100%;
+  background-color: #141529;
+  height: 500px;
+  color: #efeef4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(-100%);
+  -webkit-transform: translateY(-100%);
+  -moz-transform: translateY(-100%);
+  -ms-transform: translateY(-100%);
+  -o-transform: translateY(-100%);
+  transition: transform 0.3s linear;
+  -webkit-transition: transform 0.3s linear;
+  -moz-transition: transform 0.3s linear;
+  -ms-transition: transform 0.3s linear;
+  -o-transition: transform 0.3s linear;
+}
+
+form.login-form.show,
+form.signUp-form.show {
+  transform: translate(0);
+  -webkit-transform: translate(0);
+  -moz-transform: translate(0);
+  -ms-transform: translate(0);
+  -o-transform: translate(0);
+}
+
+form.login-form h2,
+form.signUp-form h2 {
+  font-size: 35px;
+  margin-bottom: 20px;
+}
+
+form.login-form input,
+form.signUp-form input {
+  background-color: #26273b;
+  color: inherit;
+  outline-width: 0;
+  border: none;
+  width: 80%;
+  padding: 10px 20px;
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+form.login-form button,
+form.signUp-form button {
+  margin-bottom: 15px;
+  width: 80%;
+  padding: 10px 20px;
+  background-color: #5e3bd9;
+  color: #efeef4;
+  border: none;
+  font-size: 20px;
+}
+
+form.login-form .loginCloseBtn,
+form.signUp-form .signUpCloseBtn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: fit-content;
+  cursor: pointer;
+}
+
+form.login-form p {
+  font-size: 18px;
+}
+
+form.login-form p a {
+  color: #dead6a;
+  text-decoration: none;
+}
+
+.generate {
+  margin-top: 70px;
+  padding: 10px;
+  width: 100%;
+  height: 100%;
+  border-bottom: 1px solid #26263e;
+  margin-bottom: 10px;
+}
+
+.generate .qr-code {
+  height: 300px;
+  width: 100%;
+  background-color: #26273b;
+  display: grid;
+  place-items: center;
+}
+
+.generate .qr-code p {
+  font-size: 30px;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.generate .qr-code a {
+  text-decoration: none;
+}
+
+.generate .qr-code a.qr-login {
+  color: #5e3bd9;
+}
+
+.generate .qr-code a.qr-signUp {
+  color: #dead6a;
+}
+
+.generate .qr-code-img {
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.3s linear;
+  -webkit-transition: opacity 0.3s linear;
+  -moz-transition: opacity 0.3s linear;
+  -ms-transition: opacity 0.3s linear;
+  -o-transition: opacity 0.3s linear;
+}
+
+.generate .qr-code.show .qr-code-img {
+  opacity: 1;
+}
+
+.generate .generateBtn {
+  width: 100%;
+  padding: 10px 0;
+  margin-top: 10px;
+  cursor: pointer;
+  border: none;
+  background-color: #5e3bd9;
+  color: inherit;
+  font-size: 20px;
+  letter-spacing: 2px;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+.gallery {
+  width: 100%;
+  text-align: center;
+  padding: 0 10px;
+  order: 1;
+  border-bottom: 1px solid #26263e;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.gallery h1 {
+  font-size: 40px;
+}
+
+.gallery .carousel {
+  overflow-x: hidden;
+}
+
+.gallery h1 span {
+  color: #703e41;
+}
+
+.gallery .figures {
+  display: flex;
+  width: 400%;
+  transition: margin 1s linear;
+  -webkit-transition: margin 1s linear;
+  -moz-transition: margin 1s linear;
+  -ms-transition: margin 1s linear;
+  -o-transition: margin 1s linear;
+}
+
+.gallery figure {
+  width: 100%;
+}
+
+.gallery figcaption {
+  color: #5e3bd9;
+  font-size: 25px;
+}
+
+.gallery figure img {
+  width: 100%;
+}
+
+.about-vacseen {
+  padding: 0 10px;
+}
+
+.about-vacseen h2 {
+  color: #dead6a;
+  text-align: center;
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.about-vacseen h3 {
+  font-size: 30px;
+  margin-bottom: 5px;
+}
+
+.about-vacseen p {
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #26263e;
+  font-size: 20px;
+  line-height: 1.5;
+}
+
+.reviews {
+  order: 2;
+}
+
+.reviews img {
+  width: 50%;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+
+.reviews h2 {
+  font-size: 40px;
+  text-align: center;
+}
+
+.reviews .users {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  text-align: center;
+  margin: 10px 0;
+}
+
+.reviews .users .user {
+  margin-bottom: 10px;
+}
+
+.reviews .users .user .name {
+  font-size: 25px;
+}
+
+.reviews .users .user .comment {
+  font-size: 15px;
+  color: #dead6a;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  order: 3;
+  border-top: 1px solid #26263e;
+  width: 100%;
+  padding: 10px;
+  background-color: #313247;
+}
+
+.footer .logo {
+  display: none;
+  text-align: center;
+  font-size: 50px;
+  font-weight: bold;
+  letter-spacing: 3px;
+  color: #efeef4;
+}
+
+.footer h3 {
+  font-size: 40px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.footer .contact {
+  width: 100%;
+}
+
+.footer .contact h3 {
+  color: #efeef4;
+}
+
+.footer .contact form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer .contact form input,
+.footer .contact form textarea,
+.footer .contact form button {
+  width: 100%;
+  padding: 10px 10px;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border: none;
+  margin-bottom: 10px;
+  font-family: inherit;
+  font-size: 20px;
+  background-color: #41445c;
+  outline-width: 0;
+  color: #77b3a3;
+}
+
+.footer .contact form button {
+  background-color: #77b3a3;
+  color: #41445c;
+}
+
+.footer .social {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-bottom: 10px;
+  border-bottom: 1px solid #41445c;
+}
+
+.footer .social img {
+  height: 50px;
+}
+
+.footer .copyright {
+  text-align: center;
+  font-size: 20px;
+}
+
+.footer .copyright span {
+  color: #dead6a;
+}
+
+.footer .copyright a {
+  color: #77b3a3;
+  text-decoration: none;
+}
+
+@media screen and (min-width: 375px) {
+  .generate .qr-code {
+    height: 355px;
+  }
+}
+
+@media screen and (min-width: 425px) {
+  .generate .qr-code {
+    height: 405px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  #wash {
+    content: url('../images/tablet/wash\ hands.jpg');
+  }
+  #mask {
+    content: url('../images/tablet/face-mask.jpg');
+  }
+  #social-distancing {
+    content: url('../images/tablet/social-distancing.jpg');
+  }
+  #sleep {
+    content: url('../images/tablet/sleep.jpg');
+  }
+  #jeff {
+    content: url('../images/tablet/jeff.jpg');
+  }
+  #elon {
+    content: url('../images/tablet/elon.jpg');
+  }
+  #simon {
+    content: url('../images/tablet/simon.jpg');
+  }
+  #gates {
+    content: url('../images/tablet/gates.jpg');
+  }
+
+  nav .logo,
+  nav .burger i {
+    font-size: 40px;
+  }
+
+  .generate .qr-code {
+    height: 748px;
+  }
+
+  .about-vacseen p {
+    font-size: 25px;
+  }
+
+  .about-vacseen h2 {
+    font-size: 45px;
+  }
+
+  .gallery figcaption {
+    font-size: 30px;
+  }
+
+  .reviews {
+    width: 100%;
+  }
+  .reviews .users .user .name {
+    font-size: 30px;
+  }
+
+  .reviews .users .user .comment {
+    font-size: 20px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  body {
+    padding-top: 6%;
+  }
+
+  form.login-form,
+  form.signUp-form {
+    top: 10%;
+  }
+
+  nav {
+    height: 10%;
+  }
+
+  nav .burger {
+    display: none;
+  }
+
+  nav .navList {
+    transform: scale(1);
+    position: relative;
+    top: 0;
+    width: 80%;
+    background-color: transparent;
+    flex-direction: row;
+    margin-top: auto;
+    height: auto;
+    padding: 0;
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+  }
+
+  nav .navList button {
+    display: none;
+  }
+  body {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .generate {
+    width: 30%;
+    margin-top: 86px;
+    border: none;
+    max-width: 60%;
+  }
+
+  .generate .qr-code {
+    height: 300px;
+  }
+
+  .gallery {
+    width: 60%;
+    order: -1;
+    margin-top: 70px;
+    border: none;
+  }
+
+  .about-vacseen {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .about-vacseen > div {
+    min-height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    width: calc(50% - 20px);
+    margin: 10px;
+    background-color: #313247;
+    padding: 10px;
+  }
+
+  .about-vacseen p {
+    border: none;
+    color: #efeef4;
+    font-size: 30px;
+  }
+
+  .about-vacseen h3 {
+    font-size: 35px;
+    color: #efeef4;
+  }
+
+  .about-vacseen .personal {
+    width: 100%;
+  }
+
+  .about-vacseen .what-is-it {
+    padding: 10px;
+  }
+
+  .about-vacseen .what-is-it p {
+    margin-top: 55px;
+  }
+
+  .about-vacseen .disclaimer {
+    border-bottom: none;
+  }
+
+  .about-vacseen .disclaimer p {
+    border-bottom: none;
+  }
+
+  .reviews h2 {
+    padding-top: 20px;
+    font-size: 45px;
+    color: #dead6a;
+    border-bottom: 1px solid #26263e;
+    width: fit-content;
+    margin: 0 auto;
+  }
+
+  #wash {
+    content: url('../images/laptop/wash\ hands.jpg');
+  }
+  #mask {
+    content: url('../images/laptop/face-mask.jpg');
+  }
+  #social-distancing {
+    content: url('../images/laptop/social-distancing.jpg');
+  }
+  #sleep {
+    content: url('../images/laptop/sleep.jpg');
+  }
+  #jeff {
+    content: url('../images/laptop/jeff.jpg');
+  }
+  #elon {
+    content: url('../images/laptop/elon.jpg');
+  }
+  #simon {
+    content: url('../images/laptop/simon.jpg');
+  }
+  #gates {
+    content: url('../images/laptop/gates.jpg');
+  }
+
+  .footer {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .footer .contact {
+    width: 40%;
+  }
+
+  .footer .contact h3 {
+    font-size: 45px;
+  }
+
+  .footer .logo,
+  .footer .group {
+    width: 30%;
+  }
+
+  .footer .logo {
+    display: block;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  body {
+    padding-top: 4%;
+  }
+
+  .generate .qr-code {
+    height: 412px;
+  }
+
+  form.login-form input,
+  form.login-form button,
+  form.signUp-form input,
+  form.signUp-form button {
+    width: 30%;
+  }
+
+  .about-vacseen {
+    width: 80%;
+  }
+
+  .reviews .users {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .footer .group .social {
+    width: 50%;
+    margin: 0 auto;
+    margin-bottom: 20px;
+  }
+
+  #wash {
+    content: url('../images/high_res/wash\ hands.jpg');
+  }
+  #mask {
+    content: url('../images/high_res/face-mask.jpg');
+  }
+  #social-distancing {
+    content: url('../images/high_res/social-distancing.jpg');
+  }
+  #sleep {
+    content: url('../images/high_res/sleep.jpg');
+  }
+  #jeff {
+    content: url('../images/high_res/jeff.jpg');
+  }
+  #elon {
+    content: url('../images/high_res/elon.jpg');
+  }
+  #simon {
+    content: url('../images/high_res/simon.jpg');
+  }
+  #gates {
+    content: url('../images/high_res/gates.jpg');
+  }
+}
