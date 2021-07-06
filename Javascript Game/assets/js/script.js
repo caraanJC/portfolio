@@ -81,10 +81,12 @@ class MemoryGame {
     }, 6000);
   }
 
+  // returns the currentTime
   getTime() {
     return this.currentTime;
   }
 
+  // stops the timer
   stopTime() {
     clearInterval(this.timeId);
   }
@@ -120,22 +122,27 @@ class MemoryGame {
     this.score++;
   }
 
+  // adds the class slideIn to the gameContainer
   gameSlideIn() {
     this.gameContainer.classList.add('slideIn');
   }
 
+  // removes the class slideIn to the gameContainer
   gameSlideOut() {
     this.gameContainer.classList.remove('slideIn');
   }
 
+  // changes the rank based on the argument given
   changeRank(rank) {
     this.rank = rank;
   }
 
+  // returns the rank variable value
   getRank() {
     return this.rank;
   }
 
+  // adds a p message to the winning message when the player is in the top 3
   changeCelebrateMessage() {
     this.fightingSpirit.muted = true;
     const victoryBGM = new Audio('./assets/bgm/victory.mp3');
@@ -144,18 +151,23 @@ class MemoryGame {
     this.celebrateMessage = `<p class="celebrate-message">You earned ${this.getRank()} place!!!</p>`;
   }
 
+  // returns the 1st place object from the localstorage
+  // the object includes the playerName and time
   get_1st(difficulty) {
     return JSON.parse(localStorage.getItem(`${difficulty}_1st`));
   }
 
+  // returns the 2nd place object from the localstorage
   get_2nd(difficulty) {
     return JSON.parse(localStorage.getItem(`${difficulty}_2nd`));
   }
 
+  // returns the 2nd place object from the localstorage
   get_3rd(difficulty) {
     return JSON.parse(localStorage.getItem(`${difficulty}_3rd`));
   }
 
+  // changes the 1st place data in the localstorage
   set_1st(playerName, time, difficulty) {
     localStorage.setItem(
       `${difficulty}_1st`,
@@ -166,6 +178,7 @@ class MemoryGame {
     );
   }
 
+  // changes the 2nd place data in the localstorage
   set_2nd(playerName, time, difficulty) {
     localStorage.setItem(
       `${difficulty}_2nd`,
@@ -176,6 +189,7 @@ class MemoryGame {
     );
   }
 
+  // changes the 3rd place data in the localstorage
   set_3rd(playerName, time, difficulty) {
     localStorage.setItem(
       `${difficulty}_3rd`,
@@ -186,6 +200,7 @@ class MemoryGame {
     );
   }
 
+  // returns an object that contains the command
   getRankCommands() {
     return {
       first: {
@@ -203,6 +218,7 @@ class MemoryGame {
     };
   }
 
+  // replaces the current place holder with the challenger
   replaceRank(rankToReplace, currentRank) {
     const current = this.getRankCommands()[currentRank].get(this.difficulty);
     if (!currentRank) {
@@ -239,6 +255,7 @@ class MemoryGame {
     );
   }
 
+  // handles cases when when the leaderboard rank position is not empty
   handlePlacementSwitch(rank) {
     switch (rank) {
       case '1st':
@@ -256,6 +273,7 @@ class MemoryGame {
     }
   }
 
+  // main rank controller
   handlePlacement(currentLeader, rank) {
     if (!currentLeader) {
       this.replaceWithChallenger(rank);
@@ -268,6 +286,7 @@ class MemoryGame {
     return false;
   }
 
+  // runs handlePlacement() and stops when handlePlacement returns true
   handleRank(currentFirstPlace, currentSecondPlace, currentThirdPlace) {
     if (this.handlePlacement(currentFirstPlace, '1st')) {
       return;
@@ -280,6 +299,7 @@ class MemoryGame {
     }
   }
 
+  // calls the handleRank()
   setRank() {
     const currentFirstPlace = this.getRankCommands().first.get(this.difficulty);
     const currentSecondPlace = this.getRankCommands().second.get(
@@ -290,6 +310,7 @@ class MemoryGame {
     this.handleRank(currentFirstPlace, currentSecondPlace, currentThirdPlace);
   }
 
+  // returns an template literal which contains the winningMessage HTML
   getMessageHTML() {
     return `
       <h1>Mission Complete</h1>
@@ -302,6 +323,7 @@ class MemoryGame {
     `;
   }
 
+  // puts the winningMessage into the screeen
   displayMessage(winningMessage) {
     setTimeout(() => {
       this.gameContainer.appendChild(winningMessage);
@@ -313,28 +335,44 @@ class MemoryGame {
     }, 1500);
   }
 
+  // used to make the fadeIn effect of the text in the winningMessage
   showText(winningMessage) {
     setTimeout(() => {
       winningMessage.classList.add('showText');
     }, 3000);
   }
 
-  displayWinningMessage() {
-    this.setRank();
-
+  // creates a winning Mesage
+  createWinningMessage() {
     const winningMessage = document.createElement('div');
     winningMessage.classList.add('winningMessage');
     winningMessage.innerHTML = this.getMessageHTML();
-    this.gameSlideOut();
+    return winningMessage;
+  }
+
+  // this is used for grid template handling
+  removeDifficultyClassesAndAddVictoryToGameContainer() {
+    this.gameContainer.classList.remove('easy');
     this.gameContainer.classList.remove('medium');
     this.gameContainer.classList.remove('hard');
     this.gameContainer.classList.add('victory');
+  }
 
+  // defines the winningMessage and calls displayMessage() and showText()
+  displayWinningMessage() {
+    this.setRank();
+
+    const winningMessage = this.createWinningMessage();
+
+    this.gameSlideOut();
+
+    this.removeDifficultyClassesAndAddVictoryToGameContainer();
     this.displayMessage(winningMessage);
 
     this.showText(winningMessage);
   }
 
+  // adds throw class into the kunais
   throw(kunai1, kunai2) {
     setTimeout(() => {
       kunai1.classList.add('throw');
@@ -342,6 +380,7 @@ class MemoryGame {
     }, 10);
   }
 
+  // plays the sfx of a kunai hitting
   playThrowKunaiSound() {
     const knifeSound = new Audio('./assets/sfx/kunai-hit.mp3');
     setTimeout(() => {
@@ -349,11 +388,13 @@ class MemoryGame {
     }, 300);
   }
 
-  appendToGameContainer(kunai1, kunai2) {
+  // adds the kunais into the gameContainer
+  appendKunaiToGameContainer(kunai1, kunai2) {
     this.gameContainer.appendChild(kunai1);
     this.gameContainer.appendChild(kunai2);
   }
 
+  // makes the kunai element
   createKunai(card) {
     const kunai1 = document.createElement('img');
     kunai1.classList.add('throwing-kunai');
@@ -368,27 +409,31 @@ class MemoryGame {
     return kunai1;
   }
 
+  // main throwKunai controller
   throwKunai(card1, card2) {
     const kunai1 = this.createKunai(card1);
     const kunai2 = this.createKunai(card2);
 
-    this.appendToGameContainer(kunai1, kunai2);
+    this.appendKunaiToGameContainer(kunai1, kunai2);
 
     this.throw(kunai1, kunai2);
 
     this.playThrowKunaiSound();
   }
 
+  // adds preventClick class
   preventClick(card1, card2) {
     card1.classList.add('preventClick');
     card2.classList.add('preventClick');
   }
 
+  // removes preventClick class
   removeClickClasss(card1, card2) {
     card1.classList.remove('clicked');
     card2.classList.remove('clicked');
   }
 
+  // main Match controller
   executeMatchActions(card1, card2) {
     this.preventClick(card1, card2);
     this.throwKunai(card1, card2);
@@ -403,6 +448,7 @@ class MemoryGame {
     }
   }
 
+  // main misMatch controller
   executeMismatchActions(card1, card2) {
     setTimeout(() => {
       this.showBackSide(card1);
@@ -420,14 +466,17 @@ class MemoryGame {
     this.removeClickClasss(card1, card2);
   }
 
+  // increases clicks by 1
   increaseClicks() {
     this.clicks++;
   }
 
+  // resets clicks to 0
   resetClicks() {
     this.clicks = 0;
   }
 
+  // main controller when two cards are clicked
   handleTwoCardsClickedEvent() {
     if (this.clicks == 2) {
       const cards = document.querySelectorAll('.card-image');
@@ -443,6 +492,7 @@ class MemoryGame {
     }
   }
 
+  // show the backside of the card when clicked again
   handleClickSelf(event) {
     if (event.target.classList.contains('clicked')) {
       event.target.classList.remove('clicked');
@@ -453,6 +503,7 @@ class MemoryGame {
     return false;
   }
 
+  // main click handler
   cardClickHandler(event) {
     this.showFrontSide(event.target);
     // remove clicked class if the user clicked the same thing also reset the click to 0
@@ -484,6 +535,7 @@ class MemoryGame {
     });
   }
 
+  // changes this.playerName
   setPlayerName(playerName) {
     this.playerName = playerName;
     localStorage.setItem(
@@ -492,6 +544,8 @@ class MemoryGame {
     );
   }
 
+  // returns this.playerName
+  // when there is playerName in the localstorage, use that instead
   getPlayerName() {
     if (localStorage.getItem('playerName')) {
       this.playerName = JSON.parse(
@@ -501,7 +555,8 @@ class MemoryGame {
     return this.playerName;
   }
 
-  run(playerName) {
+  // starts the game
+  runGame(playerName) {
     this.setPlayerName(playerName);
     this.makeCopies();
     this.createCards();
@@ -539,6 +594,7 @@ class Welcome {
     this.updateLeaderBoard();
   }
 
+  // adds click events to the rowLabels
   setHandlers() {
     this.rowLabels.forEach(
       (rowLabel) =>
@@ -556,6 +612,7 @@ class Welcome {
     this.changeName.onclick = () => this.changeNameClickHandler();
   }
 
+  // handles events when rowLabel(easy, medium, hard on the leaderboards) is clicked
   rowLabelClickHandler(rowLabel) {
     this.rowLabels.forEach((row) => row.classList.remove('active'));
     this.leaderData.forEach((data) => data.classList.remove('show'));
@@ -573,6 +630,7 @@ class Welcome {
     rowLabel.classList.add('active');
   }
 
+  // returns the data based on difficulty
   getData(dataTools, difficulty) {
     const data = {
       first: dataTools.first.get(difficulty),
@@ -582,6 +640,7 @@ class Welcome {
     return data;
   }
 
+  // displays the vertical bars, rowlabels and, playerName and time into the leaderboards
   displayRankData(data, difficulty) {
     const varToAccess = (this[`rank${difficulty}`].innerHTML = `
       <div class="first">
@@ -611,6 +670,7 @@ class Welcome {
     `);
   }
 
+  // calls the displayRankData()
   updateLeaderBoard() {
     const dataTools = this.newGame.getRankCommands();
 
@@ -623,6 +683,7 @@ class Welcome {
     this.displayRankData(hardData, 'Hard');
   }
 
+  // alert if name is empty or greater than 15 characters
   isNameValid(playerName) {
     if (!playerName) {
       alert('Error. Empty Name');
@@ -648,6 +709,7 @@ class Welcome {
     this.playerID.textContent = this.newGame.getPlayerName();
   }
 
+  // handles radio click events
   radioHandler(radio) {
     if (this.difficulty === radio.value) {
       radio.classList.add('active');
@@ -659,6 +721,7 @@ class Welcome {
     };
   }
 
+  // plays the yellSFX
   yell() {
     const yellSFX = [
       new Audio('./assets/sfx/rasengan.mp3'),
@@ -669,34 +732,40 @@ class Welcome {
     return yellSFX[Math.floor(Math.random() * yellSFX.length)].play();
   }
 
+  // starts the game when playNowBtn is clicked
   playNowBtnClickHandler(e) {
     this.yell();
     this.newGame.fightingSpirit.play();
     e.preventDefault();
     e.target.disabled = 'true';
     this.moveScreenUp();
-    this.newGame.run(this.newGame.getPlayerName());
+    this.newGame.runGame(this.newGame.getPlayerName());
   }
 
+  // opens the leaderboards
   openOverlay() {
     this.overlay.classList.remove('hide');
   }
 
+  // closes the leaderboards
   closeOverlay() {
     this.overlay.classList.add('hide');
   }
 
+  // used to remove the active class on the radios
   resetRadioStyle() {
     this.difficultyRadios.forEach((radio) => {
       radio.classList.remove('active');
     });
   }
 
+  // moves the body up by 100vh
   moveScreenUp = () => {
     this.bodyMarginTop -= 100;
     document.body.style.marginTop = `${this.bodyMarginTop}vh`;
   };
 
+  // moves the body down by 100vh
   moveScreenDown = () => {
     this.bodyMarginTop += 100;
     document.body.style.marginTop = `${this.bodyMarginTop}vh`;
