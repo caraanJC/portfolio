@@ -13,8 +13,83 @@ class MemoryGame {
     this.rank = '';
     this.celebrateMessage = '';
 
+    this.rank_easy = document.getElementById('rank-easy');
+    this.rank_medium = document.getElementById('rank-medium');
+    this.rank_hard = document.getElementById('rank-hard');
+
+    this.overlay = document.getElementById('overlay');
+    this.gameLeaderboards = document.getElementById('gameLeaderboards');
+
     this.fightingSpirit = new Audio('./assets/bgm/fighting-spirit.mp3');
+    this.victoryBGM = new Audio('./assets/bgm/victory.mp3');
     this.setFightingSpiritProperty();
+
+    this.gameLeaderboards.onclick = () => {
+      this.overlay.classList.remove('hide');
+      this.updateLeaderBoard();
+    };
+  }
+
+  displayRankData(difficulty) {
+    const retrieve = this.retrieveFromLocalStorage;
+
+    this[`rank_${difficulty}`].innerHTML = `
+      <div class="first">
+        <img
+        class="first-img"
+        src="./assets/images/Hokage_hat.png"
+        alt="hokage hat"/>
+        ${
+          retrieve(difficulty, 'first')
+            ? `<p>${retrieve(difficulty, 'first').time} seconds</p>`
+            : ''
+        }
+      </div>
+      <div class="second">
+        <img
+        class="second-img"
+        src="assets/images/jonin.png"
+        alt="jonin symbol"/>
+        ${
+          retrieve(difficulty, 'second')
+            ? `<p>${retrieve(difficulty, 'second').time} seconds</p>`
+            : ''
+        }
+      </div>
+      <div class="third">
+        <img
+        class="third"
+        src="assets/images/chunin.png"
+        alt="chunin symbol"/> 
+        ${
+          retrieve(difficulty, 'third')
+            ? `<p>${retrieve(difficulty, 'third').time} seconds</p>`
+            : ''
+        }
+      </div>
+      ${
+        retrieve(difficulty, 'first')
+          ? `<p class="first">${retrieve(difficulty, 'first').playerName}</p>`
+          : ''
+      }
+      ${
+        retrieve(difficulty, 'second')
+          ? `<p class="second">${retrieve(difficulty, 'second').playerName}</p>`
+          : ''
+      }
+      ${
+        retrieve(difficulty, 'third')
+          ? `<p class="third">${retrieve(difficulty, 'third').playerName}</p>`
+          : ''
+      }
+    `;
+  }
+
+  // calls the displayRankData()
+  updateLeaderBoard() {
+    this.displayRankData('easy');
+    this.displayRankData('medium');
+    this.displayRankData('hard');
   }
 
   // this changes the volume=0.1 and loop=true of game BGM
@@ -49,6 +124,7 @@ class MemoryGame {
 
     switch (this.getDifficulty()) {
       case 'easy':
+        this.gameContainer.classList.add('easy');
         break;
       case 'medium':
         this.gameContainer.classList.add('medium');
@@ -145,32 +221,18 @@ class MemoryGame {
   // adds a p message to the winning message when the player is in the top 3
   changeCelebrateMessage() {
     this.fightingSpirit.muted = true;
-    const victoryBGM = new Audio('./assets/bgm/victory.mp3');
-    victoryBGM.volume = 0.5;
-    victoryBGM.play();
+    this.victoryBGM.muted = false;
+    this.victoryBGM.currentTime = 0;
+    this.victoryBGM.loop = true;
+    this.victoryBGM.play();
+    this.victoryBGM.volume = 0.5;
     this.celebrateMessage = `<p class="celebrate-message">You earned ${this.getRank()} place!!!</p>`;
   }
 
-  // returns the 1st place object from the localstorage
-  // the object includes the playerName and time
-  get_1st(difficulty) {
-    return JSON.parse(localStorage.getItem(`${difficulty}_1st`));
-  }
-
-  // returns the 2nd place object from the localstorage
-  get_2nd(difficulty) {
-    return JSON.parse(localStorage.getItem(`${difficulty}_2nd`));
-  }
-
-  // returns the 2nd place object from the localstorage
-  get_3rd(difficulty) {
-    return JSON.parse(localStorage.getItem(`${difficulty}_3rd`));
-  }
-
-  // changes the 1st place data in the localstorage
-  set_1st(playerName, time, difficulty) {
+  // records data to localstorage
+  recordToLocalStorage(playerName, time, difficulty, rank) {
     localStorage.setItem(
-      `${difficulty}_1st`,
+      `${difficulty}_${rank}`,
       JSON.stringify({
         playerName: `${playerName}`,
         time: `${time}`,
@@ -178,56 +240,23 @@ class MemoryGame {
     );
   }
 
-  // changes the 2nd place data in the localstorage
-  set_2nd(playerName, time, difficulty) {
-    localStorage.setItem(
-      `${difficulty}_2nd`,
-      JSON.stringify({
-        playerName: `${playerName}`,
-        time: `${time}`,
-      })
-    );
-  }
-
-  // changes the 3rd place data in the localstorage
-  set_3rd(playerName, time, difficulty) {
-    localStorage.setItem(
-      `${difficulty}_3rd`,
-      JSON.stringify({
-        playerName: `${playerName}`,
-        time: `${time}`,
-      })
-    );
-  }
-
-  // returns an object that contains the command
-  getRankCommands() {
-    return {
-      first: {
-        get: this.get_1st,
-        set: this.set_1st,
-      },
-      second: {
-        get: this.get_2nd,
-        set: this.set_2nd,
-      },
-      third: {
-        get: this.get_3rd,
-        set: this.set_3rd,
-      },
-    };
+  // gets data from localstorage
+  retrieveFromLocalStorage(difficulty, rank) {
+    return JSON.parse(localStorage.getItem(`${difficulty}_${rank}`));
   }
 
   // replaces the current place holder with the challenger
   replaceRank(rankToReplace, currentRank) {
-    const current = this.getRankCommands()[currentRank].get(this.difficulty);
-    if (!currentRank) {
+    const current = this.retrieveFromLocalStorage(this.difficulty, currentRank);
+
+    if (!current) {
       return;
     }
-    return this.getRankCommands()[rankToReplace].set(
+    return this.recordToLocalStorage(
       current.playerName,
       current.time,
-      this.difficulty
+      this.difficulty,
+      rankToReplace
     );
   }
 
@@ -245,29 +274,29 @@ class MemoryGame {
 
   // replaces the current rank holder with the challenger
   replaceWithChallenger(rank) {
-    let rankWord = this.toWord(rank);
     this.changeRank(rank);
     this.changeCelebrateMessage();
-    return this.getRankCommands()[rankWord].set(
+    return this.recordToLocalStorage(
       this.getPlayerName(),
       this.getTime(),
-      this.difficulty
+      this.difficulty,
+      rank
     );
   }
 
   // handles cases when when the leaderboard rank position is not empty
   handlePlacementSwitch(rank) {
     switch (rank) {
-      case '1st':
+      case 'first':
         this.replaceRank('third', 'second');
         this.replaceRank('second', 'first');
         this.replaceWithChallenger(rank);
         break;
-      case '2nd':
+      case 'second':
         this.replaceRank('third', 'second');
         this.replaceWithChallenger(rank);
         break;
-      case '3rd':
+      case 'third':
         this.replaceWithChallenger(rank);
         break;
     }
@@ -288,31 +317,97 @@ class MemoryGame {
 
   // runs handlePlacement() and stops when handlePlacement returns true
   handleRank(currentFirstPlace, currentSecondPlace, currentThirdPlace) {
-    if (this.handlePlacement(currentFirstPlace, '1st')) {
+    if (this.handlePlacement(currentFirstPlace, 'first')) {
       return;
     }
-    if (this.handlePlacement(currentSecondPlace, '2nd')) {
+    if (this.handlePlacement(currentSecondPlace, 'second')) {
       return;
     }
-    if (this.handlePlacement(currentThirdPlace, '3rd')) {
+    if (this.handlePlacement(currentThirdPlace, 'third')) {
       return;
     }
   }
 
   // calls the handleRank()
   setRank() {
-    const currentFirstPlace = this.getRankCommands().first.get(this.difficulty);
-    const currentSecondPlace = this.getRankCommands().second.get(
-      this.difficulty
+    const currentFirstPlace = this.retrieveFromLocalStorage(
+      this.difficulty,
+      'first'
     );
-    const currentThirdPlace = this.getRankCommands().third.get(this.difficulty);
+    const currentSecondPlace = this.retrieveFromLocalStorage(
+      this.difficulty,
+      'second'
+    );
+    const currentThirdPlace = this.retrieveFromLocalStorage(
+      this.difficulty,
+      'third'
+    );
 
     this.handleRank(currentFirstPlace, currentSecondPlace, currentThirdPlace);
   }
 
+  resetRadioStyle(difficultyRadios) {
+    difficultyRadios.forEach((radio) => {
+      radio.classList.remove('active');
+    });
+  }
+
+  radioHandler(radio, difficultyRadios) {
+    if (this.difficulty === radio.value) {
+      radio.classList.add('active');
+    }
+    radio.onclick = () => {
+      this.resetRadioStyle(difficultyRadios);
+      this.setDifficulty(radio.value);
+      radio.classList.add('active');
+    };
+  }
+
+  addListenerToDifficultyChanger() {
+    const difficultyRadios = this.gameContainer.querySelectorAll(
+      '#difficultyGroupInGame input'
+    );
+    difficultyRadios.forEach((radio) =>
+      this.radioHandler(radio, difficultyRadios)
+    );
+  }
+
+  insertDifficultyChanger() {
+    const difficultyChanger = `
+      <div class="difficultyGroupInGame" id="difficultyGroupInGame">
+        <input type="radio" id="easyInGame" value="easy" name="difficulty" />
+        <label for="easyInGame"
+          ><img
+            class="kunai"
+            src="./assets/images/kunai.png"
+            alt="kunai"
+          />Easy</label
+        >
+        <input type="radio" id="mediumInGame" value="medium" name="difficulty" />
+        <label for="mediumInGame"
+          ><img
+            class="kunai"
+            src="./assets/images/kunai.png"
+            alt="kunai"
+          />Medium</label
+        >
+        <input type="radio" id="hardInGame" value="hard" name="difficulty" />
+        <label for="hardInGame"
+          ><img
+            class="kunai"
+            src="./assets/images/kunai.png"
+            alt="kunai"
+          />Hard</label
+        >
+      </div>    
+    `;
+
+    return difficultyChanger;
+  }
+
   // returns an template literal which contains the winningMessage HTML
   getMessageHTML() {
-    return `
+    const message = `
       <h1>Mission Complete</h1>
       <p>Time: ${this.currentTime} seconds</p>
       <p class="difficulty">Difficulty: <span class="${this.difficulty}">${
@@ -320,7 +415,33 @@ class MemoryGame {
     }</p></p>
       ${this.rank ? this.celebrateMessage : ''}
       <button id="play-again" class="play-again">Play Again</button>
+      ${this.insertDifficultyChanger()}
     `;
+    return message;
+  }
+
+  resetValues() {
+    this.currentTime = 0;
+    this.score = 0;
+    this.names = ['naruto', 'sakura', 'sasuke', 'itachi', 'kakashi'];
+    this.memoryNames = [];
+  }
+
+  resetGrid() {
+    this.gameContainer.classList.remove('easy');
+    this.gameContainer.classList.remove('medium');
+    this.gameContainer.classList.remove('hard');
+    this.gameContainer.classList.remove('victory');
+  }
+
+  playAgainClickHandler() {
+    this.cleanGameContainer();
+    this.resetGrid();
+    this.resetValues();
+    this.runGame(this.playerName);
+    this.victoryBGM.muted = true;
+    this.fightingSpirit.muted = false;
+    this.fightingSpirit.currentTime = 0;
   }
 
   // puts the winningMessage into the screeen
@@ -328,10 +449,12 @@ class MemoryGame {
     setTimeout(() => {
       this.gameContainer.appendChild(winningMessage);
       this.gameSlideIn();
+
       const playAgain = document.getElementById('play-again');
       playAgain.onclick = () => {
-        window.location.reload();
+        this.playAgainClickHandler();
       };
+      this.addListenerToDifficultyChanger();
     }, 1500);
   }
 
@@ -576,9 +699,9 @@ class Welcome {
     this.closeBtn = document.getElementById('closeBtn');
     this.playerID = document.getElementById('playerID');
     this.changeName = document.getElementById('changeName');
-    this.rankEasy = document.getElementById('rank-easy');
-    this.rankMedium = document.getElementById('rank-medium');
-    this.rankHard = document.getElementById('rank-hard');
+    this.rank_easy = document.getElementById('rank-easy');
+    this.rank_medium = document.getElementById('rank-medium');
+    this.rank_hard = document.getElementById('rank-hard');
     this.rowLabels = document.querySelectorAll('.rowLabel p');
     this.easyData = document.getElementById('rank-easy');
     this.mediumData = document.getElementById('rank-medium');
@@ -609,6 +732,8 @@ class Welcome {
 
     this.closeBtn.onclick = () => this.closeOverlay();
 
+    this.playerID.onclick = () => this.changeNameClickHandler();
+
     this.changeName.onclick = () => this.changeNameClickHandler();
   }
 
@@ -630,57 +755,67 @@ class Welcome {
     rowLabel.classList.add('active');
   }
 
-  // returns the data based on difficulty
-  getData(dataTools, difficulty) {
-    const data = {
-      first: dataTools.first.get(difficulty),
-      second: dataTools.second.get(difficulty),
-      third: dataTools.third.get(difficulty),
-    };
-    return data;
-  }
-
   // displays the vertical bars, rowlabels and, playerName and time into the leaderboards
-  displayRankData(data, difficulty) {
-    const varToAccess = (this[`rank${difficulty}`].innerHTML = `
+  displayRankData(difficulty) {
+    const retrieve = this.newGame.retrieveFromLocalStorage;
+
+    this[`rank_${difficulty}`].innerHTML = `
       <div class="first">
         <img
         class="first-img"
         src="./assets/images/Hokage_hat.png"
         alt="hokage hat"/>
-        ${data.first ? `<p>${data.first.time} seconds</p>` : ''}
+        ${
+          retrieve(difficulty, 'first')
+            ? `<p>${retrieve(difficulty, 'first').time} seconds</p>`
+            : ''
+        }
       </div>
       <div class="second">
         <img
         class="second-img"
         src="assets/images/jonin.png"
         alt="jonin symbol"/>
-        ${data.second ? `<p>${data.second.time} seconds</p>` : ''}
+        ${
+          retrieve(difficulty, 'second')
+            ? `<p>${retrieve(difficulty, 'second').time} seconds</p>`
+            : ''
+        }
       </div>
       <div class="third">
         <img
         class="third"
         src="assets/images/chunin.png"
         alt="chunin symbol"/> 
-        ${data.third ? `<p>${data.third.time} seconds</p>` : ''}
+        ${
+          retrieve(difficulty, 'third')
+            ? `<p>${retrieve(difficulty, 'third').time} seconds</p>`
+            : ''
+        }
       </div>
-      ${data.first ? `<p class="first">${data.first.playerName}</p>` : ''}
-      ${data.second ? `<p class="second">${data.second.playerName}</p>` : ''}
-      ${data.third ? `<p class="third">${data.third.playerName}</p>` : ''}
-    `);
+      ${
+        retrieve(difficulty, 'first')
+          ? `<p class="first">${retrieve(difficulty, 'first').playerName}</p>`
+          : ''
+      }
+      ${
+        retrieve(difficulty, 'second')
+          ? `<p class="second">${retrieve(difficulty, 'second').playerName}</p>`
+          : ''
+      }
+      ${
+        retrieve(difficulty, 'third')
+          ? `<p class="third">${retrieve(difficulty, 'third').playerName}</p>`
+          : ''
+      }
+    `;
   }
 
   // calls the displayRankData()
   updateLeaderBoard() {
-    const dataTools = this.newGame.getRankCommands();
-
-    const easyData = this.getData(dataTools, 'easy');
-    const mediumData = this.getData(dataTools, 'medium');
-    const hardData = this.getData(dataTools, 'hard');
-
-    this.displayRankData(easyData, 'Easy');
-    this.displayRankData(mediumData, 'Medium');
-    this.displayRankData(hardData, 'Hard');
+    this.displayRankData('easy');
+    this.displayRankData('medium');
+    this.displayRankData('hard');
   }
 
   // alert if name is empty or greater than 15 characters

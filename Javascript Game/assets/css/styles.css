@@ -66,7 +66,8 @@ body {
   letter-spacing: 5px;
 }
 
-.welcomeWindow button {
+.welcomeWindow button,
+.gameWindow .leaderboards {
   font-size: 55px;
   font-family: inherit;
   border: none;
@@ -113,23 +114,27 @@ body {
   text-align: center;
 }
 
-.welcomeWindow form input {
+.welcomeWindow form input,
+.gameWindow .difficultyGroupInGame input {
   visibility: hidden;
 }
 
-.welcomeWindow .difficultyGroup label {
+.welcomeWindow .difficultyGroup label,
+.gameWindow .difficultyGroupInGame label {
   position: relative;
   font-size: 30px;
   cursor: pointer;
   padding: 10px 20px;
 }
 
-.welcomeWindow .difficultyGroup label:hover {
+.welcomeWindow .difficultyGroup label:hover,
+.gameWindow .difficultyGroupInGame label:hover {
   color: orange;
   font-weight: bold;
 }
 
-.welcomeWindow .difficultyGroup label .kunai {
+.welcomeWindow .difficultyGroup label .kunai,
+.gameWindow .difficultyGroupInGame label .kunai {
   height: 50px;
   position: absolute;
   z-index: 1;
@@ -147,12 +152,13 @@ body {
   -o-transition: all 0.3s ease-in;
 }
 
-.welcomeWindow .difficultyGroup input + label {
+.welcomeWindow .difficultyGroup input + label,
+.gameWindow .difficultyGroupInGame input + label {
   color: black;
 }
 
-.welcomeWindow .difficultyGroup input + label img {
-  color: black;
+.welcomeWindow .difficultyGroup input + label img,
+.gameWindow .difficultyGroupInGame input + label img {
   transform: translate(-100vw, -100vh);
   -webkit-transform: translate(-100vw, -100vh);
   -moz-transform: translate(-100vw, -100vh);
@@ -169,11 +175,19 @@ body {
   color: gold;
 }
 
+.gameWindow .leaderboards {
+  color: gold;
+  font-size: 30px;
+  position: absolute;
+  bottom: -10px;
+  right: 10px;
+}
+
 .welcomeWindow .overlay {
   background: #201a21;
   background-size: cover;
   background-repeat: no-repeat;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -371,12 +385,12 @@ body {
 }
 
 .gameContainer {
-  display: grid;
-  place-items: center;
-  grid-template-columns: repeat(5, 1fr);
-  width: 1200px;
-  height: 700px;
-  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  width: 80%;
+  height: 80vh;
+  justify-content: space-evenly;
+  align-items: center;
   transform: translate(200%);
   transition: transform 2s ease-in;
   -webkit-transition: transform 2s ease-in;
@@ -389,9 +403,13 @@ body {
   -o-transform: translate(200%);
 }
 
+.gameContainer .play-again:hover {
+  color: orange;
+}
+
 .card-image {
-  width: 170px;
-  height: 270px;
+  width: 19%;
+  height: 49%;
   cursor: pointer;
   border: 1px solid dimgray;
   border-radius: 10px;
@@ -407,14 +425,24 @@ body {
   object-fit: cover;
 }
 
+.gameContainer.medium .card-image {
+  width: 12%;
+  height: 33%;
+}
+
+.gameContainer.hard .card-image {
+  width: 9.5%;
+  height: 33%;
+}
+
 .winningMessage {
   background-image: url('../images/ninja_scroll.png');
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
-  background-position: center right;
+  background-position: center center;
   color: black;
   text-align: center;
-  height: 130%;
+  height: 100%;
   width: 100%;
   padding-left: 150px;
   display: flex;
@@ -528,11 +556,13 @@ body {
   -o-transform: translateY(-100vh);
 }
 
-.welcomeWindow .difficultyGroup input.active + label {
+.welcomeWindow .difficultyGroup input.active + label,
+.gameWindow .difficultyGroupInGame input.active + label {
   color: orange;
 }
 
-.welcomeWindow .difficultyGroup input.active + label img {
+.welcomeWindow .difficultyGroup input.active + label img,
+.gameWindow .difficultyGroupInGame input.active + label img {
   transform: translate(0);
   -webkit-transform: translate(0);
   -moz-transform: translate(0);
@@ -541,20 +571,17 @@ body {
 }
 
 .gameContainer.medium {
-  width: 100%;
-  grid-template-columns: repeat(10, 1fr);
+  width: 90%;
+  height: 80vh;
 }
 
 .gameContainer.hard {
-  width: 100%;
-  height: 90vh;
-  grid-template-columns: repeat(10, 1fr);
+  width: 95%;
 }
 
 .gameContainer.victory {
-  width: 1200px;
-  height: 700px;
-  grid-template-columns: 1fr;
+  width: 100vw;
+  height: 100vh;
 }
 
 .gameContainer.slideIn {
@@ -595,6 +622,22 @@ body {
   -moz-transform: translate(125%, 100%);
   -ms-transform: translate(125%, 100%);
   -o-transform: translate(125%, 100%);
+}
+
+.gameContainer.easy .throwing-kunai.throw {
+  transform: translate(250%, 150%);
+  -webkit-transform: translate(250%, 150%);
+  -moz-transform: translate(250%, 150%);
+  -ms-transform: translate(250%, 150%);
+  -o-transform: translate(250%, 150%);
+}
+
+.gameContainer.medium .throwing-kunai.throw {
+  transform: translate(150%, 115%);
+  -webkit-transform: translate(150%, 115%);
+  -moz-transform: translate(150%, 115%);
+  -ms-transform: translate(150%, 115%);
+  -o-transform: translate(150%, 115%);
 }
 
 .winningMessage.showText > * {
@@ -684,5 +727,33 @@ body {
     -moz-transform: scaleY(1);
     -ms-transform: scaleY(1);
     -o-transform: scaleY(1);
+  }
+}
+
+@media screen and (max-width: 1440px) {
+  .gameContainer.easy,
+  .gameContainer.medium,
+  .gameContainer.hard {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 90vh;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  .gameContainer.easy .card-image {
+    width: 19%;
+    height: 49%;
+  }
+
+  .gameContainer.medium .card-image {
+    width: 17%;
+    height: 24%;
+  }
+
+  .gameContainer.hard .card-image {
+    width: 15%;
+    height: 19%;
   }
 }
