@@ -20,6 +20,16 @@ body {
   -o-transition: margin 1s ease-in;
 }
 
+.window {
+  height: 100vh;
+  width: 100%;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
 .disable-select {
   user-select: none; /* supported by Chrome and Opera */
   -webkit-user-select: none; /* Safari */
@@ -28,19 +38,13 @@ body {
   -ms-user-select: none; /* Internet Explorer/Edge */
 }
 
-.welcomeWindow {
-  height: 100vh;
-  width: 100%;
-  display: grid;
+.window--welcome {
   grid-template-rows: 1fr 1fr 1fr;
-  place-items: center;
-  overflow: hidden;
   background-image: url('../images/naruto-bg.jpg');
   background-position: top center;
-  background-size: cover;
 }
 
-.welcomeWindow .player {
+.window__playerName {
   position: fixed;
   bottom: 1rem;
   left: 1rem;
@@ -49,25 +53,33 @@ body {
   z-index: 300;
 }
 
-.welcomeWindow .player .playerID {
+.window__playerName span {
   margin-left: 20px;
   color: white;
 }
 
-.welcomeWindow .logo {
+.window__logo {
   margin-top: 50px;
   width: 35%;
 }
 
-.welcomeWindow h1 {
+.window--welcome h1 {
   font-size: 80px;
   color: orange;
   -webkit-text-stroke: 0.1px black;
   letter-spacing: 5px;
 }
 
-.welcomeWindow button,
-.gameWindow .leaderboards {
+.window__form {
+  text-align: center;
+}
+
+.window__form input,
+.window--game .difficultyGroupInGame input {
+  visibility: hidden;
+}
+
+.window__btn {
   font-size: 55px;
   font-family: inherit;
   border: none;
@@ -79,7 +91,7 @@ body {
   letter-spacing: 5px;
 }
 
-.welcomeWindow .kunai {
+.window__kunai {
   height: 50px;
   position: absolute;
   z-index: 1;
@@ -97,12 +109,14 @@ body {
   -o-transition: all 0.3s ease-in;
 }
 
-.welcomeWindow button:hover {
+.window__btn:hover,
+.window__changeName:hover,
+.window__leaderboards:hover {
   font-weight: bold;
   letter-spacing: 10px;
 }
 
-.welcomeWindow button:hover .kunai {
+.window__btn:hover .window__kunai {
   transform: translate(0);
   -webkit-transform: translate(0);
   -moz-transform: translate(0);
@@ -110,31 +124,22 @@ body {
   -o-transform: translate(0);
 }
 
-.welcomeWindow form {
-  text-align: center;
-}
-
-.welcomeWindow form input,
-.gameWindow .difficultyGroupInGame input {
-  visibility: hidden;
-}
-
-.welcomeWindow .difficultyGroup label,
-.gameWindow .difficultyGroupInGame label {
+.window__difficulty label,
+.window--game .difficultyGroupInGame label {
   position: relative;
   font-size: 30px;
   cursor: pointer;
   padding: 10px 20px;
 }
 
-.welcomeWindow .difficultyGroup label:hover,
-.gameWindow .difficultyGroupInGame label:hover {
+.window--welcome .window__difficulty label:hover,
+.window--game .difficultyGroupInGame label:hover {
   color: orange;
   font-weight: bold;
 }
 
-.welcomeWindow .difficultyGroup label .kunai,
-.gameWindow .difficultyGroupInGame label .kunai {
+.window__difficulty label .kunai,
+.window--game .difficultyGroupInGame label .kunai {
   height: 50px;
   position: absolute;
   z-index: 1;
@@ -152,13 +157,13 @@ body {
   -o-transition: all 0.3s ease-in;
 }
 
-.welcomeWindow .difficultyGroup input + label,
-.gameWindow .difficultyGroupInGame input + label {
+.window--welcome .window__difficulty input + label,
+.window--game .difficultyGroupInGame input + label {
   color: black;
 }
 
-.welcomeWindow .difficultyGroup input + label img,
-.gameWindow .difficultyGroupInGame input + label img {
+.window--welcome .window__difficulty input + label img,
+.window--game .difficultyGroupInGame input + label img {
   transform: translate(-100vw, -100vh);
   -webkit-transform: translate(-100vw, -100vh);
   -moz-transform: translate(-100vw, -100vh);
@@ -166,24 +171,37 @@ body {
   -o-transform: translate(-100vw, -100vh);
 }
 
-.welcomeWindow .changeName {
+.window__changeName {
   font-size: 30px;
+  font-family: inherit;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  position: relative;
+  margin-bottom: 25px;
+  color: white;
+  letter-spacing: 5px;
 }
 
-.welcomeWindow .leaderboards {
+.window__leaderboards {
   font-size: 30px;
   color: gold;
+  font-family: inherit;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  position: relative;
+  margin-bottom: 25px;
+  letter-spacing: 5px;
 }
 
-.gameWindow .leaderboards {
-  color: gold;
-  font-size: 30px;
+.window__leaderboards--position {
   position: absolute;
   bottom: -10px;
   right: 10px;
 }
 
-.welcomeWindow .overlay {
+.window--welcome .overlay {
   background: #201a21;
   background-size: cover;
   background-repeat: no-repeat;
@@ -203,7 +221,7 @@ body {
   -o-transition: transform 1s ease-in-out;
 }
 
-.welcomeWindow .overlay .colHead {
+.overlay__title {
   color: orange;
   font-size: 50px;
   padding-top: 5%;
@@ -216,7 +234,7 @@ body {
   font-weight: bold;
 }
 
-.welcomeWindow .overlay .rowLabel {
+.window--welcome .overlay .overlay__difficulty {
   height: 80%;
   width: 20%;
   font-size: 50px;
@@ -228,9 +246,9 @@ body {
   cursor: pointer;
 }
 
-.welcomeWindow .overlay .rowLabel > *:hover,
-.welcomeWindow .overlay .rowLabel > *:active,
-.welcomeWindow .overlay .rowLabel > *.active {
+.window--welcome .overlay .overlay__difficulty > *:hover,
+.window--welcome .overlay .overlay__difficulty > *:active,
+.window--welcome .overlay .overlay__difficulty > *.active {
   background-color: rgba(0, 0, 0, 0.3);
   padding: 20px 30px;
   width: 90%;
@@ -242,7 +260,7 @@ body {
   -o-border-radius: 10px;
 }
 
-.welcomeWindow .overlay .closeBtn {
+.overlay__closeBtn {
   position: absolute;
   top: 2%;
   right: 2%;
@@ -251,7 +269,7 @@ body {
   cursor: pointer;
 }
 
-.welcomeWindow .overlay .leaderData {
+.overlay__data {
   font-size: 45px;
   z-index: 200;
   height: 80%;
@@ -261,7 +279,7 @@ body {
   justify-content: space-around;
 }
 
-.welcomeWindow .overlay .leaderData > * {
+.overlay__data > * {
   width: 100%;
   height: 100%;
   background-color: whitesmoke;
@@ -276,7 +294,7 @@ body {
   overflow: hidden;
 }
 
-.welcomeWindow .overlay .leaderData img {
+.overlay__data img {
   margin-bottom: 15%;
   width: 35%;
   transform: translateY(40px);
@@ -286,7 +304,7 @@ body {
   -o-transform: translateY(40px);
 }
 
-.welcomeWindow .overlay .leaderData * div {
+.overlay__data * div {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -299,24 +317,24 @@ body {
   -o-transition: all 1s ease-in;
 }
 
-.welcomeWindow .overlay .leaderData * div.first {
+.overlay__data * div.first {
   height: 70%;
   width: 100%;
   order: 1;
 }
 
-.welcomeWindow .overlay .leaderData * div.second {
+.overlay__data * div.second {
   height: 50%;
   width: 100%;
   order: 2;
 }
 
-.welcomeWindow .overlay .leaderData * div.third {
+.overlay__data * div.third {
   height: 35%;
   width: 100%;
 }
 
-.welcomeWindow .overlay .leaderData * p {
+.overlay__data * p {
   position: absolute;
   color: black;
   opacity: 0;
@@ -327,52 +345,45 @@ body {
   -o-transform: translateY(40px);
 }
 
-.welcomeWindow .overlay .leaderData * > p.first {
+.overlay__data * > p.first {
   bottom: 70%;
   left: calc(100% / 3);
   width: calc(100% / 3);
   text-align: center;
 }
 
-.welcomeWindow .overlay .leaderData * > p.second {
+.overlay__data * > p.second {
   bottom: 50%;
   left: calc(100% / 3 * 2);
   width: calc(100% / 3);
   text-align: center;
 }
 
-.welcomeWindow .overlay .leaderData * > p.third {
+.overlay__data * > p.third {
   bottom: 35%;
   left: 0;
   width: calc(100% / 3);
   text-align: center;
 }
 
-.welcomeWindow .overlay .rowLabel .labelEasy {
+.overlay__easyLabel {
   color: #76cb2f;
 }
 
-.welcomeWindow .overlay .rowLabel .labelMedium {
+.overlay__mediumLabel {
   color: #f3af22;
 }
 
-.welcomeWindow .overlay .rowLabel .labelHard {
+.overlay__hardLabel {
   color: #d91046;
 }
 
-.gameWindow {
-  height: 100vh;
-  width: 100%;
-  display: grid;
-  place-items: center;
-  background: url('../images/myoboku.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  overflow: hidden;
+.window--game {
+  background-image: url('../images/myoboku.jpg');
   position: relative;
 }
 
-.time {
+.window__time {
   position: absolute;
   top: 3%;
   right: 3%;
@@ -380,7 +391,7 @@ body {
   color: black;
 }
 
-.time span {
+.window__time span {
   margin-left: 50px;
 }
 
@@ -508,11 +519,11 @@ body {
 }
 
 /* classes used for javascript control --start-- */
-.welcomeWindow .overlay .leaderData > *.show {
+.overlay__data > *.show {
   display: flex;
 }
 
-.welcomeWindow .overlay .leaderData > *.show div {
+.overlay__data > *.show div {
   animation: grow;
   -webkit-animation: grow;
   animation-duration: 0.3s;
@@ -525,16 +536,16 @@ body {
   transform-origin: 50% 100% 0;
 }
 
-.welcomeWindow .overlay .leaderData > *.show div.first {
+.overlay__data > *.show div.first {
   animation-duration: 0.9s;
 }
 
-.welcomeWindow .overlay .leaderData > *.show div.second {
+.overlay__data > *.show div.second {
   animation-duration: 0.6s;
 }
 
-.welcomeWindow .overlay .leaderData > *.show p,
-.welcomeWindow .overlay .leaderData > *.show img {
+.overlay__data > *.show p,
+.overlay__data > *.show img {
   animation-name: fadeIn;
   animation-duration: 1s;
   animation-timing-function: linear;
@@ -546,9 +557,7 @@ body {
   -o-transform: translateY(0);
 }
 
-.welcomeWindow .overlay.hide {
-  /*display: none;
-  */
+.overlay.hide {
   transform: translateY(-100vh);
   -webkit-transform: translateY(-100vh);
   -moz-transform: translateY(-100vh);
@@ -556,13 +565,13 @@ body {
   -o-transform: translateY(-100vh);
 }
 
-.welcomeWindow .difficultyGroup input.active + label,
-.gameWindow .difficultyGroupInGame input.active + label {
+.window__difficulty input.active + label,
+.window--game .difficultyGroupInGame input.active + label {
   color: orange;
 }
 
-.welcomeWindow .difficultyGroup input.active + label img,
-.gameWindow .difficultyGroupInGame input.active + label img {
+.window__difficulty input.active + label img,
+.window--game .difficultyGroupInGame input.active + label img {
   transform: translate(0);
   -webkit-transform: translate(0);
   -moz-transform: translate(0);

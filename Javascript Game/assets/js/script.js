@@ -260,18 +260,6 @@ class MemoryGame {
     );
   }
 
-  // changes rank to word example: 1st to first
-  toWord(rank) {
-    switch (rank) {
-      case '1st':
-        return 'first';
-      case '2nd':
-        return 'second';
-      case '3rd':
-        return 'third';
-    }
-  }
-
   // replaces the current rank holder with the challenger
   replaceWithChallenger(rank) {
     this.changeRank(rank);
@@ -435,6 +423,7 @@ class MemoryGame {
   }
 
   playAgainClickHandler() {
+    this.yell();
     this.cleanGameContainer();
     this.resetGrid();
     this.resetValues();
@@ -678,6 +667,17 @@ class MemoryGame {
     return this.playerName;
   }
 
+  // plays the yellSFX
+  yell() {
+    const yellSFX = [
+      new Audio('./assets/sfx/rasengan.mp3'),
+      new Audio('./assets/sfx/shinra-tensei.mp3'),
+      new Audio('./assets/sfx/kamui.mp3'),
+    ];
+
+    return yellSFX[Math.floor(Math.random() * yellSFX.length)].play();
+  }
+
   // starts the game
   runGame(playerName) {
     this.setPlayerName(playerName);
@@ -702,7 +702,7 @@ class Welcome {
     this.rank_easy = document.getElementById('rank-easy');
     this.rank_medium = document.getElementById('rank-medium');
     this.rank_hard = document.getElementById('rank-hard');
-    this.rowLabels = document.querySelectorAll('.rowLabel p');
+    this.rowLabels = document.querySelectorAll('.overlay__difficulty p');
     this.easyData = document.getElementById('rank-easy');
     this.mediumData = document.getElementById('rank-medium');
     this.hardData = document.getElementById('rank-hard');
@@ -856,20 +856,9 @@ class Welcome {
     };
   }
 
-  // plays the yellSFX
-  yell() {
-    const yellSFX = [
-      new Audio('./assets/sfx/rasengan.mp3'),
-      new Audio('./assets/sfx/shinra-tensei.mp3'),
-      new Audio('./assets/sfx/kamui.mp3'),
-    ];
-
-    return yellSFX[Math.floor(Math.random() * yellSFX.length)].play();
-  }
-
   // starts the game when playNowBtn is clicked
   playNowBtnClickHandler(e) {
-    this.yell();
+    this.newGame.yell();
     this.newGame.fightingSpirit.play();
     e.preventDefault();
     e.target.disabled = 'true';

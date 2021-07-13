@@ -14,23 +14,27 @@
     />
   </head>
   <body>
-    <div class="welcomeWindow" id="welcomeWindow">
-      <div class="player">
-        <p>Player: <span id="playerID" class="playerID">Player01</span></p>
+    <div class="window window--welcome" id="welcomeWindow">
+      <div class="window__playerName">
+        <p>Player: <span id="playerID">Player01</span></p>
       </div>
       <img
-        class="logo disable-select"
+        class="window__logo disable-select"
         src="./assets/images/naruto-logo.png"
         alt="Naruto logo"
       />
       <h1 class="disable-select">Memory Game</h1>
 
-      <form class="disable-select" id="form">
-        <button id="play-now">
-          <img class="kunai" src="./assets/images/kunai.png" alt="kunai" /> Play
-          Now
+      <form class="window__form disable-select" id="form">
+        <button class="window__btn" id="play-now">
+          <img
+            class="window__kunai"
+            src="./assets/images/kunai.png"
+            alt="kunai"
+          />
+          Play Now
         </button>
-        <div class="difficultyGroup" id="difficultyGroup">
+        <div class="window__difficulty" id="difficultyGroup">
           <input type="radio" id="easy" value="easy" name="difficulty" />
           <label for="easy"
             ><img
@@ -57,32 +61,37 @@
           >
         </div>
       </form>
-      <button class="changeName" id="changeName">Change Name</button>
-      <button class="leaderboards" id="leaderboards">Leaderboards</button>
+      <button class="window__changeName" id="changeName">Change Name</button>
+      <button class="window__leaderboards" id="leaderboards">
+        Leaderboards
+      </button>
       <div class="overlay hide" id="overlay">
-        <div class="closeBtn" id="closeBtn">X</div>
+        <div class="overlay__closeBtn" id="closeBtn">X</div>
 
-        <div class="colHead">
+        <div class="overlay__title">
           <p>Leaderboards</p>
         </div>
 
-        <div class="rowLabel">
-          <p class="labelEasy">Easy</p>
-          <p class="labelMedium">Medium</p>
-          <p class="labelHard">Hard</p>
+        <div class="overlay__difficulty">
+          <p class="overlay__easyLabel">Easy</p>
+          <p class="overlay__mediumLabel">Medium</p>
+          <p class="overlay__hardLabel">Hard</p>
         </div>
 
-        <div class="leaderData" id="leaderData">
-          <div class="easyDifficulty" id="rank-easy"></div>
-          <div class="mediumDifficulty" id="rank-medium"></div>
-          <div class="hardDifficulty" id="rank-hard"></div>
+        <div class="overlay__data" id="leaderData">
+          <div id="rank-easy"></div>
+          <div id="rank-medium"></div>
+          <div id="rank-hard"></div>
         </div>
       </div>
     </div>
-    <main class="gameWindow disable-select">
-      <p class="time" id="time">Time:<span>0</span></p>
+    <main class="window window--game disable-select">
+      <p class="window__time" id="time">Time:<span>0</span></p>
       <div class="gameContainer" id="gameContainer"></div>
-      <button class="leaderboards" id="gameLeaderboards">
+      <button
+        class="window__leaderboards window__leaderboards--position"
+        id="gameLeaderboards"
+      >
         <i class="fas fa-trophy"></i>
       </button>
     </main>
