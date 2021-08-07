@@ -1,0 +1,194 @@
+.app {
+  background-image: url('https://wallpapercave.com/wp/VHH1EMf.jpg');
+  background-size: cover;
+  background-position: 80% center;
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+.app.Bug {
+  background-image: url('https://preview.redd.it/324tl5e2d1dy.png?auto=webp&s=867b6a1bcf16f5a35e94e5d17f0557dfc519692a');
+}
+
+.app.Dark {
+  background-image: url('https://wallpaperaccess.com/full/2975242.png');
+}
+
+.app.Electric {
+  background-image: url('https://wallpaperaccess.com/full/2025859.jpg');
+}
+
+.app.Fairy {
+  background-image: url('https://wallpapermemory.com/uploads/561/pokemon-background-full-hd-1920x1080-280334.jpg');
+}
+
+.app.Fighting {
+  background-image: url('https://images7.alphacoders.com/558/thumb-1920-558602.jpg');
+}
+
+.app.Fire {
+  background-image: url('https://i.pinimg.com/originals/e9/77/f9/e977f97005f69da75263076b0e78c9c4.jpg');
+}
+
+.app.Flying {
+  background-image: url('https://wallpaperaccess.com/full/666572.png');
+}
+
+.app.Ghost {
+  background-image: url('https://wallpapercave.com/wp/wp2538342.jpg');
+}
+
+.app.Grass {
+  background-image: url('https://pavbca.com/walldb/original/5/b/2/666060.jpg');
+}
+
+.app.Ground {
+  background-image: url('https://wallpapercave.com/wp/wp3607643.jpg');
+}
+
+.app.Ice {
+  background-image: url('https://wallpapercave.com/wp/wp2343536.png');
+}
+
+.app.Normal {
+  background-image: url('https://wallpapercave.com/wp/wp3058845.jpg');
+}
+
+.app.Poison {
+  background-image: url('https://wallpaperaccess.com/full/546943.jpg');
+}
+
+.app.Rock {
+  background-image: url('https://images8.alphacoders.com/558/thumb-1920-558628.jpg');
+}
+
+.app.Steel {
+  background-image: url('https://wallpapercave.com/wp/wp2433800.png');
+}
+
+.app.Water {
+  background-image: url('https://wallpaperaccess.com/full/172678.png');
+}
+
+.pokeTypeBtn {
+  width: 30%;
+  padding: 5px;
+  font-size: 15px;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border: none;
+  color: white;
+}
+
+.pokeTypeBtn.Bug {
+  background-color: var(--bug);
+  color: black;
+}
+.pokeTypeBtn.Dark {
+  background-color: var(--dark);
+}
+.pokeTypeBtn.Electric {
+  background-color: var(--electric);
+  color: black;
+}
+.pokeTypeBtn.Fairy {
+  background-color: var(--fairy);
+}
+.pokeTypeBtn.Fighting {
+  background-color: var(--fighting);
+}
+.pokeTypeBtn.Fire {
+  background-color: var(--fire);
+}
+.pokeTypeBtn.Flying {
+  background-color: var(--flying);
+}
+.pokeTypeBtn.Ghost {
+  background-color: var(--ghost);
+}
+.pokeTypeBtn.Grass {
+  background-color: var(--grass);
+}
+.pokeTypeBtn.Ground {
+  background-color: var(--ground);
+}
+.pokeTypeBtn.Ice {
+  background-color: var(--ice);
+  color: black;
+}
+.pokeTypeBtn.Normal {
+  background-color: var(--normal);
+}
+.pokeTypeBtn.Poison {
+  background-color: var(--poison);
+}
+.pokeTypeBtn.Rock {
+  background-color: var(--rock);
+}
+.pokeTypeBtn.Steel {
+  background-color: var(--steel);
+}
+.pokeTypeBtn.Water {
+  background-color: var(--water);
+}
+
+@media screen and (min-width: 768px) {
+  .app.Bug {
+    background-position: left bottom;
+  }
+
+  .app.Dark {
+    background-position: right bottom;
+  }
+
+  .app.Electric {
+    background-position: center;
+  }
+
+  .app.Fairy {
+    background-position: right center;
+  }
+
+  .app.Fighting {
+    background-position: right center;
+  }
+
+  .app.Fire {
+    background-position: 5% center;
+  }
+
+  .app.Flying {
+    background-position: right center;
+  }
+
+  .app.Ghost {
+    background-position: right center;
+  }
+
+  .app.Grass {
+    background-position: right bottom;
+  }
+
+  .app.Ground {
+    background-position: 90% center;
+  }
+
+  .app.Ice {
+    background-position: 95% center;
+  }
+
+  .app.Normal {
+    background-position: 80% center;
+  }
+
+  .app.Poison {
+    background-position: right center;
+  }
+
+  .app.Rock {
+    background-position: right center;
+  }
+}
