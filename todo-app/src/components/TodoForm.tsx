@@ -5,6 +5,8 @@ import { bindActionCreators } from 'redux';
 import { v4 as uuidv4 } from 'uuid';
 import { actionCreators, State } from '../state';
 
+import '../styles/TodoForm.css';
+
 const TodoForm = () => {
   const tasks = useSelector((state: State) => state.tasks);
 
@@ -53,10 +55,29 @@ const TodoForm = () => {
   };
 
   return (
-    <form>
-      <input type='text' value={newTask.name} onChange={inputChangeHandler} />
-      <input type='checkbox' onChange={checkBoxClickHandler} />
-      <button onClick={addTaskBtnClickHandler}>Add Task</button>
+    <form className='todoForm'>
+      <input
+        className='todoForm__input'
+        placeholder='New Task'
+        type='text'
+        value={newTask.name}
+        onChange={inputChangeHandler}
+      />
+      <p className='todoForm__status'>
+        <label htmlFor='statusCheckbox' className='todoForm__label'>
+          Done ?
+        </label>
+        <input
+          className='todoForm__checkbox'
+          type='checkbox'
+          onChange={checkBoxClickHandler}
+          id='statusCheckbox'
+        />
+      </p>
+
+      <button className='todoForm__button' onClick={addTaskBtnClickHandler}>
+        Add Task
+      </button>
     </form>
   );
 };

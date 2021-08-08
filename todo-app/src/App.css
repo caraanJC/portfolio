@@ -1,0 +1,15 @@
+.app {
+  background-color: var(--dark-grey);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 15px;
+}
+
+.app__title {
+  color: var(--light-grey);
+  font-size: 40px;
+  margin-bottom: 15px;
+}

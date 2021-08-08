@@ -1,0 +1,51 @@
+.todoForm {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  flex-direction: column;
+  width: 90%;
+  max-width: 850px;
+}
+
+.todoForm__input {
+  background-color: var(--card-bg-color);
+  outline-width: 0;
+  color: white;
+  padding: 10px 0px 10px 20px;
+  font-size: 20px;
+  width: 100%;
+  border: none;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+  margin-bottom: 5px;
+}
+
+.todoForm__input::placeholder {
+  color: var(--placeholder-text-color);
+}
+
+.todoForm__status {
+  display: flex;
+  align-items: center;
+}
+
+.todoForm__label {
+  color: var(--light-grey);
+  font-size: 25px;
+  margin-right: 5px;
+}
+
+.todoForm__checkbox {
+  margin-top: 5px;
+  zoom: 1.5;
+  outline-width: 0;
+  cursor: pointer;
+}
+
+.todoForm__button {
+  display: none;
+}

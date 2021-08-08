@@ -2,15 +2,17 @@ import { useSelector } from 'react-redux';
 import { State } from '../state';
 import TaskList from './TaskList';
 
+import '../styles/Tasks.css';
+
 const Tasks = () => {
   const tasks = useSelector((state: State) => state.tasks);
   return (
     <div className='tasks'>
       <div className='tasks__pending'>
         {[...tasks].find((task) => task.status === 'Pending') ? (
-          <h2>Pending Tasks</h2>
+          <h2 className='tasks__title'>Pending Tasks</h2>
         ) : (
-          'No Pending Tasks'
+          <h2 className='tasks__empty'>No Pending Tasks</h2>
         )}
         <ul>
           {[...tasks]
@@ -22,9 +24,9 @@ const Tasks = () => {
       </div>
       <div className='tasks__done'>
         {[...tasks].find((task) => task.status === 'Done') ? (
-          <h2>Done Tasks</h2>
+          <h2 className='tasks__title'>Done Tasks</h2>
         ) : (
-          'No Done Tasks'
+          <h2 className='tasks__empty'>No Done Tasks</h2>
         )}
         <ul>
           {[...tasks]
