@@ -1,0 +1,17 @@
+.cart {
+  width: 95%;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+.cart__list {
+  width: calc(100% - 10px);
+  margin: 0 auto;
+}
+
+.cart__total {
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  font-size: 20px;
+  padding: 10px;
+  margin-top: 20px;
+}

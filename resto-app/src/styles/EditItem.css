@@ -1,0 +1,55 @@
+.editItem {
+  width: 100%;
+  min-height: 437px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.editItem label,
+.editItem input,
+.editItem select {
+  font-size: 20px;
+  padding: 5px;
+}
+
+.editItem input {
+  width: calc(100% - 20px);
+  margin: 0 auto;
+  outline-width: 0;
+}
+
+.editItem select {
+  width: calc(100% - 5px);
+  margin: 0 auto;
+  outline-width: 0;
+}
+
+.editItem__cancel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline-width: 0;
+}
+
+.editItem p {
+  margin-bottom: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.editItem__button {
+  margin-top: 10px;
+  background-color: transparent;
+  border: 1px solid var(--text-blue-color);
+  text-transform: uppercase;
+  align-self: center;
+  padding: 5px 10px;
+  font-size: 25px;
+  outline-width: 0;
+  cursor: pointer;
+}
