@@ -24,3 +24,17 @@
   align-items: center;
   margin: 5px auto;
 }
+
+@media screen and (min-width: 768px) {
+  .menu {
+    width: 80%;
+  }
+  .menu__list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  .menu__category {
+    width: 30%;
+  }
+}

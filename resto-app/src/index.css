@@ -30,4 +30,5 @@ li {
   background-color: transparent;
   border: 1px solid var(--text-blue-color);
   font-size: 25px;
+  cursor: pointer;
 }

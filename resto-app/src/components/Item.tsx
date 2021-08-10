@@ -73,14 +73,14 @@ const Item: React.FC<IProps> = (props) => {
             Order
           </button>
           {isAdmin && (
-            <>
+            <p className='item__adminBtns'>
               <button className='item__button' onClick={editBtnClickHandler}>
                 Edit
               </button>
               <button className='item__button' onClick={deleteBtnClickHandler}>
                 Delete
               </button>
-            </>
+            </p>
           )}
         </>
       )}

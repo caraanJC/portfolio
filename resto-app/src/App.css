@@ -1,5 +1,6 @@
 .app {
-  padding-top: 50px;
+  padding-top: 20%;
+  padding-bottom: 20%;
 }
 
 .app__title {
@@ -8,4 +9,16 @@
   font-size: 35px;
   margin-bottom: 5px;
   font-weight: bold;
+}
+
+@media screen and (min-width: 768px) {
+  .app {
+    padding-top: 10%;
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  .app {
+    padding-top: 5%;
+  }
 }

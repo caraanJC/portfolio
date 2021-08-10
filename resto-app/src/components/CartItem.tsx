@@ -47,27 +47,32 @@ const CartItem: React.FC<IProps> = (props) => {
 
       <div className='cartItem__details'>
         <p className='cartItem__name'>{props.cartItem.name}</p>
-        <button
-          className='cartItem__button cartItem__button--plus'
-          onClick={plusButtonClickHandler}
-        >
-          <AddBoxIcon />
-        </button>
-        <button
-          className='cartItem__button cartItem__button--minus'
-          onClick={minuButtonClickHandler}
-        >
-          <IndeterminateCheckBoxIcon />
-        </button>
-        <button
-          className='cartItem__button cartItem__button--delete'
-          onClick={deleteButtonClickHandler}
-        >
-          <DeleteIcon />
-        </button>
+        <p className='cartItem__buttons'>
+          <button
+            className='cartItem__button cartItem__button--plus'
+            onClick={plusButtonClickHandler}
+          >
+            <AddBoxIcon />
+          </button>
+          <button
+            className='cartItem__button cartItem__button--minus'
+            onClick={minuButtonClickHandler}
+          >
+            <IndeterminateCheckBoxIcon />
+          </button>
+          <button
+            className='cartItem__button cartItem__button--delete'
+            onClick={deleteButtonClickHandler}
+          >
+            <DeleteIcon />
+          </button>
+        </p>
+
         <p className='cartItem__price'>
-          Php {props.cartItem.price} x {props.cartItem.count} = Php{' '}
-          {props.cartItem.price * props.cartItem.count}
+          Php {props.cartItem.price} x {props.cartItem.count}
+        </p>
+        <p className='cartItem__price'>
+          Total: Php {props.cartItem.price * props.cartItem.count}
         </p>
       </div>
     </li>

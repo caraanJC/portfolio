@@ -10,7 +10,7 @@ const AddItem = () => {
   const initialState = {
     name: '',
     price: 100,
-    category: 'Food',
+    category: 'Other',
     description: '',
     image: '',
     id: uuidv4(),
@@ -109,6 +109,7 @@ const AddItem = () => {
         {newItem.category === 'Other' && (
           <>
             <input
+              placeholder='Other'
               type='text'
               value={other}
               onChange={otherInputChangeHandler}
