@@ -58,12 +58,21 @@
   width: 100%;
 }
 
+@media screen and (min-width: 425px) {
+  .item {
+    width: 80%;
+  }
+}
+
 @media screen and (min-width: 768px) {
   .item {
     width: 40%;
   }
 }
 @media screen and (min-width: 1024px) {
+  .item {
+    width: 30%;
+  }
   .item__imgContainer {
     min-height: 330px;
   }
