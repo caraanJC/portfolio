@@ -1,10 +1,13 @@
 .app {
   padding-top: 20%;
   padding-bottom: 20%;
+  background-color: var(--sub-color-1);
+  min-height: 100vh;
+  padding-bottom: 15%;
 }
 
 .app__title {
-  color: #000a27;
+  color: var(--dominant);
   text-align: center;
   font-size: 35px;
   margin-bottom: 5px;
@@ -14,6 +17,7 @@
 @media screen and (min-width: 768px) {
   .app {
     padding-top: 10%;
+    padding-bottom: 5%;
   }
 }
 

@@ -72,9 +72,6 @@ const EditItem: React.FC<IProps> = (props) => {
 
   return (
     <form className='editItem'>
-      <button className='editItem__cancel' onClick={closeBtnClickHandler}>
-        <CancelIcon />
-      </button>
       <p>
         <label htmlFor={`editName-${props.item.id}`}>Name: </label>
         <input
@@ -139,8 +136,11 @@ const EditItem: React.FC<IProps> = (props) => {
           id={`editPriority-${props.item.id}`}
         />
       </p>
-      <button className='editItem__button' onClick={saveBtnClickHandler}>
+      <button className='button button--edit' onClick={saveBtnClickHandler}>
         Save
+      </button>
+      <button className='editItem__cancel' onClick={closeBtnClickHandler}>
+        <CancelIcon />
       </button>
     </form>
   );

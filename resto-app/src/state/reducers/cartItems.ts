@@ -40,6 +40,14 @@ const reducer = (state: IState['cartItems'] = [], action: ActionCartItems) => {
     case ActionType.DELETE_CART_ITEM:
       return state.filter((cartItem) => cartItem.id !== action.payload);
 
+    case ActionType.EDIT_CART_ITEM_PRICE:
+      return state.map((cartItem) => {
+        if (cartItem.name === action.payload) {
+          cartItem.price = action.payload2;
+        }
+        return cartItem;
+      });
+
     case ActionType.EMPTY_CART:
       return [];
 

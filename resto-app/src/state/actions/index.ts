@@ -84,6 +84,11 @@ interface DeleteCartItem {
 interface EmptyCart {
   type: ActionType.EMPTY_CART;
 }
+interface EditCartItemPrice {
+  type: ActionType.EDIT_CART_ITEM_PRICE;
+  payload: string;
+  payload2: number;
+}
 
 interface SetTotal {
   type: ActionType.SET_TOTAL;
@@ -107,7 +112,8 @@ export type ActionCartItems =
   | DecreaseCartItem
   | DeleteCartItem
   | IncreaseCartItem
-  | EmptyCart;
+  | EmptyCart
+  | EditCartItemPrice;
 
 export type ActionTotal = SetTotal;
 export type ActionIsAdmin = SetIsAdmin;

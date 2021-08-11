@@ -1,5 +1,5 @@
 import Menu from './components/Menu';
-import './App.css';
+import './styles/App.css';
 
 import Nav from './components/Nav';
 import { useEffect } from 'react';
@@ -22,25 +22,21 @@ function App() {
     dispatch
   );
 
-  useEffect(() => {
+  const itemsUseEffect = () => {
     const distinct = (value: string, index: number, self: string[]) => {
       return self.indexOf(value) === index;
     };
+    initializeCategories(
+      [...items]
+        .map((item) => {
+          return item.category;
+        })
+        .filter(distinct)
+        .sort()
+    );
+  };
 
-    let categories: string[] = [];
-    [...items].map((item) => {
-      categories.push(item.category);
-      return item;
-    });
-
-    categories = categories.filter(distinct);
-    categories.sort();
-
-    initializeCategories(categories);
-    // eslint-disable-next-line
-  }, [items]);
-
-  useEffect(() => {
+  const cartItemsUseEffect = () => {
     let count = 0;
     let total = 0;
     [...cartItems].map((cartItem) => {
@@ -48,10 +44,14 @@ function App() {
       total += cartItem.count * cartItem.price;
       return cartItem;
     });
+
     setTotal(total);
     setCartCount(count);
-    // eslint-disable-next-line
-  }, [cartItems]);
+  };
+
+  useEffect(itemsUseEffect, [items, itemsUseEffect]);
+
+  useEffect(cartItemsUseEffect, [cartItems, cartItemsUseEffect]);
   return (
     <div className='app'>
       <Nav />

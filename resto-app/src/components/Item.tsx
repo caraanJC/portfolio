@@ -29,7 +29,7 @@ const Item: React.FC<IProps> = (props) => {
     bindActionCreators(actionCreators, dispatch);
 
   const orderBtnClickHandler = () => {
-    const isExisting = cartItems.find(
+    const isExisting = [...cartItems].find(
       (cartItem) => cartItem.id === props.item.id
     );
     if (isExisting) {
@@ -69,15 +69,15 @@ const Item: React.FC<IProps> = (props) => {
             <p className='item__name'>{props.item.name}</p>
             <p className='item__price'>Php {props.item.price}</p>
           </div>
-          <button className='item__button' onClick={orderBtnClickHandler}>
+          <button className='button' onClick={orderBtnClickHandler}>
             Order
           </button>
           {isAdmin && (
             <p className='item__adminBtns'>
-              <button className='item__button' onClick={editBtnClickHandler}>
+              <button className='button' onClick={editBtnClickHandler}>
                 Edit
               </button>
-              <button className='item__button' onClick={deleteBtnClickHandler}>
+              <button className='button' onClick={deleteBtnClickHandler}>
                 Delete
               </button>
             </p>

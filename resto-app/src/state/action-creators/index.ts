@@ -145,6 +145,15 @@ const emptyCart = () => {
     });
   };
 };
+const editCartItemPrice = (name: string, price: number) => {
+  return (dispatch: Dispatch<ActionCartItems>) => {
+    dispatch({
+      type: ActionType.EDIT_CART_ITEM_PRICE,
+      payload: name,
+      payload2: price,
+    });
+  };
+};
 
 const setTotal = (num: number) => {
   return (dispatch: Dispatch<ActionTotal>) => {
@@ -174,6 +183,7 @@ export {
   deleteCartItem,
   increaseCartItem,
   emptyCart,
+  editCartItemPrice,
 };
 export { setTotal };
 
