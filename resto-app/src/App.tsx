@@ -17,10 +17,8 @@ function App() {
 
   const dispatch = useDispatch();
 
-  const { initializeCategories, setCartCount, setTotal } = bindActionCreators(
-    actionCreators,
-    dispatch
-  );
+  const { initializeCategories, setCartCount, setTotal, editCartItem } =
+    bindActionCreators(actionCreators, dispatch);
 
   const itemsUseEffect = () => {
     const distinct = (value: string, index: number, self: string[]) => {
@@ -29,6 +27,21 @@ function App() {
     initializeCategories(
       [...items]
         .map((item) => {
+          const changedCartItem = [...cartItems].find(
+            (cartItem) => cartItem.id === item.id
+          );
+
+          if (changedCartItem) {
+            if (
+              changedCartItem.name !== item.name ||
+              changedCartItem.price !== item.price ||
+              changedCartItem.image !== item.image ||
+              changedCartItem.category !== item.category ||
+              changedCartItem.priority !== item.priority
+            ) {
+              editCartItem({ ...item, count: changedCartItem.count });
+            }
+          }
           return item.category;
         })
         .filter(distinct)

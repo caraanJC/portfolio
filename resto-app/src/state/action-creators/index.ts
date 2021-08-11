@@ -145,12 +145,11 @@ const emptyCart = () => {
     });
   };
 };
-const editCartItemPrice = (name: string, price: number) => {
+const editCartItem = (cartItem: IParams['cartItem']) => {
   return (dispatch: Dispatch<ActionCartItems>) => {
     dispatch({
-      type: ActionType.EDIT_CART_ITEM_PRICE,
-      payload: name,
-      payload2: price,
+      type: ActionType.EDIT_CART_ITEM,
+      payload: cartItem,
     });
   };
 };
@@ -183,7 +182,7 @@ export {
   deleteCartItem,
   increaseCartItem,
   emptyCart,
-  editCartItemPrice,
+  editCartItem,
 };
 export { setTotal };
 

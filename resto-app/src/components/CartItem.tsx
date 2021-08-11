@@ -52,19 +52,19 @@ const CartItem: React.FC<IProps> = (props) => {
             className='cartItem__button cartItem__button--plus'
             onClick={plusButtonClickHandler}
           >
-            <AddBoxIcon />
+            <AddBoxIcon fontSize='large' />
           </button>
           <button
             className='cartItem__button cartItem__button--minus'
             onClick={minuButtonClickHandler}
           >
-            <IndeterminateCheckBoxIcon />
+            <IndeterminateCheckBoxIcon fontSize='large' />
           </button>
           <button
             className='cartItem__button cartItem__button--delete'
             onClick={deleteButtonClickHandler}
           >
-            <DeleteIcon />
+            <DeleteIcon fontSize='large' />
           </button>
         </p>
 

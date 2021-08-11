@@ -85,7 +85,7 @@ const Nav = () => {
 
         <div className='nav__cart'>
           <NavLink className='nav__link' to='/cart' activeClassName='selected'>
-            <ShoppingCartIcon />
+            <ShoppingCartIcon fontSize='large' />
           </NavLink>
           <span className='nav__count'>{cartCount}</span>
         </div>

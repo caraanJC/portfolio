@@ -19,13 +19,18 @@ interface IParams {
 
 const Menu = () => {
   const items = useSelector((state: State) => state.items);
+  const cartItems = useSelector((state: State) => state.cartItems);
   const categories = useSelector((state: State) => state.categories);
+  const total = useSelector((state: State) => state.total);
   const selectedCategory = useSelector(
     (state: State) => state.selectedCategory
   );
 
   const dispatch = useDispatch();
-  const { setSelectedCategory } = bindActionCreators(actionCreators, dispatch);
+  const { setSelectedCategory, emptyCart } = bindActionCreators(
+    actionCreators,
+    dispatch
+  );
 
   const selectChangeHandler = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedCategory(e.target.value);
@@ -39,6 +44,13 @@ const Menu = () => {
       return 1;
     }
     return 0;
+  };
+  const checkoutBtnClickHandler = () => {
+    alert(`
+    Thank You for Your Purchase!!!! 
+    Total: Php ${total}
+    `);
+    emptyCart();
   };
 
   return (
@@ -66,6 +78,21 @@ const Menu = () => {
             <Item item={item} key={item.id} />
           ))}
       </ul>
+      <div className='cart__total'>
+        {[...cartItems].length === 0 ? (
+          <p>Empty Cart</p>
+        ) : (
+          <>
+            <p>Total: Php {total}</p>
+            <button
+              className='cart__checkout button'
+              onClick={checkoutBtnClickHandler}
+            >
+              Checkout
+            </button>
+          </>
+        )}
+      </div>
     </main>
   );
 };

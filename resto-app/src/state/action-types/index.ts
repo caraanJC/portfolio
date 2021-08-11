@@ -15,7 +15,7 @@ export enum ActionType {
   INCREASE_CART_ITEM = 'increaseCartItem',
   DECREASE_CART_ITEM = 'decreaseCartItem',
   DELETE_CART_ITEM = 'deleteCartItem',
-  EDIT_CART_ITEM_PRICE = 'editCartItemPrice',
+  EDIT_CART_ITEM = 'editCartItem',
   EMPTY_CART = 'emptyCart',
 
   SET_TOTAL = 'setTotal',

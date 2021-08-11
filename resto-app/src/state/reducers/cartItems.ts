@@ -40,10 +40,25 @@ const reducer = (state: IState['cartItems'] = [], action: ActionCartItems) => {
     case ActionType.DELETE_CART_ITEM:
       return state.filter((cartItem) => cartItem.id !== action.payload);
 
-    case ActionType.EDIT_CART_ITEM_PRICE:
+    case ActionType.EDIT_CART_ITEM:
       return state.map((cartItem) => {
-        if (cartItem.name === action.payload) {
-          cartItem.price = action.payload2;
+        if (cartItem.id === action.payload.id) {
+          console.log('yolo');
+          if (cartItem.name !== action.payload.name) {
+            cartItem.name = action.payload.name;
+          }
+          if (cartItem.price !== action.payload.price) {
+            cartItem.price = action.payload.price;
+          }
+          if (cartItem.image !== action.payload.image) {
+            cartItem.image = action.payload.image;
+          }
+          if (cartItem.category !== action.payload.category) {
+            cartItem.category = action.payload.category;
+          }
+          if (cartItem.priority !== action.payload.priority) {
+            cartItem.priority = action.payload.priority;
+          }
         }
         return cartItem;
       });

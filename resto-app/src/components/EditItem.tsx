@@ -21,6 +21,7 @@ interface IProps {
 }
 
 const EditItem: React.FC<IProps> = (props) => {
+  const items = useSelector((state: State) => state.items);
   const categories = useSelector((state: State) => state.categories);
 
   const dispatch = useDispatch();
@@ -49,6 +50,23 @@ const EditItem: React.FC<IProps> = (props) => {
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
     e.preventDefault();
+    let same = false;
+    [...items].map((item) => {
+      if (
+        item.id === newItem.id &&
+        item.name === newItem.name &&
+        item.price === newItem.price &&
+        item.image === newItem.image &&
+        item.category === newItem.category &&
+        item.priority === newItem.priority
+      ) {
+        same = true;
+      }
+      return item;
+    });
+    if (same) {
+      return props.setEditToFalse();
+    }
     if (
       !newItem.name ||
       !newItem.price ||

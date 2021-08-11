@@ -85,9 +85,17 @@ interface EmptyCart {
   type: ActionType.EMPTY_CART;
 }
 interface EditCartItemPrice {
-  type: ActionType.EDIT_CART_ITEM_PRICE;
-  payload: string;
-  payload2: number;
+  type: ActionType.EDIT_CART_ITEM;
+  payload: {
+    name: string;
+    price: number;
+    category: string;
+    description: string;
+    image: string;
+    id: string;
+    priority: number;
+    count: number;
+  };
 }
 
 interface SetTotal {

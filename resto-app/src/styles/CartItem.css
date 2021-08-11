@@ -5,11 +5,12 @@
   margin-bottom: 20px;
   background-color: var(--dominant);
   color: var(--sub-color-1);
+  width: 90%;
+  margin: 10px auto;
 }
 
 .cartItem__imgContainer {
   width: 30%;
-  background-color: var(--sub-color-3);
   padding: 10px;
   display: flex;
   align-items: center;
@@ -48,16 +49,7 @@
   color: var(--sub-color-3);
 }
 
-@media screen and (min-width: 768px) {
-  .cartItem {
-    width: 40%;
-  }
-}
-
 @media screen and (min-width: 1440px) {
-  .cartItem {
-    width: 40%;
-  }
   .cartItem__name {
     font-size: 35px;
   }

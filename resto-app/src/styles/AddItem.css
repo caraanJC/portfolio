@@ -4,26 +4,29 @@
   align-items: flex-start;
   justify-content: space-evenly;
   min-height: 55vh;
-  margin: 0 auto;
-  width: 85%;
-  color: var(--dominant);
+  margin: 20px auto;
+  width: calc(100% - 20px);
+  padding: 10px;
+  color: var(--sub-color-1);
 }
 
 .addItem label {
   font-size: 25px;
   width: 100%;
   margin-bottom: 10px;
+  display: block;
 }
 .addItem input,
 .addItem select {
+  width: 95%;
   font-size: 25px;
-  width: 100%;
   margin-bottom: 10px;
   background-color: var(--sub-color-1);
   border: 1px solid var(--dominant);
   color: var(--dominant);
   outline-width: 0;
   padding: 5px;
+  max-width: 350px;
 }
 
 .addItem input::placeholder {
@@ -33,13 +36,17 @@
 .addItem__button {
   margin-top: 10px;
   cursor: pointer;
-  color: var(--sub-color-3);
-  border: 1px solid var(--sub-color-3);
+  color: var(--sub-color-1);
+  border: 1px solid var(--sub-color-1);
+  align-self: center;
 }
 
 @media screen and (min-width: 768px) {
   .addItem {
     width: 70%;
+  }
+  .addItem__button {
+    align-self: flex-start;
   }
 }
 
