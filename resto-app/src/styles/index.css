@@ -5,10 +5,6 @@
   --sub-color-3: #7c7a8b;
 }
 
-@font-face {
-  font-family: 'Rude';
-  src: url('../assets/fonts/Rude\ 400.ttf');
-}
 * {
   margin: 0;
   padding: 0;
@@ -18,7 +14,6 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  min-height: 100vh;
 }
 
 li {

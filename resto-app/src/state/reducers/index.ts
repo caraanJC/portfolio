@@ -6,6 +6,10 @@ import cartCount from './cartCount';
 import cartItems from './cartItems';
 import total from './total';
 import isAdmin from './isAdmin';
+import isUser from './isUser';
+import users from './users';
+import usersCartItems from './usersCartItems';
+import currentUser from './currentUser';
 
 const reducers = combineReducers({
   items,
@@ -15,6 +19,10 @@ const reducers = combineReducers({
   cartItems,
   total,
   isAdmin,
+  users,
+  isUser,
+  usersCartItems,
+  currentUser,
 });
 
 export default reducers;

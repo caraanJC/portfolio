@@ -15,20 +15,20 @@ import { useState } from 'react';
 const Nav = () => {
   const cartCount = useSelector((state: State) => state.cartCount);
   const isAdmin = useSelector((state: State) => state.isAdmin);
+  const isUser = useSelector((state: State) => state.isUser);
 
   const dispatch = useDispatch();
-  const { setIsAdmin } = bindActionCreators(actionCreators, dispatch);
+  const { setIsAdmin, setIsUser, setCurrentUser, emptyCart } =
+    bindActionCreators(actionCreators, dispatch);
 
   const [show, setShow] = useState('');
 
-  const adminClickHandler = () => {
-    setIsAdmin(true);
-    setShow('');
-  };
-
   const logoutClickHandler = () => {
     setIsAdmin(false);
+    setIsUser(false);
     setShow('');
+    setCurrentUser('');
+    emptyCart();
   };
 
   return (
@@ -50,45 +50,61 @@ const Nav = () => {
           >
             Home
           </NavLink>
-          {!isAdmin && (
-            <NavLink
-              exact
-              to='/'
-              className='nav__link nav__link--admin'
-              onClick={adminClickHandler}
-            >
-              Admin
-            </NavLink>
-          )}
-
-          {isAdmin && (
+          {!isAdmin && !isUser && (
             <>
               <NavLink
-                to='/addItem'
-                className='nav__link nav__link--addItem'
                 activeClassName='selected'
+                exact
+                to='/login'
+                className='nav__link nav__link--admin'
                 onClick={() => setShow('')}
               >
-                Add Item
+                Login
               </NavLink>
               <NavLink
+                activeClassName='selected'
                 exact
-                to='/'
-                className='nav__link nav__link--logout'
-                onClick={logoutClickHandler}
+                to='/register'
+                className='nav__link nav__link--admin'
+                onClick={() => setShow('')}
               >
-                Logout
+                Register
               </NavLink>
             </>
           )}
+          {isAdmin && (
+            <NavLink
+              to='/addItem'
+              className='nav__link nav__link--addItem'
+              activeClassName='selected'
+              onClick={() => setShow('')}
+            >
+              Add Item
+            </NavLink>
+          )}
+          {(isAdmin || isUser) && (
+            <NavLink
+              exact
+              to='/'
+              className='nav__link nav__link--logout'
+              onClick={logoutClickHandler}
+            >
+              Logout
+            </NavLink>
+          )}
         </div>
-
-        <div className='nav__cart'>
-          <NavLink className='nav__link' to='/cart' activeClassName='selected'>
-            <ShoppingCartIcon fontSize='large' />
-          </NavLink>
-          <span className='nav__count'>{cartCount}</span>
-        </div>
+        {isUser && (
+          <div className='nav__cart'>
+            <NavLink
+              className='nav__link'
+              to='/cart'
+              activeClassName='selected'
+            >
+              <ShoppingCartIcon fontSize='large' />
+            </NavLink>
+            <span className='nav__count'>{cartCount}</span>
+          </div>
+        )}
       </ul>
     </nav>
   );

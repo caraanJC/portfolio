@@ -1,0 +1,52 @@
+.register {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 60vh;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.register__username,
+.register__password,
+.register__confirmPassword {
+  width: 70%;
+  padding: 5px;
+  font-size: 25px;
+  outline-width: 0;
+  margin-bottom: 10px;
+  border: none;
+  background-color: var(--dominant);
+  color: white;
+}
+
+.register__username::placeholder,
+.register__password::placeholder,
+.register__confirmPassword::placeholder {
+  color: var(--sub-color-1);
+}
+
+.register__btn {
+  width: calc(70% + 10px);
+  font-size: 25px;
+  padding: 5px 10px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  border: none;
+  font-family: inherit;
+  cursor: pointer;
+  background-color: var(--sub-color-1);
+}
+
+@media screen and (min-width: 768px) {
+  .register {
+    width: 50%;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .register {
+    width: 40%;
+  }
+}

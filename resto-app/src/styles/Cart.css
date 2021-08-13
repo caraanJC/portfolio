@@ -2,6 +2,8 @@
   width: 95%;
   margin: 0 auto;
   padding: 10px;
+  margin-top: 15%;
+  margin-bottom: 20%;
 }
 
 .cart__list {
@@ -38,12 +40,7 @@
 @media screen and (min-width: 768px) {
   .cart {
     width: 80%;
-    margin-bottom: 50px;
-  }
-  .cart__list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    margin: 0 auto;
   }
 
   .cart__checkout {
@@ -52,11 +49,26 @@
 }
 
 @media screen and (min-width: 1440px) {
+  .cart {
+    margin-top: 5%;
+    margin-bottom: 5%;
+    display: flex;
+  }
+  .cart__list {
+    width: 50%;
+  }
   .cart__total {
     font-size: 35px;
     padding: 20px;
+    width: 20%;
+    position: static;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
   }
   .cart__checkout {
     font-size: 35px;
+    margin-top: 20px;
   }
 }

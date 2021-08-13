@@ -21,6 +21,7 @@ interface IProps {
 const Item: React.FC<IProps> = (props) => {
   const cartItems = useSelector((state: State) => state.cartItems);
   const isAdmin = useSelector((state: State) => state.isAdmin);
+  const isUser = useSelector((state: State) => state.isUser);
 
   const [edit, setEdit] = useState(false);
 
@@ -30,7 +31,7 @@ const Item: React.FC<IProps> = (props) => {
 
   const orderBtnClickHandler = () => {
     const isExisting = [...cartItems].find(
-      (cartItem) => cartItem.id === props.item.id
+      (cartItem) => cartItem['id'] === props.item.id
     );
     if (isExisting) {
       return increaseCartItem(props.item.id);
@@ -69,9 +70,11 @@ const Item: React.FC<IProps> = (props) => {
             <p className='item__name'>{props.item.name}</p>
             <p className='item__price'>Php {props.item.price}</p>
           </div>
-          <button className='button' onClick={orderBtnClickHandler}>
-            Order
-          </button>
+          {isUser && (
+            <button className='button' onClick={orderBtnClickHandler}>
+              Order
+            </button>
+          )}
           {isAdmin && (
             <p className='item__adminBtns'>
               <button className='button' onClick={editBtnClickHandler}>

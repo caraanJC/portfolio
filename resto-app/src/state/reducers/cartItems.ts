@@ -16,6 +16,9 @@ interface IState {
 
 const reducer = (state: IState['cartItems'] = [], action: ActionCartItems) => {
   switch (action.type) {
+    case ActionType.INITIALIZE_CART_ITEMS:
+      return action.payload;
+
     case ActionType.ADD_CART_ITEM:
       return [...state, action.payload];
 
@@ -43,7 +46,6 @@ const reducer = (state: IState['cartItems'] = [], action: ActionCartItems) => {
     case ActionType.EDIT_CART_ITEM:
       return state.map((cartItem) => {
         if (cartItem.id === action.payload.id) {
-          console.log('yolo');
           if (cartItem.name !== action.payload.name) {
             cartItem.name = action.payload.name;
           }

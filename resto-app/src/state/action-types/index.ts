@@ -11,6 +11,7 @@ export enum ActionType {
 
   SET_CART_COUNT = 'setCartCount',
 
+  INITIALIZE_CART_ITEMS = 'initializeCartItems',
   ADD_CART_ITEM = 'addCartItem',
   INCREASE_CART_ITEM = 'increaseCartItem',
   DECREASE_CART_ITEM = 'decreaseCartItem',
@@ -20,5 +21,14 @@ export enum ActionType {
 
   SET_TOTAL = 'setTotal',
 
+  ADD_USER = 'addUser',
+  RESET_USERS = 'resetUsers',
+
   SET_IS_ADMIN = 'setIsAdmin',
+  SET_IS_USER = 'setIsUser',
+
+  ADD_TO_USERS_CART_ITEMS = 'addToUsersCartItems',
+  REMOVE_FROM_USERS_CART_ITEMS = 'removeFromUsersCartItems',
+
+  SET_CURRENT_USER = 'setCurrentUser',
 }

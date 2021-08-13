@@ -3,11 +3,11 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-evenly;
-  min-height: 55vh;
   margin: 20px auto;
   width: calc(100% - 20px);
   padding: 10px;
   color: var(--sub-color-1);
+  margin-top: 15%;
 }
 
 .addItem label {
@@ -15,15 +15,16 @@
   width: 100%;
   margin-bottom: 10px;
   display: block;
+  color: black;
 }
 .addItem input,
 .addItem select {
   width: 95%;
   font-size: 25px;
   margin-bottom: 10px;
-  background-color: var(--sub-color-1);
-  border: 1px solid var(--dominant);
-  color: var(--dominant);
+  background-color: var(--dominant);
+  border: none;
+  color: var(--sub-color-1);
   outline-width: 0;
   padding: 5px;
   max-width: 350px;
@@ -36,8 +37,8 @@
 .addItem__button {
   margin-top: 10px;
   cursor: pointer;
-  color: var(--sub-color-1);
-  border: 1px solid var(--sub-color-1);
+  color: black;
+  border: 1px solid black;
   align-self: center;
 }
 
@@ -52,6 +53,6 @@
 
 @media screen and (min-width: 1920px) {
   .addItem {
-    margin-top: 50px;
+    margin-top: 10%;
   }
 }

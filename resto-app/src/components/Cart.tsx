@@ -4,13 +4,18 @@ import CartItem from './CartItem';
 
 import '../styles/Cart.css';
 import { bindActionCreators } from 'redux';
+import { useEffect } from 'react';
 
 const Cart = () => {
+  const items = useSelector((state: State) => state.items);
   const cartItems = useSelector((state: State) => state.cartItems);
   const total = useSelector((state: State) => state.total);
 
   const dispatch = useDispatch();
-  const { emptyCart } = bindActionCreators(actionCreators, dispatch);
+  const { emptyCart, editCartItem } = bindActionCreators(
+    actionCreators,
+    dispatch
+  );
 
   const checkoutBtnClickHandler = () => {
     alert(`
@@ -20,11 +25,35 @@ const Cart = () => {
     emptyCart();
   };
 
+  useEffect(() => {
+    [...items].map((item) => {
+      const changedCartItem = [...cartItems].find(
+        (cartItem) => cartItem['id'] === item.id
+      );
+
+      console.log(changedCartItem);
+
+      if (changedCartItem) {
+        if (
+          changedCartItem.name !== item.name ||
+          changedCartItem.price !== item.price ||
+          changedCartItem.image !== item.image ||
+          changedCartItem.category !== item.category ||
+          changedCartItem.priority !== item.priority
+        ) {
+          editCartItem({ ...item, count: changedCartItem.count });
+        }
+      }
+      return item;
+    });
+    // eslint-disable-next-line
+  }, []);
+
   return (
     <div className='cart'>
       <ul className='cart__list'>
         {[...cartItems].map((cartItem) => (
-          <CartItem cartItem={cartItem} key={cartItem.id} />
+          <CartItem cartItem={cartItem} key={cartItem['id']} />
         ))}
       </ul>
       <div className='cart__total'>
