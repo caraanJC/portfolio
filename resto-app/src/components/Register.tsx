@@ -67,6 +67,7 @@ const Register = () => {
 
     addUser({ username: newUser.username, password: newUser.password });
     setNewUser(initialNewUser);
+    alert('Registered Successfully');
     history.push('/login');
   };
 
@@ -100,7 +101,7 @@ const Register = () => {
         render={({ history }) => (
           <button
             onClick={(e) => registerBtnClickHandler(e, history)}
-            className='register__btn'
+            className='register__btn button'
           >
             Register
           </button>

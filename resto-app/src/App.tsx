@@ -25,7 +25,6 @@ function App() {
     initializeCategories,
     setCartCount,
     setTotal,
-
     initializeCartItems,
     addToUsersCartItems,
   } = bindActionCreators(actionCreators, dispatch);
@@ -63,7 +62,7 @@ function App() {
   }, [cartItems]);
 
   useEffect(() => {
-    if (currentUser) {
+    if (currentUser !== '' && currentUser !== 'admin') {
       const userCart = [...usersCartItems].find(
         (userCartItems) => userCartItems.username === currentUser
       );

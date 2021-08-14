@@ -16,6 +16,7 @@ const Nav = () => {
   const cartCount = useSelector((state: State) => state.cartCount);
   const isAdmin = useSelector((state: State) => state.isAdmin);
   const isUser = useSelector((state: State) => state.isUser);
+  const currentUser = useSelector((state: State) => state.currentUser);
 
   const dispatch = useDispatch();
   const { setIsAdmin, setIsUser, setCurrentUser, emptyCart } =
@@ -93,16 +94,21 @@ const Nav = () => {
             </NavLink>
           )}
         </div>
-        {isUser && (
+        {(isUser || isAdmin) && (
           <div className='nav__cart'>
-            <NavLink
-              className='nav__link'
-              to='/cart'
-              activeClassName='selected'
-            >
-              <ShoppingCartIcon fontSize='large' />
-            </NavLink>
-            <span className='nav__count'>{cartCount}</span>
+            <span className='nav__user'>{currentUser}</span>
+            {!isAdmin && (
+              <>
+                <NavLink
+                  className='nav__link'
+                  to='/cart'
+                  activeClassName='selected'
+                >
+                  <ShoppingCartIcon fontSize='large' />
+                </NavLink>
+                <span className='nav__count'>{cartCount}</span>
+              </>
+            )}
           </div>
         )}
       </ul>

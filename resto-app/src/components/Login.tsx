@@ -47,6 +47,7 @@ const Login = () => {
     if (userCheck['password'] === userCredentials.password) {
       if (userCheck['username'] === 'admin') {
         setIsAdmin(true);
+        setCurrentUser(userCredentials.username);
         setUserCredentials({
           username: '',
           password: '',
@@ -82,7 +83,7 @@ const Login = () => {
         render={({ history }) => (
           <button
             onClick={(e) => loginBtnClickHandler(e, history)}
-            className='login__btn'
+            className='login__btn button'
           >
             Login
           </button>

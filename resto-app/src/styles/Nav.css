@@ -1,5 +1,4 @@
 .nav {
-  padding: 5px 10px 5px 20px;
   display: flex;
   justify-content: space-between;
   margin-bottom: 10px;
@@ -9,8 +8,10 @@
   top: 0;
   left: 0;
   right: 0;
-  background-color: var(--dominant);
+  background-color: var(--secondary);
   z-index: 5;
+  padding: 0 5%;
+  height: 5vh;
 }
 
 .nav__burger {
@@ -21,13 +22,13 @@
   -moz-transform: scale(1.5);
   -ms-transform: scale(1.5);
   -o-transform: scale(1.5);
-  color: var(--sub-color-1);
+  color: var(--tertiary);
   cursor: pointer;
 }
 
 .nav__link {
   text-decoration: none;
-  color: var(--sub-color-3);
+  color: var(--tertiary);
   font-size: 20px;
   margin-bottom: 20px;
 }
@@ -39,7 +40,7 @@
   top: 0;
   left: 0;
   width: 50%;
-  background-color: var(--dominant);
+  background-color: var(--secondary);
   height: 100vh;
   align-items: center;
   justify-content: flex-start;
@@ -77,8 +78,8 @@
 .selected {
   transition: 0.3s all ease-in-out;
   padding: 5px;
-  color: var(--sub-color-1);
-  border-bottom: 1px solid var(--sub-color-2);
+  color: var(--primary);
+  font-weight: bold;
   -webkit-transition: 0.3s all ease-in-out;
   -moz-transition: 0.3s all ease-in-out;
   -ms-transition: 0.3s all ease-in-out;
@@ -91,6 +92,11 @@
 
 .nav__link--logout {
   margin-top: 50px;
+}
+
+.nav__user {
+  color: var(--tertiary);
+  font-size: 20px;
 }
 
 .nav__cart {
@@ -115,14 +121,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--dominant);
+  color: var(--tertiary);
+  background-color: var(--primary);
   padding: 2px;
 }
 
 @media screen and (min-width: 768px) {
-  .nav {
-    padding: 1% 10%;
-  }
   .nav__burger {
     display: none;
   }

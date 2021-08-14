@@ -31,8 +31,6 @@ const Cart = () => {
         (cartItem) => cartItem['id'] === item.id
       );
 
-      console.log(changedCartItem);
-
       if (changedCartItem) {
         if (
           changedCartItem.name !== item.name ||
@@ -56,6 +54,7 @@ const Cart = () => {
           <CartItem cartItem={cartItem} key={cartItem['id']} />
         ))}
       </ul>
+
       <div className='cart__total'>
         {[...cartItems].length === 0 ? (
           <p>Empty Cart</p>

@@ -80,7 +80,10 @@ const Item: React.FC<IProps> = (props) => {
               <button className='button' onClick={editBtnClickHandler}>
                 Edit
               </button>
-              <button className='button' onClick={deleteBtnClickHandler}>
+              <button
+                className='button button--warning'
+                onClick={deleteBtnClickHandler}
+              >
                 Delete
               </button>
             </p>

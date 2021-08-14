@@ -41,7 +41,7 @@ const reducer = (state = initialState, action: ActionUsersCartItems) => {
         (userCartItems) => userCartItems.username !== action.payload
       );
     default:
-      return state.filter((userCartItems) => userCartItems.username !== '');
+      return state;
   }
 };
 
