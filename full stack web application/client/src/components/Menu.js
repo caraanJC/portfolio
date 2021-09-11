@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { distinct } from '../helper';
+import { distinct, notify } from '../helper';
 import { actionCreators } from '../state';
 import '../styles/Menu.css';
 
@@ -12,42 +12,44 @@ const Menu = () => {
   const currentUser = useSelector((state) => state.currentUser);
   const items = useSelector((state) => state.items);
   const itemToEdit = useSelector((state) => state.itemToEdit);
+  const popup = useSelector((state) => state.popup);
 
   const [menuFilter, setMenuFilter] = useState('All');
 
   const dispatch = useDispatch();
-  const { setItemToEdit, setItems, login, setShowLogin } = bindActionCreators(
-    actionCreators,
-    dispatch
-  );
+  const { setItemToEdit, setItems, login, setShowLogin, setupPopup } =
+    bindActionCreators(actionCreators, dispatch);
 
   const handEditBtnClick = (item) => {
     setItemToEdit(item);
   };
 
-  const handleDeleteBtnClick = (itemID) => {
+  const handleDeleteBtnClick = (item) => {
+    notify(popup, setupPopup, `${item.name} has been deleted`, 'success');
     axios
-      .delete(`http://localhost:8080/api/items/deleteItem/${itemID}`)
+      .delete(`http://localhost:8080/api/items/deleteItem/${item._id}`)
       .then((res) => {
-        alert(res.data.message);
         axios.get('http://localhost:8080/api/items').then((res) => {
           setItems(res.data);
         });
       });
   };
 
-  const handleBuyBtnClick = (itemID) => {
+  const handleBuyBtnClick = (item) => {
     if (Object.keys(currentUser).length === 0) {
       setShowLogin(true);
     } else {
+      notify(popup, setupPopup, `${item.name} was added to cart`, 'success');
       // add to cart Item of user
-      if (currentUser.cartItems?.find((cartItem) => cartItem._id === itemID)) {
+      if (
+        currentUser.cartItems?.find((cartItem) => cartItem._id === item._id)
+      ) {
         // increase count only
         axios
           .put(
             `http://localhost:8080/api/users/${currentUser._id}/increaseCount`,
             {
-              _id: itemID,
+              _id: item._id,
               count: 1,
             }
           )
@@ -65,7 +67,7 @@ const Menu = () => {
         // add to cart
         axios
           .put(`http://localhost:8080/api/users/${currentUser._id}/addToCart`, {
-            _id: itemID,
+            _id: item._id,
             count: 1,
           })
           .then((res) => {
@@ -124,7 +126,7 @@ const Menu = () => {
                     </button>
                     <button
                       className='button danger-button'
-                      onClick={() => handleDeleteBtnClick(item._id)}
+                      onClick={() => handleDeleteBtnClick(item)}
                     >
                       Delete
                     </button>
@@ -132,7 +134,7 @@ const Menu = () => {
                 ) : (
                   <button
                     className='button main-button menu__buyBtn'
-                    onClick={() => handleBuyBtnClick(item._id)}
+                    onClick={() => handleBuyBtnClick(item)}
                   >
                     Buy
                   </button>
@@ -141,43 +143,60 @@ const Menu = () => {
             </div>
           ))}
       </div>
+
       {[...items]?.find((item) => item.outOfStock === true) &&
         (currentUser.roles?.includes('manager') ||
           currentUser.roles?.includes('admin') ||
-          currentUser.roles?.includes('employee')) && <h2>Out of Stock</h2>}
+          currentUser.roles?.includes('employee')) && (
+          <>
+            <h2 className='menu__title--outOfStock'>Out of Stock</h2>
 
-      {items
-        ?.filter((item) => item.outOfStock === true)
-        ?.map((item) => (
-          <div key={item._id}>
-            <div>
-              <p>{item.name}</p>
-              <img src={item.image} alt={item.name} width='200px' />
-              <p>₱ {item.price}</p>
-              <p>{item.description}</p>
+            <div className='menu__items'>
+              {items
+                ?.filter((item) => item.outOfStock === true)
+                ?.map((item) => (
+                  <div key={item._id} className='menu__item '>
+                    <div className='menu__itemDetails'>
+                      <p className='item__name'>{item.name}</p>
+                      <img
+                        src={item.image}
+                        alt={item.name}
+                        className='item__image'
+                      />
+                      <p>₱ {item.price}</p>
+                      <p>{item.description}</p>
+                    </div>
+                    <div className='item__btn'>
+                      {currentUser.roles?.includes('admin') ||
+                      currentUser.roles?.includes('manager') ||
+                      currentUser.roles?.includes('employee') ? (
+                        <div className='item__adminBtn'>
+                          <button
+                            className='button warning-button'
+                            onClick={() => handEditBtnClick(item)}
+                          >
+                            Edit
+                          </button>
+                          <button
+                            className='button danger-button'
+                            onClick={() => handleDeleteBtnClick(item._id)}
+                          >
+                            Delete
+                          </button>
+                        </div>
+                      ) : (
+                        <button onClick={() => handleBuyBtnClick(item._id)}>
+                          Buy
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                ))}
             </div>
-            {currentUser.roles?.includes('admin') ||
-            currentUser.roles?.includes('manager') ||
-            currentUser.roles?.includes('employee') ? (
-              <div>
-                <button onClick={() => handEditBtnClick(item)}>Edit</button>
-                <button onClick={() => handleDeleteBtnClick(item._id)}>
-                  Delete
-                </button>
-              </div>
-            ) : (
-              <button onClick={() => handleBuyBtnClick(item._id)}>Buy</button>
-            )}
-          </div>
-        ))}
+          </>
+        )}
 
-      {!(Object.keys(itemToEdit).length === 0) && (
-        <div>
-          <h2>Edit Item</h2>
-
-          <EditItemForm />
-        </div>
-      )}
+      {!(Object.keys(itemToEdit).length === 0) && <EditItemForm />}
     </main>
   );
 };

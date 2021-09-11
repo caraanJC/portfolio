@@ -26,7 +26,9 @@ const DisplayUsers = (props) => {
         .filter(
           (user) => props.role === 'All' || user.roles.includes(props.role)
         )
-        ?.filter((user) => user.username?.includes(props.search))
+        ?.filter((user) =>
+          user.username?.toLowerCase()?.includes(props.search?.toLowerCase())
+        )
         .sort(compareUsername)
         .map((user) => (
           <div key={user._id} className='displayUsers__details'>

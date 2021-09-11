@@ -6,6 +6,8 @@ import currentUser from './currentUser';
 import userToEdit from './userToEdit';
 import itemToEdit from './itemToEdit';
 import showLogin from './showLogin';
+import popup from './popup';
+import ableToCheckout from './ableToCheckout';
 
 const reducers = combineReducers({
   users,
@@ -15,6 +17,8 @@ const reducers = combineReducers({
   itemToEdit,
   orders,
   showLogin,
+  popup,
+  ableToCheckout,
 });
 
 export default reducers;

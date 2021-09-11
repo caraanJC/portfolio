@@ -6,14 +6,16 @@ import { actionCreators } from '../state';
 import Modal from './Modal';
 
 import '../styles/EditItemForm.css';
+import { notify } from '../helper';
 
 const EditItemForm = () => {
   const itemToEdit = useSelector((state) => state.itemToEdit);
+  const popup = useSelector((state) => state.popup);
 
   const [updatedItem, setUpdatedItem] = useState(itemToEdit);
 
   const dispatch = useDispatch();
-  const { setItems, setItemToEdit } = bindActionCreators(
+  const { setItems, setItemToEdit, setupPopup } = bindActionCreators(
     actionCreators,
     dispatch
   );
@@ -37,9 +39,15 @@ const EditItemForm = () => {
     axios
       .put('http://localhost:8080/api/items/editItem', updatedItem)
       .then((res) => {
-        alert(res.data.message);
+        notify(
+          popup,
+          setupPopup,
+          `${itemToEdit.name} has been updated`,
+          'success'
+        );
         axios.get('http://localhost:8080/api/items/').then((res) => {
           setItems(res.data);
+
           setItemToEdit({});
         });
       });

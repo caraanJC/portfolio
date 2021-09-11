@@ -41,7 +41,7 @@ const OrderStatusAdmin = (props) => {
   };
 
   return (
-    <>
+    <div className='orderStatusAdmin__wrapper'>
       {orders?.map((userOrder) => (
         <div key={uuidv4()} className='orderStatusAdmin__wrapper'>
           {userOrder
@@ -51,21 +51,21 @@ const OrderStatusAdmin = (props) => {
               <div key={order._id} className='orderStatusAdmin__order'>
                 <div className='orderStatusAdmin__details'>
                   <p>
-                    <span class='orderStatusAdmin__label'>Username:</span>{' '}
+                    <span className='orderStatusAdmin__label'>Username:</span>{' '}
                     {users?.find((user) => user._id === order.userID).username}
                   </p>
                   <p>
-                    <span class='orderStatusAdmin__label'>Full Name:</span>{' '}
+                    <span className='orderStatusAdmin__label'>Full Name:</span>{' '}
                     {users?.find((user) => user._id === order.userID).firstName}{' '}
                     {users?.find((user) => user._id === order.userID).lastName}
                   </p>
                   <p>
-                    <span class='orderStatusAdmin__label'>Address:</span>{' '}
+                    <span className='orderStatusAdmin__label'>Address:</span>{' '}
                     {order.address}
                   </p>
 
                   <p>
-                    <span class='orderStatusAdmin__label'>Status:</span>{' '}
+                    <span className='orderStatusAdmin__label'>Status:</span>{' '}
                     {order.status}
                   </p>
 
@@ -80,7 +80,7 @@ const OrderStatusAdmin = (props) => {
                     </p>
                   ))}
                   <p>
-                    <span class='orderStatusAdmin__label'>Total:</span> ₱
+                    <span className='orderStatusAdmin__label'>Total:</span> ₱
                     {order.items
                       ?.map((item) => item.price * item.count)
                       .reduce((prev, current) => {
@@ -118,7 +118,7 @@ const OrderStatusAdmin = (props) => {
             ))}
         </div>
       ))}
-    </>
+    </div>
   );
 };
 

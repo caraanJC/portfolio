@@ -4,12 +4,14 @@ import axios from 'axios';
 import { actionCreators } from '../state';
 import { bindActionCreators } from 'redux';
 import Modal from './Modal';
+import { notify } from '../helper';
 
 const EditUserInfo = (props) => {
   const currentUser = useSelector((state) => state.currentUser);
+  const popup = useSelector((state) => state.popup);
 
   const dispatch = useDispatch();
-  const { login } = bindActionCreators(actionCreators, dispatch);
+  const { login, setupPopup } = bindActionCreators(actionCreators, dispatch);
 
   const initialState = { ...currentUser };
 
@@ -32,6 +34,12 @@ const EditUserInfo = (props) => {
           .get(`http://localhost:8080/api/users/${currentUser._id}`)
           .then((res) => {
             login(res.data);
+            notify(
+              popup,
+              setupPopup,
+              `${res.data.username} info was successfully edited.`,
+              'success'
+            );
           })
       );
   };

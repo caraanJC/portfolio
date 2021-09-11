@@ -3,11 +3,12 @@ import axios from 'axios';
 import { actionCreators } from '../state';
 import { bindActionCreators } from 'redux';
 import { useDispatch, useSelector } from 'react-redux';
-import { distinct } from '../helper';
+import { distinct, notify } from '../helper';
 import Modal from './Modal';
 
 const AddItemForm = (props) => {
   const items = useSelector((state) => state.items);
+  const popup = useSelector((state) => state.popup);
 
   const initialState = {
     name: '',
@@ -22,7 +23,7 @@ const AddItemForm = (props) => {
   const [newItem, setNewItem] = useState(initialState);
 
   const dispatch = useDispatch();
-  const { setItems } = bindActionCreators(actionCreators, dispatch);
+  const { setItems, setupPopup } = bindActionCreators(actionCreators, dispatch);
 
   const handleInputChange = (e) => {
     if (e.target.name === 'outOfStock') {
@@ -46,7 +47,7 @@ const AddItemForm = (props) => {
         category: newItem.category ? newItem.category : newItem.newCategory,
       })
       .then((res) => {
-        alert(res.data.message);
+        notify(popup, setupPopup, `${newItem.name} has been added`, 'success');
 
         setNewItem(initialState);
         axios.get('http://localhost:8080/api/items').then((res) => {

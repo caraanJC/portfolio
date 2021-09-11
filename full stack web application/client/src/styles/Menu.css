@@ -55,6 +55,10 @@
   justify-content: space-evenly;
 }
 
+.menu__title--outOfStock {
+  margin-bottom: 10px;
+}
+
 @media screen and (min-width: 768px) {
   .menu__items {
     display: grid;

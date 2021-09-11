@@ -83,3 +83,21 @@ export const setShowLogin = (show) => {
     });
   };
 };
+
+export const setupPopup = (setup) => {
+  return (dispatch) => {
+    dispatch({
+      type: 'SETUP_POPUP',
+      payload: setup,
+    });
+  };
+};
+
+export const setAbleToCheckout = (checkout) => {
+  return (dispatch) => {
+    dispatch({
+      type: 'SET_ABLE_TO_CHECKOUT',
+      payload: checkout,
+    });
+  };
+};

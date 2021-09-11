@@ -9,6 +9,7 @@ import { actionCreators } from '../state';
 import Modal from './Modal';
 
 import '../styles/Login.css';
+import { notify } from '../helper';
 
 const Login = (props) => {
   const initialState = {
@@ -20,8 +21,12 @@ const Login = (props) => {
   const dispatch = useDispatch();
 
   const currentUser = useSelector((state) => state.currentUser);
+  const popup = useSelector((state) => state.popup);
 
-  const { login, setShowLogin } = bindActionCreators(actionCreators, dispatch);
+  const { login, setShowLogin, setupPopup } = bindActionCreators(
+    actionCreators,
+    dispatch
+  );
 
   const handleInputChange = (e) => {
     setUserLogin({
@@ -40,16 +45,26 @@ const Login = (props) => {
           delete user.password;
           delete user.__v;
           if (user.roles?.includes('suspended')) {
-            alert('User is suspended');
+            notify(
+              popup,
+              setupPopup,
+              `${user.username} is suspended`,
+              'warning'
+            );
           } else {
             login(user);
+            notify(
+              popup,
+              setupPopup,
+              `${user.username} successfully logged in`,
+              'success'
+            );
 
-            alert(res.data.message);
             setUserLogin(initialState);
             setShowLogin(false);
           }
         } else {
-          alert(res.data.error);
+          notify(popup, setupPopup, `${res.data.error}`, 'danger');
         }
       });
   };

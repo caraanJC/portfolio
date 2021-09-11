@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
-import { compareDate, toNormalTime } from '../helper';
+import { compareDate, notify, toNormalTime } from '../helper';
 import { actionCreators } from '../state';
 import { bindActionCreators } from 'redux';
 
@@ -8,22 +8,58 @@ import '../styles/OrderStatusUser.css';
 
 const OrderStatusUser = (props) => {
   const currentUser = useSelector((state) => state.currentUser);
+  const popup = useSelector((state) => state.popup);
 
   const dispatch = useDispatch();
-  const { login } = bindActionCreators(actionCreators, dispatch);
+  const { login, setupPopup } = bindActionCreators(actionCreators, dispatch);
 
   const handleCancelOrder = (order) => {
     axios
-      .put(`http://localhost:8080/api/users/${order.userID}/cancelOrder`, {
-        _id: order._id,
-      })
+      .get(`http://localhost:8080/api/users/${currentUser._id}`)
       .then((res) => {
-        axios.get('http://localhost:8080/api/users').then((res) => {
-          let resData = res.data;
-          delete resData.password;
-          delete resData.__v;
-          login(resData);
-        });
+        if (
+          res.data.orders?.find((userOrder) => userOrder._id === order._id)
+            .status === 'Pending'
+        ) {
+          axios
+            .put(
+              `http://localhost:8080/api/users/${order.userID}/cancelOrder`,
+              {
+                _id: order._id,
+              }
+            )
+            .then((res) => {
+              axios
+                .get(`http://localhost:8080/api/users/${currentUser._id}`)
+                .then((res) => {
+                  let resData = res.data;
+                  delete resData.password;
+                  delete resData.__v;
+                  login(resData);
+                  notify(
+                    popup,
+                    setupPopup,
+                    `Order ${order._id} has been cancelled`,
+                    'warning'
+                  );
+                });
+            });
+        } else {
+          notify(
+            popup,
+            setupPopup,
+            'Item has already been moved to cooking stage',
+            'danger'
+          );
+          axios
+            .get(`http://localhost:8080/api/users/${currentUser._id}`)
+            .then((res) => {
+              let resData = res.data;
+              delete resData.password;
+              delete resData.__v;
+              login(resData);
+            });
+        }
       });
   };
   return (
@@ -35,7 +71,7 @@ const OrderStatusUser = (props) => {
           <div key={order._id} className='orderStatusUser__order'>
             <div className='orderStatusUser__statusControl'>
               <p>
-                <span class='orderStatusUser__label'>Status:</span>{' '}
+                <span className='orderStatusUser__label'>Status:</span>{' '}
                 {order.status}
               </p>
               {order.status === 'Pending' && (
@@ -48,7 +84,12 @@ const OrderStatusUser = (props) => {
               )}
             </div>
             <p>
-              <span class='orderStatusUser__label'>Date:</span>{' '}
+              {' '}
+              <span className='orderStatusUser__label'>Order ID: </span>
+              {order._id}
+            </p>
+            <p>
+              <span className='orderStatusUser__label'>Date:</span>{' '}
               {toNormalTime(order.date)}
             </p>
             <p className='orderStatusUser__address'>
@@ -67,7 +108,7 @@ const OrderStatusUser = (props) => {
               </p>
             ))}
             <p>
-              <span class='orderStatusUser__label'>Total:</span> ₱
+              <span className='orderStatusUser__label'>Total:</span> ₱
               {order.items
                 ?.map((item) => item.price * item.count)
                 .reduce((prev, current) => {

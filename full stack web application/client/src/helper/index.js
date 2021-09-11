@@ -64,3 +64,24 @@ export const toNormalTime = (time) => {
   });
   return date;
 };
+
+export const notify = (popup, setupPopup, message, type) => {
+  if (!popup.timeout) {
+    setupPopup({
+      message,
+      type,
+      timeout: setTimeout(() => {
+        setupPopup({ message: '', type: '', timeout: '' });
+      }, 2500),
+    });
+  } else {
+    clearTimeout(popup.timeout);
+    setupPopup({
+      message,
+      type,
+      timeout: setTimeout(() => {
+        setupPopup({ message: '', type: '', timeout: '' });
+      }, 5000),
+    });
+  }
+};

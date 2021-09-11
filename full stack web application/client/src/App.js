@@ -15,14 +15,20 @@ import { actionCreators } from './state';
 import axios from 'axios';
 import UserInfo from './components/UserInfo';
 import Orders from './components/Orders';
+import Popup from './components/Popup';
+import { useHistory } from 'react-router-dom';
+import { notify } from './helper';
 
 function App() {
   const currentUser = useSelector((state) => state.currentUser);
   const showLogin = useSelector((state) => state.showLogin);
+  const popup = useSelector((state) => state.popup);
 
+  const history = useHistory();
   const dispatch = useDispatch();
 
-  const { setUsers, setItems } = bindActionCreators(actionCreators, dispatch);
+  const { setUsers, setItems, setupPopup, setAbleToCheckout } =
+    bindActionCreators(actionCreators, dispatch);
 
   const [showRegister, setShowRegister] = useState(false);
 
@@ -36,7 +42,30 @@ function App() {
         setUsers(res.data);
       });
     }
-  }, [currentUser, setUsers]);
+    if (
+      Object.keys(currentUser).length > 0 &&
+      currentUser.roles?.includes('user')
+    ) {
+      if (
+        !currentUser.firstName ||
+        !currentUser.lastName ||
+        !currentUser.phone ||
+        !currentUser.address1
+      ) {
+        notify(
+          popup,
+          setupPopup,
+          'Please update user info to checkout',
+          'warning'
+        );
+        setAbleToCheckout(false);
+        history.push('/profile');
+      } else {
+        setAbleToCheckout(true);
+      }
+    }
+    // eslint-disable-next-line
+  }, [currentUser]);
   useEffect(() => {
     axios.get('http://localhost:8080/api/items').then((res) => {
       setItems(res.data);
@@ -68,6 +97,7 @@ function App() {
       <Route path='/orders'>
         <Orders />
       </Route>
+      {popup.message && <Popup message={popup.message} type={popup.type} />}
     </div>
   );
 }

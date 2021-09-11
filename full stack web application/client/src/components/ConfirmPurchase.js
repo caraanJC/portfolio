@@ -5,14 +5,18 @@ import { actionCreators } from '../state';
 import { bindActionCreators } from 'redux';
 import { useState } from 'react';
 
+import '../styles/ConfirmPurchase.css';
+import { notify } from '../helper';
+
 const ConfirmPurchase = (props) => {
   const currentUser = useSelector((state) => state.currentUser);
   const items = useSelector((state) => state.items);
+  const popup = useSelector((state) => state.popup);
 
   const [lastAddress, setLastAddress] = useState(currentUser.lastAddress);
 
   const dispatch = useDispatch();
-  const { login } = bindActionCreators(actionCreators, dispatch);
+  const { login, setupPopup } = bindActionCreators(actionCreators, dispatch);
 
   const handleCheckoutBtnClick = (cartItems) => {
     // add to orders
@@ -74,6 +78,12 @@ const ConfirmPurchase = (props) => {
                           delete resData.__v;
                           login(resData);
                           props.setShowConfirmPurchase(false);
+                          notify(
+                            popup,
+                            setupPopup,
+                            'Order added successfully',
+                            'success'
+                          );
                         })
                     );
                 });
@@ -96,22 +106,24 @@ const ConfirmPurchase = (props) => {
       {currentUser.cartItems?.length > 0 ? (
         <>
           <h2>Confirm Purchase</h2>
-          <h3>Total: </h3>
-          <span>
-            ₱
-            {currentUser.cartItems
-              ?.map((cartItem) => {
-                return {
-                  ...items?.find((item) => item._id === cartItem._id),
-                  count: cartItem?.count,
-                };
-              })
-              ?.filter((cartItem) => cartItem.name !== undefined)
-              ?.map((cartItem) => cartItem.price * cartItem.count)
-              ?.reduce((prev, current) => {
-                return prev + current;
-              }, 0)}
-          </span>
+          <div className='confirmPurchase__total'>
+            <h3>Total: </h3>
+            <span>
+              ₱
+              {currentUser.cartItems
+                ?.map((cartItem) => {
+                  return {
+                    ...items?.find((item) => item._id === cartItem._id),
+                    count: cartItem?.count,
+                  };
+                })
+                ?.filter((cartItem) => cartItem.name !== undefined)
+                ?.map((cartItem) => cartItem.price * cartItem.count)
+                ?.reduce((prev, current) => {
+                  return prev + current;
+                }, 0)}
+            </span>
+          </div>
           <p>
             <label htmlFor='addressToUse'>Adress:</label>
             <select

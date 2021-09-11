@@ -1,9 +1,10 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { compareName } from '../helper';
+import { compareName, notify } from '../helper';
 import { bindActionCreators } from 'redux';
 import { actionCreators } from '../state';
+import { useHistory } from 'react-router-dom';
 
 import '../styles/Cart.css';
 
@@ -12,9 +13,16 @@ import ConfirmPurchase from './ConfirmPurchase';
 const Cart = () => {
   const currentUser = useSelector((state) => state.currentUser);
   const items = useSelector((state) => state.items);
+  const ableToCheckout = useSelector((state) => state.ableToCheckout);
+  const popup = useSelector((state) => state.popup);
+
+  const history = useHistory();
 
   const dispatch = useDispatch();
-  const { login } = bindActionCreators(actionCreators, dispatch);
+  const { login, setupPopup, setAbleToCheckout } = bindActionCreators(
+    actionCreators,
+    dispatch
+  );
   const [showConfirmPurchase, setShowConfirmPurchase] = useState(false);
 
   const handlePlusBtnClick = (itemID) => {
@@ -88,6 +96,28 @@ const Cart = () => {
   };
 
   useEffect(() => {
+    if (
+      Object.keys(currentUser).length > 0 &&
+      currentUser.roles?.includes('user')
+    ) {
+      if (
+        !currentUser.firstName ||
+        !currentUser.lastName ||
+        !currentUser.phone ||
+        !currentUser.address1
+      ) {
+        notify(
+          popup,
+          setupPopup,
+          'Please update user info to checkout',
+          'warning'
+        );
+        setAbleToCheckout(false);
+        history.push('/profile');
+      } else {
+        setAbleToCheckout(true);
+      }
+    }
     return () => {
       currentUser.cartItems?.map((cartItem) => {
         if (items.find((item) => item._id === cartItem._id)) {
@@ -102,6 +132,7 @@ const Cart = () => {
         }
       });
     };
+
     // eslint-disable-next-line
   }, []);
   return (
@@ -174,7 +205,10 @@ const Cart = () => {
             </h3>
             <button
               onClick={() => setShowConfirmPurchase(true)}
-              className='button main-button'
+              className={`button main-button ${
+                ableToCheckout ? '' : 'button__unable'
+              }`}
+              disabled={!ableToCheckout}
             >
               Checkout
             </button>

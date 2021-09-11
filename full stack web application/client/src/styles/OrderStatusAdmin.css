@@ -1,8 +1,8 @@
 .orderStatusAdmin__wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr;
   margin: 5px;
+  grid-gap: 30px;
 }
 
 .orderStatusAdmin__order {
@@ -11,7 +11,6 @@
   box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
     rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
   padding: 5px;
-  margin-bottom: 30px;
 }
 
 .orderStatusAdmin__details {
@@ -37,15 +36,7 @@
 
 @media screen and (min-width: 768px) {
   .orderStatusAdmin__wrapper {
-    display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: 50px;
     align-items: start;
-  }
-}
-
-@media screen and (min-width: 1024px) {
-  .orderStatusAdmin__wrapper {
-    grid-template-columns: repeat(3, 1fr);
   }
 }
