@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap');
+
+* {
+  scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 11px;
+  font-family: 'Open Sans', sans-serif;
+  --text-primary: #b5b5b5;
+  --text-secondary: #ececec;
+  --bg-primary: #23232f;
+  --bg-secondary: #151519;
+  --theme-color: hsl(244, 93%, 62%);
+  --transition-speed: 600ms;
+}
+
+body {
+  background-color: rgb(240, 240, 240);
+  color: black;
+}
+
+body::-webkit-scrollbar {
+  width: 1.5rem;
+}
+
+body::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+body::-webkit-scrollbar-thumb {
+  background: var(--text-primary);
+  border-radius: 9999px;
+  border: 4px solid var(--bg-primary);
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  opacity: 0.8;
+}
+
+a {
+  text-decoration: none;
+  color: var(--bg-primary);
+}
+
+.button {
+  font-size: 1.5rem;
+  margin: 0 0 10px;
+  padding: 10px 15px;
+  font-family: inherit;
+  border: none;
+  background-color: var(--theme-color);
+  color: var(--text-secondary);
+  display: block;
+  cursor: pointer;
+}
+
+@media only screen and (min-width: 600px) {
+  :root {
+    font-size: 12px;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  :root {
+    font-size: 13px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  :root {
+    font-size: 14px;
+  }
+}
+
+@media only screen and (min-width: 1920px) {
+  :root {
+    font-size: 16px;
+  }
+}
+
+@media only screen and (min-width: 2560px) {
+  :root {
+    font-size: 20px;
+  }
+}
