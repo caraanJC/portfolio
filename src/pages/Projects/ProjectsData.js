@@ -34,6 +34,6 @@ export const ProjectsData = [
   {
     title: 'Static Website',
     image: staticWebsite,
-    link: 'https://caraanjc.github.io/Projects/Static%20Website/',
+    link: 'https://proj1-static-website.herokuapp.com/',
   },
 ];
