@@ -29,10 +29,13 @@ export const ContactLogic = () => {
   const submitForm = (e) => {
     e.preventDefault();
 
-    axios.post('http://localhost:8080/api/messages/sendMessage', {
-      ...sender,
-      isRead: false,
-    });
+    axios.post(
+      'https://johncarlo-portfolio-backend.herokuapp.com/api/messages/sendMessage',
+      {
+        ...sender,
+        isRead: false,
+      }
+    );
 
     setSender({
       name: '',
