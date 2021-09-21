@@ -29,7 +29,7 @@ export const ProjectsData = [
   {
     title: 'Memory Game',
     image: game,
-    link: 'https://caraanjc.github.io/Projects/Javascript%20Game/',
+    link: 'https://naruto-memory-game.herokuapp.com/',
   },
   {
     title: 'Static Website',
