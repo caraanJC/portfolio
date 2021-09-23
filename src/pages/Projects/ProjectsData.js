@@ -9,7 +9,7 @@ export const ProjectsData = [
   {
     title: 'Full Stack Ecommerce App',
     image: fullstack,
-    link: 'https://www.instagram.com/johncarlo1059/',
+    link: 'https://fullstack-ecommerce-front.herokuapp.com/',
   },
   {
     title: 'Pokedex',
