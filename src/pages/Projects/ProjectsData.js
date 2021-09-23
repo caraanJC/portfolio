@@ -14,17 +14,17 @@ export const ProjectsData = [
   {
     title: 'Pokedex',
     image: pokedex,
-    link: 'https://www.instagram.com/johncarlo1059/',
+    link: 'https://johncarlo-pokedex.herokuapp.com/',
   },
   {
     title: 'Resto App',
     image: resto,
-    link: 'https://www.instagram.com/johncarlo1059/',
+    link: 'https://johncarlo-resto-app.herokuapp.com/',
   },
   {
     title: 'Todo App',
     image: todo,
-    link: 'https://www.instagram.com/johncarlo1059/',
+    link: 'https://johncarlo-todo-app.herokuapp.com/',
   },
   {
     title: 'Memory Game',
