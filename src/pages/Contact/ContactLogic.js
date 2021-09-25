@@ -12,7 +12,8 @@ export const ContactLogic = () => {
   const openSubmitForm = () => {
     setIsFormOpen(true);
   };
-  const closeSubmitForm = () => {
+  const closeSubmitForm = (e) => {
+    e.preventDefault();
     setIsFormOpen(false);
   };
   const pressEscape = (e) => {

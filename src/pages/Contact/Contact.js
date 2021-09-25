@@ -50,6 +50,9 @@ const Contact = () => {
           <div className='contact__formContainer' onKeyUp={pressEscape}>
             <div className='form__overlay' onClick={closeSubmitForm}></div>
             <form className='contact__form' onSubmit={submitForm}>
+              <button className='form__close' onClick={closeSubmitForm}>
+                X
+              </button>
               <h3 className='form__title'>Send Me a Message</h3>
               <p>
                 <label htmlFor='senderName'>Name</label>
