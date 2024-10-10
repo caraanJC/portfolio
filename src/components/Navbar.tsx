@@ -1,12 +1,14 @@
+import { baseURL, secondaryColor } from '@/config'
 import styled from 'styled-components'
 
 const Section = styled.div`
+  width: 80%;
   display: flex;
   justify-content: center;
 `
 
 const Container = styled.div`
-  width: 1400px;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -39,13 +41,13 @@ const Icon = styled.img`
   cursor: pointer;
 `
 const Button = styled.button`
-	width: 100px;
-	padding: 10px;
-	background-color: #da4ea2;
-	color: white;
-	cursor: pointer;
-	border: none;
-	border-radius: 5px;
+  width: 100px;
+  padding: 10px;
+  background-color: ${secondaryColor};
+  color: white;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
 `
 
 const Navbar = () => {
@@ -53,7 +55,7 @@ const Navbar = () => {
     <Section>
       <Container>
         <Links>
-          <Logo src="/web-portfolio/images/logo.png" />
+          <Logo src={baseURL + '/images/logo.png'} />
           <List>
             <ListItem>Home</ListItem>
             <ListItem>Studio</ListItem>
@@ -62,7 +64,7 @@ const Navbar = () => {
           </List>
         </Links>
         <Icons>
-          <Icon src="/web-portfolio/images/search.png" />
+          <Icon src={baseURL + '/images/search.png'} />
           <Button>Hire Now</Button>
         </Icons>
       </Container>

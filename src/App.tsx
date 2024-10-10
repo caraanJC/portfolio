@@ -3,8 +3,10 @@ import Hero from '@/components/Hero'
 import Who from '@/components/Who'
 import Works from '@/components/Works'
 import styled from 'styled-components'
+import { baseURL } from '@/config'
 
 const Container = styled.div`
+  width: 100%;
   height: 100vh;
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
@@ -14,7 +16,7 @@ const Container = styled.div`
     display: none;
   }
   color: white;
-  background: url('/web-portfolio/images/bg.jpeg');
+  background: url(${baseURL}/images/bg.jpeg);
 `
 
 function App() {
