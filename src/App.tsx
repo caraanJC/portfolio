@@ -5,27 +5,27 @@ import Works from '@/components/Works'
 import styled from 'styled-components'
 
 const Container = styled.div`
-    height: 100vh;
-    scroll-snap-type: y mandatory;
-    scroll-behavior: smooth;
-    overflow-y: auto;
-    scrollbar-width: none;
-    &&::-webkit-scrollbar {
-        display: none;
-    }
-    color: white;
-    background: url('/web-portfolio/images/bg.jpeg');
+  height: 100vh;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  overflow-y: auto;
+  scrollbar-width: none;
+  &&::-webkit-scrollbar {
+    display: none;
+  }
+  color: white;
+  background: url('/web-portfolio/images/bg.jpeg');
 `
 
 function App() {
-    return (
-        <Container>
-            <Hero />
-            <Who />
-            <Works />
-            <Contact />
-        </Container>
-    )
+  return (
+    <Container>
+      <Hero />
+      <Who />
+      <Works />
+      <Contact />
+    </Container>
+  )
 }
 
 export default App
