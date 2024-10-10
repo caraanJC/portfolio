@@ -1,14 +1,12 @@
-import styled from "styled-components"
+import styled from 'styled-components'
 
 const Section = styled.div`
-  height: 100vh;
-  background-color: #8f9933;
+    height: 100vh;
+    scroll-snap-align: center;
 `
 
 const Who = () => {
-  return (
-    <Section>Who</Section>
-  )
+    return <Section>Who</Section>
 }
 
 export default Who
