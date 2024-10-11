@@ -67,8 +67,8 @@ const Right = styled.div`
 `
 
 const Img = styled.img`
-  width: 800px;
-  width: 600px;
+  width: 60%;
+  /* width: 600px; */
   object-fit: contain;
   position: absolute;
   top: 0;
@@ -76,7 +76,13 @@ const Img = styled.img`
   left: 0;
   right: 0;
   margin: auto;
-  animation: animate 2s infinite ease;
+  animation: animate 2s infinite ease alternate;
+
+  @keyframes animate {
+    to {
+      transform: translateY(20px);
+    }
+  }
 `
 
 const Hero = () => {
