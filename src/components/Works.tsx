@@ -1,13 +1,7 @@
 import { secondaryColor } from '@/config'
 import styled from 'styled-components'
 
-const itemNames = [
-  "Web Design",
-  "Development",
-  "Illustration",
-  "Product Design",
-  "Social Media"
-]
+const itemNames = ['Web Design', 'Development', 'Illustration', 'Product Design', 'Social Media']
 
 const Section = styled.div`
   width: 100%;
@@ -48,8 +42,8 @@ const ListItem = styled.li<ListItemProps>`
   -webkit-text-stroke: 1px white;
   position: relative;
 
-  &:after{
-    content: "${(props) => props.text}";
+  &:after {
+    content: '${(props) => props.text}';
     position: absolute;
     top: 0;
     left: 0;
@@ -64,7 +58,7 @@ const ListItem = styled.li<ListItemProps>`
       animation: moveText 0.5s linear;
 
       @keyframes moveText {
-        to{
+        to {
           width: 100%;
         }
       }
@@ -81,7 +75,11 @@ const Works = () => {
       <Container>
         <Left>
           <List>
-            {itemNames.map((itemName) => <ListItem key={itemName} text={itemName}>{itemName}</ListItem>)}
+            {itemNames.map((itemName) => (
+              <ListItem key={itemName} text={itemName}>
+                {itemName}
+              </ListItem>
+            ))}
           </List>
         </Left>
         <Right></Right>
