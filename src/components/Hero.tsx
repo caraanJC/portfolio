@@ -76,6 +76,7 @@ const Img = styled.img`
   left: 0;
   right: 0;
   margin: auto;
+  animation: animate 2s infinite ease;
 `
 
 const Hero = () => {
