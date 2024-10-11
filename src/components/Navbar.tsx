@@ -55,7 +55,7 @@ const Navbar = () => {
     <Section>
       <Container>
         <Links>
-          <Logo src={baseURL + '/images/logo.png'} />
+          <Logo src={baseURL + '/jc-icon-2.png'} />
           <List>
             <ListItem>Home</ListItem>
             <ListItem>Studio</ListItem>
