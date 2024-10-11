@@ -118,7 +118,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   cursor: pointer;
   border: none;
   border-radius: 5px;
-`,Q2=()=>U.jsx(D2,{children:U.jsxs(F2,{children:[U.jsxs(U2,{children:[U.jsx(B2,{src:qr+"/images/logo.png"}),U.jsxs(W2,{children:[U.jsx(ll,{children:"Home"}),U.jsx(ll,{children:"Studio"}),U.jsx(ll,{children:"Works"}),U.jsx(ll,{children:"Contact"})]})]}),U.jsxs(H2,{children:[U.jsx(V2,{src:qr+"/images/search.png"}),U.jsx(Y2,{children:"Hire Now"})]})]})}),G2=Q.div`
+`,Q2=()=>U.jsx(D2,{children:U.jsxs(F2,{children:[U.jsxs(U2,{children:[U.jsx(B2,{src:qr+"/jc-icon-2.png"}),U.jsxs(W2,{children:[U.jsx(ll,{children:"Home"}),U.jsx(ll,{children:"Studio"}),U.jsx(ll,{children:"Works"}),U.jsx(ll,{children:"Contact"})]})]}),U.jsxs(H2,{children:[U.jsx(V2,{src:qr+"/images/search.png"}),U.jsx(Y2,{children:"Hire Now"})]})]})}),G2=Q.div`
   width: 100%;
   height: 100vh;
   scroll-snap-align: center;
