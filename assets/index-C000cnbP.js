@@ -132,6 +132,7 @@ Error generating stack: `+o.message+`
   left: 0;
   right: 0;
   margin: auto;
+  animation: animate 2s infinite ease;
 `,n0=()=>I.jsxs(Qm,{children:[I.jsx(Hm,{}),I.jsxs(Km,{children:[I.jsxs(Ym,{children:[I.jsx(Gm,{children:"Think. Make. Solve."}),I.jsxs(Xm,{children:[I.jsx(Zm,{src:$r+"/images/line.png"}),I.jsx(Jm,{children:"What We Do"})]}),I.jsx(qm,{children:"we enjoy creating delightful, human-centered digital experiences."}),I.jsx(bm,{children:"Learn More"})]}),I.jsx(e0,{children:I.jsx(t0,{src:$r+"/images/moon.png"})})]})]}),r0=H.div`
   height: 100vh;
   scroll-snap-align: center;
