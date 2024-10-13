@@ -1,5 +1,7 @@
 import Navbar from '@/components/Navbar'
 import { baseURL, secondaryColor } from '@/config'
+import { MeshDistortMaterial, OrbitControls, Sphere } from '@react-three/drei'
+import { Canvas } from '@react-three/fiber'
 import styled from 'styled-components'
 
 const Section = styled.div`
@@ -100,7 +102,14 @@ const Hero = () => {
           <Button>Learn More</Button>
         </Left>
         <Right>
-          {/* 3d model */}
+          <Canvas>
+            <OrbitControls enableZoom={false} />
+            <ambientLight intensity={4} />
+            <directionalLight position={[3, 2, 1]} />
+            <Sphere args={[1, 200, 300]} scale={1.6}>
+              <MeshDistortMaterial color="#3d1c56" attach="material" distort={0.5} speed={2} />
+            </Sphere>
+          </Canvas>
           <Img src={baseURL + '/images/moon.png'}></Img>
         </Right>
       </Container>

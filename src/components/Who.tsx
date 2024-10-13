@@ -1,5 +1,7 @@
-import Test from '@/components/Test'
+import Cube from '@/components/Cube'
 import { baseURL, secondaryColor } from '@/config'
+import { OrbitControls } from '@react-three/drei'
+import { Canvas } from '@react-three/fiber'
 import styled from 'styled-components'
 
 const Section = styled.div`
@@ -68,7 +70,12 @@ const Who = () => {
     <Section>
       <Container>
         <Left>
-          <Test />
+          <Canvas camera={{ fov: 25, position: [5, 5, 5] }}>
+            <OrbitControls enableZoom={false} autoRotate={true} />
+            <ambientLight intensity={1} />
+            <directionalLight position={[3, 2, 1]} />
+            <Cube />
+          </Canvas>
         </Left>
         <Right>
           <Title>Think outside the box</Title>
