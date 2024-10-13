@@ -63,7 +63,8 @@ const Contact = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
-    emailjs.sendForm(serviceId, defaultEmailTemplate, formRef.current ?? '', publicKey)
+    emailjs
+      .sendForm(serviceId, defaultEmailTemplate, formRef.current ?? '', publicKey)
       .then((result) => {
         console.log(result.text)
         setSuccessMessage("Your message has been sent. We'll get back to you soon :)")
@@ -72,7 +73,6 @@ const Contact = () => {
         console.log(error.text)
         setSuccessMessage('Email failed to submit')
       })
-
   }
 
   return (
@@ -81,9 +81,9 @@ const Contact = () => {
         <Left>
           <Form ref={formRef} onSubmit={handleSubmit}>
             <Title>Contact Us</Title>
-            <Input placeholder="Name" name="name" required/>
-            <Input placeholder="Email" name="email" required type="email"/>
-            <TextArea placeholder="Write your message" name="message" rows={10} required/>
+            <Input placeholder="Name" name="name" required />
+            <Input placeholder="Email" name="email" required type="email" />
+            <TextArea placeholder="Write your message" name="message" rows={10} required />
             <Button type="submit">Send</Button>
             {successMessage}
           </Form>

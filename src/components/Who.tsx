@@ -1,3 +1,4 @@
+import Test from '@/components/Test'
 import { baseURL, secondaryColor } from '@/config'
 import styled from 'styled-components'
 
@@ -66,7 +67,9 @@ const Who = () => {
   return (
     <Section>
       <Container>
-        <Left>{/* 3d model */}</Left>
+        <Left>
+          <Test />
+        </Left>
         <Right>
           <Title>Think outside the box</Title>
           <WhoWeAre>

@@ -55,7 +55,7 @@ const ListItem = styled.li<ListItemProps>`
 
   &:hover {
     &:after {
-      animation: moveText 0.5s linear;
+      animation: moveText 0.5s linear forwards;
 
       @keyframes moveText {
         to {
