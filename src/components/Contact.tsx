@@ -1,6 +1,8 @@
 import Map from '@/components/Map'
-import { secondaryColor } from '@/config'
+import { defaultEmailTemplate, publicKey, secondaryColor, serviceId } from '@/config'
 import styled from 'styled-components'
+import emailjs from '@emailjs/browser'
+import { useRef, useState } from 'react'
 
 const Section = styled.div`
   width: 100%;
@@ -55,16 +57,35 @@ const Right = styled.div`
 `
 
 const Contact = () => {
+  const formRef = useRef<HTMLFormElement>(null)
+  const [successMessage, setSuccessMessage] = useState('')
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+
+    emailjs.sendForm(serviceId, defaultEmailTemplate, formRef.current ?? '', publicKey)
+      .then((result) => {
+        console.log(result.text)
+        setSuccessMessage("Your message has been sent. We'll get back to you soon :)")
+      })
+      .catch((error) => {
+        console.log(error.text)
+        setSuccessMessage('Email failed to submit')
+      })
+
+  }
+
   return (
     <Section>
       <Container>
         <Left>
-          <Form>
+          <Form ref={formRef} onSubmit={handleSubmit}>
             <Title>Contact Us</Title>
-            <Input placeholder="Name" />
-            <Input placeholder="Email" />
-            <TextArea placeholder="Write your message" rows={10} />
-            <Button>Send</Button>
+            <Input placeholder="Name" name="name"/>
+            <Input placeholder="Email" name="email"/>
+            <TextArea placeholder="Write your message" name="message" rows={10} />
+            <Button type="submit">Send</Button>
+            {successMessage}
           </Form>
         </Left>
         <Right>
