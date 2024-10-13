@@ -81,9 +81,9 @@ const Contact = () => {
         <Left>
           <Form ref={formRef} onSubmit={handleSubmit}>
             <Title>Contact Us</Title>
-            <Input placeholder="Name" name="name"/>
-            <Input placeholder="Email" name="email"/>
-            <TextArea placeholder="Write your message" name="message" rows={10} />
+            <Input placeholder="Name" name="name" required/>
+            <Input placeholder="Email" name="email" required/>
+            <TextArea placeholder="Write your message" name="message" rows={10} required/>
             <Button type="submit">Send</Button>
             {successMessage}
           </Form>
