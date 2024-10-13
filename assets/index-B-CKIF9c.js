@@ -81,7 +81,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   padding: 20px;
 `,aC=Q.div`
   flex: 1;
-`,cC=()=>{const e=Y.useRef(null),[t,n]=Y.useState(""),r=i=>{i.preventDefault(),tC.sendForm(DE,FE,e.current??"",UE).then(o=>{console.log(o.text),n("Your message has been sent. We'll get back to you soon :)")}).catch(o=>{console.log(o.text),n("Email failed to submit")})};return U.jsx(nC,{children:U.jsxs(rC,{children:[U.jsx(iC,{children:U.jsxs(lC,{ref:e,onSubmit:r,children:[U.jsx(oC,{children:"Contact Us"}),U.jsx(Ph,{placeholder:"Name",name:"name"}),U.jsx(Ph,{placeholder:"Email",name:"email"}),U.jsx(uC,{placeholder:"Write your message",name:"message",rows:10}),U.jsx(sC,{type:"submit",children:"Send"}),t]})}),U.jsx(aC,{children:U.jsx(AE,{})})]})})},fC=Q.div`
+`,cC=()=>{const e=Y.useRef(null),[t,n]=Y.useState(""),r=i=>{i.preventDefault(),tC.sendForm(DE,FE,e.current??"",UE).then(o=>{console.log(o.text),n("Your message has been sent. We'll get back to you soon :)")}).catch(o=>{console.log(o.text),n("Email failed to submit")})};return U.jsx(nC,{children:U.jsxs(rC,{children:[U.jsx(iC,{children:U.jsxs(lC,{ref:e,onSubmit:r,children:[U.jsx(oC,{children:"Contact Us"}),U.jsx(Ph,{placeholder:"Name",name:"name",required:!0}),U.jsx(Ph,{placeholder:"Email",name:"email",required:!0,type:"email"}),U.jsx(uC,{placeholder:"Write your message",name:"message",rows:10,required:!0}),U.jsx(sC,{type:"submit",children:"Send"}),t]})}),U.jsx(aC,{children:U.jsx(AE,{})})]})})},fC=Q.div`
   width: 80%;
   display: flex;
   justify-content: center;
