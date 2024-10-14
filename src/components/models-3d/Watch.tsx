@@ -24,37 +24,37 @@ export default function Watch(props: GroupProps) {
             <group name="menWatch" rotation={[1.309, 0, 0]}>
               <group name="FinalStrap1_1">
                 <group name="strapClip">
-                  {/* @ts-expect-error @ts-ignore */}
                   <mesh
                     name="strapClip_MenMetal2_0"
+                    // @ts-expect-error @ts-ignore
                     geometry={nodes.strapClip_MenMetal2_0.geometry}
                     material={materials.MenMetal2}
                   />
                 </group>
                 <group name="FinalStrap1">
-                  {/* @ts-expect-error @ts-ignore */}
                   <mesh
                     name="FinalStrap1_MenMetal2_0"
+                    // @ts-expect-error @ts-ignore
                     geometry={nodes.FinalStrap1_MenMetal2_0.geometry}
                     material={materials.MenMetal2}
                   />
-                  {/* @ts-expect-error @ts-ignore */}
                   <mesh
                     name="FinalStrap1_MenMetal_0"
+                    // @ts-expect-error @ts-ignore
                     geometry={nodes.FinalStrap1_MenMetal_0.geometry}
                     material={materials.MenMetal}
                   />
                 </group>
                 <group name="FinalStrap2">
-                  {/* @ts-expect-error @ts-ignore */}
                   <mesh
                     name="FinalStrap2_MenMetal2_0"
+                    // @ts-expect-error @ts-ignore
                     geometry={nodes.FinalStrap2_MenMetal2_0.geometry}
                     material={materials.MenMetal2}
                   />
-                  {/* @ts-expect-error @ts-ignore */}
                   <mesh
                     name="FinalStrap2_MenMetal_0"
+                    // @ts-expect-error @ts-ignore
                     geometry={nodes.FinalStrap2_MenMetal_0.geometry}
                     material={materials.MenMetal}
                   />
@@ -62,39 +62,39 @@ export default function Watch(props: GroupProps) {
               </group>
               <group name="Watch">
                 <group name="watchShell">
-                  {/* @ts-expect-error @ts-ignore */}
                   <mesh
                     name="watchShell_MenMetal2_0"
+                    // @ts-expect-error @ts-ignore
                     geometry={nodes.watchShell_MenMetal2_0.geometry}
                     material={materials.MenMetal2}
                   />
-                  {/* @ts-expect-error @ts-ignore */}
                   <mesh
                     name="watchShell_MenMetal_0"
+                    // @ts-expect-error @ts-ignore
                     geometry={nodes.watchShell_MenMetal_0.geometry}
                     material={materials.MenMetal}
                   />
                 </group>
                 <group name="WatchshellTop">
-                  {/* @ts-expect-error @ts-ignore */}
                   <mesh
                     name="WatchshellTop_RIS_ShaderPxrDisney2_0"
+                    // @ts-expect-error @ts-ignore
                     geometry={nodes.WatchshellTop_RIS_ShaderPxrDisney2_0.geometry}
                     material={materials.PaletteMaterial001}
                   />
                 </group>
                 <group name="watchBottom">
-                  {/* @ts-expect-error @ts-ignore */}
                   <mesh
                     name="watchBottom_Plastic_0"
+                    // @ts-expect-error @ts-ignore
                     geometry={nodes.watchBottom_Plastic_0.geometry}
                     material={materials.PaletteMaterial001}
                   />
                 </group>
                 <group name="watchGlass">
-                  {/* @ts-expect-error @ts-ignore */}
                   <mesh
                     name="watchGlass_Glass_0"
+                    // @ts-expect-error @ts-ignore
                     geometry={nodes.watchGlass_Glass_0.geometry}
                     material={materials.PaletteMaterial002}
                   />
@@ -102,41 +102,41 @@ export default function Watch(props: GroupProps) {
               </group>
               <group name="Men">
                 <group name="hrHand1">
-                  {/* @ts-expect-error @ts-ignore */}
                   <mesh
                     name="hrHand1_menWatchHands_0"
+                    // @ts-expect-error @ts-ignore
                     geometry={nodes.hrHand1_menWatchHands_0.geometry}
                     material={materials.PaletteMaterial003}
                   />
                 </group>
                 <group name="hrHand">
-                  {/* @ts-expect-error @ts-ignore */}
                   <mesh
                     name="hrHand_menWatchHands_0"
+                    // @ts-expect-error @ts-ignore
                     geometry={nodes.hrHand_menWatchHands_0.geometry}
                     material={materials.PaletteMaterial003}
                   />
                 </group>
                 <group name="hrHand2">
-                  {/* @ts-expect-error @ts-ignore */}
                   <mesh
                     name="hrHand2_MenSec_0"
+                    // @ts-expect-error @ts-ignore
                     geometry={nodes.hrHand2_MenSec_0.geometry}
                     material={materials.PaletteMaterial004}
                   />
                 </group>
                 <group name="Pointers">
-                  {/* @ts-expect-error @ts-ignore */}
                   <mesh
                     name="Pointers_PointerTxt_0"
+                    // @ts-expect-error @ts-ignore
                     geometry={nodes.Pointers_PointerTxt_0.geometry}
                     material={materials.PaletteMaterial003}
                   />
                 </group>
                 <group name="CenterPart">
-                  {/* @ts-expect-error @ts-ignore */}
                   <mesh
                     name="CenterPart_menWatchHands_0"
+                    // @ts-expect-error @ts-ignore
                     geometry={nodes.CenterPart_menWatchHands_0.geometry}
                     material={materials.PaletteMaterial003}
                   />

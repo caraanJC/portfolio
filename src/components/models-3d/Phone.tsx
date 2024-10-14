@@ -15,16 +15,16 @@ export default function Phone(props: GroupProps) {
   const { nodes, materials } = useGLTF('/phone-transformed.glb')
   return (
     <group {...props} dispose={null}>
-      {/* @ts-expect-error @ts-ignore */}
       <mesh
+        // @ts-expect-error @ts-ignore
         geometry={nodes.HomeButton_PhoneButtons_m_0.geometry}
         material={materials.PhoneButtons_m}
         position={[0, -1.322, -0.02]}
       />
       {/* @ts-expect-error @ts-ignore */}
       <mesh geometry={nodes.PhoneBody_PhoneBody_m_0.geometry} material={materials.PhoneBody_m} />
-      {/* @ts-expect-error @ts-ignore */}
       <mesh
+        // @ts-expect-error @ts-ignore
         geometry={nodes.PhoneBody_PhoneScreen_M_0.geometry}
         material={materials.PhoneScreen_M}
       />

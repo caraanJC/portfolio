@@ -15,8 +15,8 @@ export default function Factory(props: GroupProps) {
   const { nodes, materials } = useGLTF('/factory-transformed.glb')
   return (
     <group {...props} dispose={null}>
-      {/* @ts-expect-error @ts-ignore */}
       <mesh
+        // @ts-expect-error @ts-ignore
         geometry={nodes.Object_2.geometry}
         material={materials['Scene_-_Root']}
         rotation={[-Math.PI / 2, 0, 0]}

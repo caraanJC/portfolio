@@ -15,20 +15,20 @@ export default function Ipad(props: GroupProps) {
   const { nodes, materials } = useGLTF('/web-design-transformed.glb')
   return (
     <group {...props} dispose={null}>
-      {/* @ts-expect-error @ts-ignore */}
       <mesh
+        // @ts-expect-error @ts-ignore
         geometry={nodes.Object_4.geometry}
         material={materials.palette}
         rotation={[Math.PI / 2, 0, 0]}
       />
-      {/* @ts-expect-error @ts-ignore */}
       <mesh
+        // @ts-expect-error @ts-ignore
         geometry={nodes.Object_6.geometry}
         material={materials['palette.001']}
         rotation={[Math.PI / 2, 0, 0]}
       />
-      {/* @ts-expect-error @ts-ignore */}
       <mesh
+        // @ts-expect-error @ts-ignore
         geometry={nodes.Object_8.geometry}
         material={materials['palette.002']}
         rotation={[Math.PI / 2, 0, 0]}
