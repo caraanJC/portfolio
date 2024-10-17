@@ -1,0 +1,30 @@
+.hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10%;
+  padding-top: 10vh;
+}
+
+.hero-left {
+  flex: 1;
+}
+
+.hero-left h1 {
+  color: #d9d9d9;
+  font-size: 58px;
+}
+
+.hero-right {
+  flex: 1;
+  display: grid;
+  place-items: center;
+}
+
+.hero-right .profile {
+  width: 349px;
+  height: 349px;
+  border-radius: 50%;
+  border: #d9d9d9 10px solid;
+}
