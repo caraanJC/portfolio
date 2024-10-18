@@ -3,7 +3,8 @@
 :root {
   --bg-color: #191919;
   --primary: #a7a7a7;
-  --heading: #cccccc;
+  --heading: #d9d9d9;
+  --subheading: #cccccc;
 }
 
 * {
@@ -20,4 +21,14 @@ a {
 
 body {
   background-color: var(--bg-color);
+}
+
+.heading {
+  color: var(--heading);
+  font-size: 58px;
+}
+
+.subheading {
+  color: var(--subheading);
+  font-size: 48px;
 }

@@ -4,7 +4,7 @@ import './TechStack.css'
 const TechStack = () => {
   return (
     <div id="techStack" className="techStack">
-      <h1 className="techStack-heading">My Tech Stack</h1>
+      <h2 className="subheading">My Tech Stack</h2>
       <div className="techStack-gallery">
         <div>
           <img className="techStack-gallery-img" src="/images/html5.svg" loading="lazy" />

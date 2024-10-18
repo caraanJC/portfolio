@@ -4,7 +4,7 @@ const Hero = () => {
   return (
     <div id="hero" className="hero">
       <div className="hero-left">
-        <h1>
+        <h1 className='heading'>
           Hi 👋, <br />
           My name is <br />
           John Carlo Caraan <br />I build things for web

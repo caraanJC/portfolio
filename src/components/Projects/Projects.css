@@ -1,0 +1,7 @@
+.projects {
+    height: 200vh;
+    padding: 100px 10%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}

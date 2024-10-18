@@ -3,8 +3,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 10%;
-  padding-top: 10vh;
+  padding: 100px 10% 0 10%;
 }
 
 .hero-left {
@@ -12,7 +11,7 @@
 }
 
 .hero-left h1 {
-  color: #d9d9d9;
+  color: var(--heading);
   font-size: 58px;
 }
 
@@ -26,5 +25,5 @@
   width: 349px;
   height: 349px;
   border-radius: 50%;
-  border: #d9d9d9 10px solid;
+  border: var(--heading) 10px solid;
 }
