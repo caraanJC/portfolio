@@ -5,7 +5,7 @@ import TechStack from '@/components/TechStack/TechStack'
 
 function App() {
   return (
-    <div className='app'>
+    <div className="app">
       <Navbar />
       <Hero />
       <TechStack />

@@ -4,13 +4,13 @@ import { useEffect, useState } from 'react'
 import { MdDarkMode } from 'react-icons/md'
 
 const Navbar = () => {
-  const [ isDark, setIsDark ] = useState(true)
+  const [isDark, setIsDark] = useState(true)
 
-  useEffect(()=> {
-    document.documentElement.style.setProperty('--bg-color', isDark ? '#191919' : 'white');
-    document.documentElement.style.setProperty('--primary', isDark ? '#a7a7a7' : '#666666');
-    document.documentElement.style.setProperty('--heading', isDark ? '#d9d9d9' : '#42446E');
-    document.documentElement.style.setProperty('--subheading', isDark ? '#cccccc' : '#42446E');
+  useEffect(() => {
+    document.documentElement.style.setProperty('--bg-color', isDark ? '#191919' : 'white')
+    document.documentElement.style.setProperty('--primary', isDark ? '#a7a7a7' : '#666666')
+    document.documentElement.style.setProperty('--heading', isDark ? '#d9d9d9' : '#42446E')
+    document.documentElement.style.setProperty('--subheading', isDark ? '#cccccc' : '#42446E')
   }, [isDark])
 
   return (
@@ -40,7 +40,9 @@ const Navbar = () => {
             </a>
           </li>
           <li>
-            <p className='darkButton' onClick={() => setIsDark(!isDark)}>{isDark ? <MdDarkMode /> : <FaSun />}</p>
+            <p className="darkButton" onClick={() => setIsDark(!isDark)}>
+              {isDark ? <MdDarkMode /> : <FaSun />}
+            </p>
           </li>
         </ul>
       </nav>
