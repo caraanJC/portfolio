@@ -8,8 +8,8 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "predeploy": "npm run build && cp CNAME dist/",
-    "deploy": "gh-pages -d dist",
+    "predeploy": "npm run build",
+    "deploy": "node ./deploy.cjs",
     "format": "prettier --write src/"
   },
   "dependencies": {
